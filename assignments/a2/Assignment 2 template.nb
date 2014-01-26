@@ -1,0 +1,271 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      9080,        262]
+NotebookOptionsPosition[      8537,        238]
+NotebookOutlinePosition[      8924,        255]
+CellTagsIndexPosition[      8881,        252]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[StyleBox["Geoffrey Buhl - Math 448 - Assignment 2 - Data Sets",
+ FontFamily->"Arial Bold",
+ FontSize->18]], "Text",
+ CellChangeTimes->{{3.5989741745364447`*^9, 3.5989741921435947`*^9}}],
+
+Cell["\<\
+
+The following data set is from the voteview.org website.  The data set \
+consists of all the Senetors over the history of congress and their \
+DW-NOMINATE score which is a measure of how liberal or conservative a member \
+of congress is.  The scale goes from -1 to 1 with -1 being the most liberal \
+and 1 being the most conservative.  Below I import the datafile directly from \
+the website as an text file.  More work needs to be done to process this data \
+set to make it more useable.  It is improted as lines of text, and data need \
+to be extracted from the lines of text to make it more useable.
+
+Dictionary file from the voteview website:
+The format of the legislator files is:
+
+ 1.  Congress Number
+ 2.  ICPSR ID Number:  5 digit code assigned by the ICPSR as 
+                       corrected by Howard Rosenthal and myself.
+ 3.  State Code:  2 digit ICPSR State Code.
+ 4.  Congressional District Number (0 if Senate)
+ 5.  State Name
+ 6.  Party Code:  100 = Dem., 200 = Repub. (See PARTY3.DAT for a full set of \
+codes of minor and historical parties)
+ 7.  Name
+ 8.  1st Dimension Coordinate
+ 9.  2nd Dimension Coordinate
+10.  1st Dimension Bootstrapped Standard Error
+11.  2nd Dimension Bootstrapped Standard Error
+12.  Correlation Between 1st and 2nd Dimension Bootstrapped Estimates over \
+the 1000 trials (for computing the ellipsoid of estimated points)
+13.  Log-Likelihood
+14.  Number of Votes
+15.  Number of Classification Errors
+16.  Geometric Mean Probability
+
+\
+\>", "Text",
+ CellChangeTimes->{{3.598973500709566*^9, 3.598973643908388*^9}, {
+   3.5989737085911913`*^9, 3.598973708782926*^9}, {3.598973774087018*^9, 
+   3.5989739051617813`*^9}, 3.598974169482107*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"sendwnom", "=", 
+  RowBox[{"Import", "[", 
+   RowBox[{
+   "\"\<ftp://voteview.com/junkord/HL01112D21_PRES_BSSE.DAT\>\"", ",", 
+    "\"\<Lines\>\""}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5989736473773937`*^9, 3.598973659413703*^9}, {
+  3.59897375282341*^9, 3.598973770112294*^9}, {3.598973940725231*^9, 
+  3.5989739455799*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  TagBox[
+   PanelBox[GridBox[{
+      {
+       StyleBox[
+        StyleBox[
+         DynamicBox[ToBoxes[
+           FEPrivate`FrontEndResource["FEStrings", "sizeExplanation"], 
+           StandardForm],
+          ImageSizeCache->{420., {3., 12.}}],
+         StripOnInput->False,
+         DynamicUpdating->True], "Panel",
+        StripOnInput->False,
+        Background->None]},
+      {
+       ItemBox[
+        TagBox[
+         RowBox[{"{", 
+          
+          RowBox[{"\<\"   1  9062  198 CONNECT 5000 STURGES      0.637  0.327 \
+ 0.115  0.101  0.113   -26.95128   80   12  0.714\"\>", ",", 
+           RowBox[{"\[LeftSkeleton]", "37075", "\[RightSkeleton]"}], 
+           ",", "\<\" 112 20953 68 1 WYOMING  200 LUMMIS       0.932 -0.211  \
+0.197  0.144 -0.187  -279.54498 1395  117  0.818\"\>"}], "}"}],
+         Short[#, 5]& ],
+        Background->GrayLevel[1],
+        BaseStyle->{Deployed -> False},
+        Frame->True,
+        FrameStyle->GrayLevel[0, 0.2],
+        StripOnInput->False]},
+      {
+       RowBox[{
+        ButtonBox[
+         StyleBox[
+          StyleBox[
+           DynamicBox[ToBoxes[
+             FEPrivate`FrontEndResource["FEStrings", "sizeShowLess"], 
+             StandardForm],
+            ImageSizeCache->{75., {1., 12.}}],
+           StripOnInput->False,
+           DynamicUpdating->True], "Panel",
+          StripOnInput->False,
+          Background->None],
+         Appearance->Automatic,
+         ButtonFunction:>OutputSizeLimit`ButtonFunction[
+          Identity, 130, 30255673611716758939, 5/2],
+         Enabled->True,
+         Evaluator->Automatic,
+         Method->"Queued"], "\[ThinSpace]", 
+        ButtonBox[
+         StyleBox[
+          StyleBox[
+           DynamicBox[ToBoxes[
+             FEPrivate`FrontEndResource["FEStrings", "sizeShowMore"], 
+             StandardForm],
+            ImageSizeCache->{80., {1., 12.}}],
+           StripOnInput->False,
+           DynamicUpdating->True], "Panel",
+          StripOnInput->False,
+          Background->None],
+         Appearance->Automatic,
+         ButtonFunction:>OutputSizeLimit`ButtonFunction[
+          Identity, 130, 30255673611716758939, 5 2],
+         Enabled->True,
+         Evaluator->Automatic,
+         Method->"Queued"], "\[ThinSpace]", 
+        ButtonBox[
+         StyleBox[
+          StyleBox[
+           DynamicBox[ToBoxes[
+             FEPrivate`FrontEndResource["FEStrings", "sizeShowAll"], 
+             StandardForm],
+            ImageSizeCache->{125., {3., 12.}}],
+           StripOnInput->False,
+           DynamicUpdating->True], "Panel",
+          StripOnInput->False,
+          Background->None],
+         Appearance->Automatic,
+         ButtonFunction:>OutputSizeLimit`ButtonFunction[
+          Identity, 130, 30255673611716758939, Infinity],
+         Enabled->True,
+         Evaluator->Automatic,
+         Method->"Queued"], "\[ThinSpace]", 
+        ButtonBox[
+         StyleBox[
+          StyleBox[
+           DynamicBox[ToBoxes[
+             FEPrivate`FrontEndResource["FEStrings", "sizeChangeLimit"], 
+             StandardForm],
+            ImageSizeCache->{111., {1., 11.}}],
+           StripOnInput->False,
+           DynamicUpdating->True], "Panel",
+          StripOnInput->False,
+          Background->None],
+         Appearance->Automatic,
+         ButtonFunction:>FrontEndExecute[{
+            FrontEnd`SetOptions[
+            FrontEnd`$FrontEnd, 
+             FrontEnd`PreferencesSettings -> {"Page" -> "Evaluation"}], 
+            FrontEnd`FrontEndToken["PreferencesDialog"]}],
+         Evaluator->None,
+         Method->"Preemptive"]}]}
+     },
+     DefaultBaseStyle->"Column",
+     GridBoxAlignment->{
+      "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+       "RowsIndexed" -> {}},
+     GridBoxDividers->{
+      "Columns" -> {{False}}, "ColumnsIndexed" -> {}, "Rows" -> {{False}}, 
+       "RowsIndexed" -> {}},
+     GridBoxItemSize->{
+      "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+       "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[1.2]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    DefaultBaseStyle->{},
+    FrameMargins->5],
+   Deploy,
+   DefaultBaseStyle->"Deploy"],
+  Out[130]]], "Output",
+ CellChangeTimes->{3.598973708114534*^9, 3.598973776805251*^9, 
+  3.5989740051198673`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"StringSplit", "[", 
+   RowBox[{"sendwnom", "[", 
+    RowBox[{"[", "82", "]"}], "]"}], "]"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "Spliting", " ", "the", " ", "82", " ", "line", " ", "at", " ", "white", 
+     " ", "spaces"}], ",", " ", 
+    RowBox[{
+    "there", " ", "are", " ", "16", " ", "entries", " ", "that", " ", 
+     "correspond", " ", "to", " ", "the", " ", "16", " ", "dictionary", " ", 
+     "fields"}]}], "*)"}]}]], "Input",
+ CellChangeTimes->{{3.598973997744308*^9, 3.598974012660943*^9}, {
+  3.598974055407683*^9, 3.598974130647435*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"2\"\>", ",", "\<\"8344\"\>", ",", "\<\"3\"\>", 
+   ",", "\<\"4\"\>", ",", "\<\"MASSACH\"\>", ",", "\<\"5000\"\>", 
+   ",", "\<\"SEDGWICK\"\>", ",", "\<\"0.870\"\>", ",", "\<\"0.252\"\>", 
+   ",", "\<\"0.179\"\>", ",", "\<\"0.157\"\>", ",", "\<\"-0.887\"\>", 
+   ",", "\<\"-12.66571\"\>", ",", "\<\"75\"\>", ",", "\<\"4\"\>", 
+   ",", "\<\"0.845\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.5989740133163767`*^9, {3.598974064088838*^9, 3.598974068184594*^9}}]
+}, Open  ]]
+},
+WindowSize->{1266, 994},
+WindowMargins->{{12, Automatic}, {18, Automatic}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 199, 3, 52, "Text"],
+Cell[759, 25, 1697, 38, 902, "Text"],
+Cell[CellGroupData[{
+Cell[2481, 67, 355, 8, 44, "Input"],
+Cell[2839, 77, 4533, 127, 237, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7409, 209, 602, 15, 69, "Input"],
+Cell[8014, 226, 507, 9, 69, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

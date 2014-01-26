@@ -1,0 +1,574 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     19763,        565]
+NotebookOptionsPosition[     18028,        507]
+NotebookOutlinePosition[     18413,        524]
+CellTagsIndexPosition[     18370,        521]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ StyleBox["Challenges W2C2", "Section"],
+ "\n",
+ StyleBox["Group:\n", "Subsection"],
+ "\nChallenge 1: Design a function to check, given a number n, if the number \
+n!+1 is Prime."
+}], "Text",
+ CellChangeTimes->{{3.5989056446874647`*^9, 3.5989057177958937`*^9}, {
+  3.599758359732758*^9, 3.599758395829981*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Challenge", " ", "1", " ", "solution", " ", 
+    RowBox[{"by", ":"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "[", "n_", "]"}], ":=", 
+    RowBox[{"PrimeQ", "[", 
+     RowBox[{
+      RowBox[{"n", "!"}], "+", "1"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"input", "=", 
+    RowBox[{"Range", "[", "20", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"a", "[", "input", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.598905721654051*^9, 3.59890573356245*^9}, {
+  3.599756376081846*^9, 3.5997564760514307`*^9}, {3.5997565097084417`*^9, 
+  3.599756565433992*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", 
+   ",", "9", ",", "10", ",", "11", ",", "12", ",", "13", ",", "14", ",", "15",
+    ",", "16", ",", "17", ",", "18", ",", "19", ",", "20"}], "}"}]], "Output",
+ CellChangeTimes->{{3.599756452690099*^9, 3.5997564765194387`*^9}, {
+  3.599756512112094*^9, 3.5997565218114233`*^9}, {3.599756559855411*^9, 
+  3.5997565657374973`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "True", ",", "True", ",", "True", ",", "False", ",", "False", ",", "False", 
+   ",", "False", ",", "False", ",", "False", ",", "False", ",", "True", ",", 
+   "False", ",", "False", ",", "False", ",", "False", ",", "False", ",", 
+   "False", ",", "False", ",", "False", ",", "False"}], "}"}]], "Output",
+ CellChangeTimes->{{3.599756452690099*^9, 3.5997564765194387`*^9}, {
+  3.599756512112094*^9, 3.5997565218114233`*^9}, {3.599756559855411*^9, 
+  3.599756565739243*^9}}]
+}, Open  ]],
+
+Cell["\<\
+
+
+
+Challenge 2: Create a list of the first 100 Fibonacci numbers in two \
+different ways.\
+\>", "Text",
+ CellChangeTimes->{{3.598905742988675*^9, 3.5989057608898973`*^9}, {
+  3.5989058315031033`*^9, 3.598905852613551*^9}, {3.59975835510848*^9, 
+  3.599758355428899*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Challenge", " ", "2", " ", "solution", " ", 
+    RowBox[{"by", ":"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Fibonacci", "[", "i", "]"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "0", ",", "100"}], "}"}]}], "]"}], ";", " ", 
+    RowBox[{"(*", 
+     RowBox[{"Method", " ", "1"}], "*)"}], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"ret1", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ret2", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"fib", "[", "n_", "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"grandparent", "=", "0"}], ",", " ", 
+         RowBox[{"parent", "=", "1"}], ",", " ", 
+         RowBox[{"me", "=", "0"}]}], "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"For", "[", 
+         RowBox[{
+          RowBox[{"i", "=", "1"}], ",", 
+          RowBox[{"i", "<", "n"}], ",", 
+          RowBox[{"n", "++"}], ",", 
+          RowBox[{"Module", "[", 
+           RowBox[{
+            RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"me", "=", 
+              RowBox[{"parent", "+", "grandparent"}]}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"grandparent", "=", "parent"}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"parent", "=", "me"}], ";"}]}], "]"}]}], "]"}], 
+        "\[IndentingNewLine]", "me"}]}], "\[IndentingNewLine]", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"f", "[", "x_", "]"}], ":=", "\[IndentingNewLine]", 
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"x", "==", "0"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"x", "\[Equal]", "1"}], ",", 
+        RowBox[{"fib", "[", "x", "]"}], ",", "ret2"}], "]"}], ",", 
+      "\[IndentingNewLine]", "ret1"}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"f", "[", "4", "]"}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.5989057638182364`*^9, 3.5989057665172777`*^9}, {
+  3.599756597363183*^9, 3.599756624435841*^9}, {3.59975665651483*^9, 
+  3.599756759209117*^9}, {3.5997568242323914`*^9, 3.599756836897256*^9}, {
+  3.599756912850587*^9, 3.599757169893856*^9}, {3.5997572107278843`*^9, 
+  3.599757284604453*^9}, {3.599757326133382*^9, 3.5997573425328703`*^9}, {
+  3.599757376899714*^9, 3.599757456832151*^9}, {3.599757567779586*^9, 
+  3.599757640252054*^9}, {3.5997576943018837`*^9, 3.5997577024697104`*^9}, {
+  3.599757746771887*^9, 3.599757810636874*^9}, {3.5997578434263277`*^9, 
+  3.599757849034449*^9}, {3.599757891060594*^9, 3.5997579529928827`*^9}, {
+  3.59975798703673*^9, 3.599757989395115*^9}}],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{{3.599756605610993*^9, 3.5997566248827753`*^9}, {
+   3.599756657555521*^9, 3.5997566730919952`*^9}, 3.599756760757503*^9, {
+   3.599757042277874*^9, 3.599757072351407*^9}, 3.599757131961347*^9, {
+   3.599757235897395*^9, 3.599757285023341*^9}, 3.599757680049328*^9, {
+   3.599757792902841*^9, 3.599757811091312*^9}, 3.5997578506472692`*^9, {
+   3.59975790692426*^9, 3.599757957067848*^9}, 3.599757994992647*^9}]
+}, Open  ]],
+
+Cell["\<\
+
+
+
+Challenge 3: Generate 6 random integers n between 1 and 3095 and show that \
+n^6 + 1091 is not prime. \
+\>", "Text",
+ CellChangeTimes->{{3.5989058592692757`*^9, 3.598905867555654*^9}, {
+  3.598906045752781*^9, 3.5989060684608717`*^9}, {3.599758351092752*^9, 
+  3.599758351420384*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Challenge", " ", "3", " ", "solution", " ", 
+    RowBox[{"by", ":"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"randRange", "=", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"j", "=", 
+       RowBox[{"Random", "[", 
+        RowBox[{"Integer", ",", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "3095"}], "}"}]}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "0", ",", "5"}], "}"}]}], "]"}]}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"testP", "[", "n_", "]"}], ":=", 
+    RowBox[{"PrimeQ", "[", 
+     RowBox[{
+      RowBox[{"n", "^", "6"}], "+", "1091"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"j", "=", 
+      RowBox[{"testP", "[", 
+       RowBox[{"randRange", "[", 
+        RowBox[{"[", "i", "]"}], "]"}], "]"}]}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "0", ",", 
+       RowBox[{"Length", "[", "randRange", "]"}]}], "}"}]}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.598905879062278*^9, 3.598905881126705*^9}, {
+  3.599758042648068*^9, 3.5997582133931713`*^9}, {3.599758268680566*^9, 
+  3.5997583268507357`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "3007", ",", "2701", ",", "2412", ",", "2640", ",", "183", ",", "224"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.599758054352723*^9, {3.599758085208523*^9, 3.599758098360437*^9}, 
+   3.599758214066166*^9, {3.599758297247937*^9, 3.59975834439183*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "False", ",", "False", ",", "False", ",", "False", ",", "False", ",", 
+   "False", ",", "False"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.599758054352723*^9, {3.599758085208523*^9, 3.599758098360437*^9}, 
+   3.599758214066166*^9, {3.599758297247937*^9, 3.599758344393989*^9}}]
+}, Open  ]],
+
+Cell["\<\
+
+
+
+Challenge 4: Show that, among the first 450 Fibonacci numbers, the number of \
+odd Fibonacci numbers is twice the number of even ones.\
+\>", "Text",
+ CellChangeTimes->{{3.5989058592692757`*^9, 3.598905867555654*^9}, {
+  3.598905901862239*^9, 3.5989059019901667`*^9}, {3.598906096579184*^9, 
+  3.598906097568721*^9}, {3.599758348760604*^9, 3.599758349100428*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Challenge", " ", "4", " ", "solution", " ", 
+   RowBox[{"by", ":"}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.598905879062278*^9, 3.598905905150573*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"firstFibs", "=", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Fibonacci", "[", "i", "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "0", ",", "449"}], "}"}]}], "]"}]}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "Get", " ", "all", " ", "the", " ", "Fib", " ", "numbers", " ", "between", 
+    " ", "0", " ", "and", " ", "449"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"isOddFirstFibs", "=", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"OddQ", "[", 
+         RowBox[{"firstFibs", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "]"}], ",", "True", ",", "False"}], 
+       "]"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", "0", ",", 
+        RowBox[{"Length", "[", "firstFibs", "]"}]}], "}"}]}], "]"}]}], " ", 
+   ";"}], 
+  RowBox[{"(*", 
+   RowBox[{"Check", " ", "each", " ", "odd"}], "*)"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"oddC", "=", "0"}], ";"}], " ", 
+  RowBox[{"(*", 
+   RowBox[{"Odd", " ", "Count"}], "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"evenC", "=", "0"}], ";", " ", 
+   RowBox[{"(*", 
+    RowBox[{"Even", " ", "Count"}], "*)"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"For", "[", 
+    RowBox[{
+     RowBox[{"i", "=", "0"}], ",", 
+     RowBox[{"i", "<", 
+      RowBox[{"Length", "[", "isOddFirstFibs", "]"}]}], ",", 
+     RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"isOddFirstFibs", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "\[Equal]", "True"}], ",", 
+       RowBox[{"oddC", "++"}], ",", 
+       RowBox[{"evenC", "++"}]}], "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", "oddC", \
+"\[IndentingNewLine]", "evenC", "\[IndentingNewLine]", 
+ RowBox[{"oddC", "\[GreaterEqual]", "evenC"}]}], "Input",
+ CellChangeTimes->{{3.5997585884519978`*^9, 3.5997586213403683`*^9}, {
+  3.599758655966695*^9, 3.5997587556892567`*^9}, {3.599758799690881*^9, 
+  3.59975883936945*^9}, {3.5997588753766527`*^9, 3.599759081017449*^9}, {
+  3.599759121380883*^9, 3.599759202247951*^9}, {3.5997593109061413`*^9, 
+  3.599759341003139*^9}, {3.599759404684627*^9, 3.599759439211817*^9}, {
+  3.5997595684413023`*^9, 3.599759596177841*^9}, {3.5997596265365877`*^9, 
+  3.599759697331263*^9}, {3.5997597275788383`*^9, 3.599759781681422*^9}, {
+  3.5997598327590303`*^9, 3.599759855641827*^9}}],
+
+Cell[BoxData["299"], "Output",
+ CellChangeTimes->{{3.599759845726457*^9, 3.599759856015571*^9}}],
+
+Cell[BoxData["151"], "Output",
+ CellChangeTimes->{{3.599759845726457*^9, 3.59975985601687*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.599759845726457*^9, 3.599759856018165*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5997587237461863`*^9, 3.599758725175264*^9}}],
+
+Cell["\<\
+
+
+
+Challenge 5: Let m be a natural number and A(m)=((m+3)^3+1)/3m.  Find all the \
+integers m less than 500 for which A(m) is an integer.\
+\>", "Text",
+ CellChangeTimes->{{3.5989058592692757`*^9, 3.598905867555654*^9}, {
+   3.59890590769239*^9, 3.598905907788473*^9}, {3.598906120362914*^9, 
+   3.598906197815778*^9}, {3.599758402351645*^9, 3.59975840390232*^9}, 
+   3.599759890038558*^9}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Challenge", " ", "5", " ", "solution", " ", 
+   RowBox[{"by", ":"}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.598905879062278*^9, 3.598905909862135*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"m", "=", "0"}], ";"}], " ", 
+   RowBox[{"(*", 
+    RowBox[{"Some", " ", "natural", " ", "Number"}], "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"A", "[", "m_", "]"}], ":=", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"m", "+", "3"}], ")"}], "^", "3"}], "+", "1"}], ")"}], "/",
+        "3"}], "*", "m"}]}], ";", " ", 
+    RowBox[{"(*", 
+     RowBox[{
+     "Formula", " ", "some", " ", "m", " ", "must", " ", "satisfy", " ", "to",
+       " ", "be", " ", "satisfying"}], "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"satisfyingIntegers", "=", 
+     RowBox[{"{", "}"}]}]}], " ", 
+   RowBox[{"(*", 
+    RowBox[{
+     RowBox[{"list", " ", "of", " ", "all", " ", 
+      RowBox[{"m", "'"}], "s", " ", "that", " ", "satisfy", " ", 
+      RowBox[{"A", "[", "]"}], " ", "where", " ", "m"}], " ", "<", " ", 
+     RowBox[{
+     "500", " ", "and", " ", "m", " ", "is", " ", "an", " ", "Integer"}]}], 
+    "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"For", "[", 
+    RowBox[{
+     RowBox[{"i", "=", "0"}], ",", 
+     RowBox[{"i", "<", "500"}], ",", 
+     RowBox[{"i", "++"}], ",", 
+     RowBox[{"A", "[", "i", "]"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.59975991417006*^9, 3.59976005290701*^9}, {
+  3.599760107653964*^9, 3.599760158008737*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output",
+ CellChangeTimes->{{3.599759921473341*^9, 3.59975993452592*^9}}]
+}, Open  ]],
+
+Cell["\<\
+
+
+
+Challenge 6: Find the number of positive integers 0 < n < 20000 such that \
+1997 divides n^2 + (n + 1)^2. Try the same code for 2009.\
+\>", "Text",
+ CellChangeTimes->{{3.5989058592692757`*^9, 3.598905867555654*^9}, 
+   3.598905913309203*^9, {3.598906372909046*^9, 3.598906386731545*^9}, {
+   3.59975840527853*^9, 3.5997584055748777`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Challenge", " ", "6", " ", "solution", " ", 
+   RowBox[{"by", ":"}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.598905879062278*^9, 3.598905881126705*^9}, {
+  3.598905915198028*^9, 3.5989059156062326`*^9}}],
+
+Cell["\<\
+
+
+
+Challenge 7: For integers 2 \[LessEqual] n \[LessEqual] 200, find all n such \
+that n divides (n\[Minus]1)!+1. Show that there are 46 such n.\
+\>", "Text",
+ CellChangeTimes->{{3.5989058592692757`*^9, 3.598905867555654*^9}, {
+  3.59890591742029*^9, 3.598905917804646*^9}, {3.5989064227285013`*^9, 
+  3.59890642344928*^9}, {3.599758406822721*^9, 3.599758407110879*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Challenge", " ", "7", " ", "solution", " ", 
+   RowBox[{"by", ":"}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.598905879062278*^9, 3.598905881126705*^9}, {
+  3.5989059196384172`*^9, 3.598905920654263*^9}}],
+
+Cell["\<\
+
+
+
+Challenge 8: Show that among the first 200 primes p, the ones such that the \
+remainder when 19^(p\[Minus]1) is divided by p^2 is 1 are {3, 7, 13, 43, 137}.\
+\>", "Text",
+ CellChangeTimes->{{3.5989058592692757`*^9, 3.598905867555654*^9}, {
+  3.59890592353892*^9, 3.598905924044833*^9}, {3.5989064568000107`*^9, 
+  3.59890647282413*^9}, {3.5997584094068193`*^9, 3.59975840971095*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Challenge", " ", "8", " ", "solution", " ", 
+   RowBox[{"by", ":"}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.598905879062278*^9, 3.598905881126705*^9}, {
+  3.598905925942362*^9, 3.59890592645394*^9}}],
+
+Cell["\<\
+
+
+
+Challenge 9:An integer dn d_n\[Minus]1 . . . d_1 is called prime-palindromic \
+if d_nd_n\[Minus]1 ...d_1 and d_1 ...d_n\[Minus]1d_n
+are both prime (for example 941). Write a code to find all prime- palindromic \
+numbers up to 5000. Observe that there are 167 such numbers.\
+\>", "Text",
+ CellChangeTimes->{{3.5989058592692757`*^9, 3.598905867555654*^9}, {
+  3.598905928619691*^9, 3.598905936275998*^9}, {3.598906499104944*^9, 
+  3.598906525699621*^9}, {3.599758411246965*^9, 3.59975841154296*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Challenge", " ", "9", " ", "solution", " ", 
+   RowBox[{"by", ":"}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.598905879062278*^9, 3.598905881126705*^9}, {
+  3.598905939717332*^9, 3.598905940174155*^9}}],
+
+Cell["\<\
+
+
+
+Challenge 10: Find the first 5 positive integers n such that n^6 + 1091 is \
+prime. Show that all these n are between 3500 and 8500.\
+\>", "Text",
+ CellChangeTimes->{{3.5989058592692757`*^9, 3.598905867555654*^9}, {
+  3.598905942395351*^9, 3.598905945051447*^9}, {3.5989065522945957`*^9, 
+  3.598906555686469*^9}, {3.599758413303*^9, 3.599758413574819*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Challenge", " ", "10", " ", "solution", " ", 
+   RowBox[{"by", ":"}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.598905879062278*^9, 3.598905881126705*^9}, {
+  3.5989059470134563`*^9, 3.598905948133535*^9}}],
+
+Cell["\<\
+
+
+
+Challenge 11: A number with n digits is called cyclic if multiplication by 1, \
+2, 3, \[CenterDot] \[CenterDot] \[CenterDot] , n produces the same digits in \
+a different order. Find the only 6-digit cyclic number.\
+\>", "Text",
+ CellChangeTimes->{{3.598906565368129*^9, 3.5989065891171103`*^9}, {
+  3.5997584148070393`*^9, 3.599758415086878*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Challenge", " ", "11", " ", "solution", " ", 
+   RowBox[{"by", ":"}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.5989065803191137`*^9, 3.598906580510106*^9}}]
+},
+WindowSize->{1435, 756},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 326, 8, 168, "Text"],
+Cell[CellGroupData[{
+Cell[908, 32, 643, 16, 119, "Input"],
+Cell[1554, 50, 445, 8, 42, "Output"],
+Cell[2002, 60, 512, 9, 69, "Output"]
+}, Open  ]],
+Cell[2529, 72, 280, 9, 135, "Text"],
+Cell[CellGroupData[{
+Cell[2834, 85, 2931, 68, 544, "Input"],
+Cell[5768, 155, 459, 6, 43, "Output"]
+}, Open  ]],
+Cell[6242, 164, 297, 9, 135, "Text"],
+Cell[CellGroupData[{
+Cell[6564, 177, 1217, 34, 144, "Input"],
+Cell[7784, 213, 297, 7, 43, "Output"],
+Cell[8084, 222, 321, 7, 43, "Output"]
+}, Open  ]],
+Cell[8420, 232, 375, 9, 135, "Text"],
+Cell[8798, 243, 195, 4, 43, "Input"],
+Cell[CellGroupData[{
+Cell[9018, 251, 2567, 65, 344, "Input"],
+Cell[11588, 318, 96, 1, 43, "Output"],
+Cell[11687, 321, 95, 1, 43, "Output"],
+Cell[11785, 324, 97, 1, 43, "Output"]
+}, Open  ]],
+Cell[11897, 328, 94, 1, 43, "Input"],
+Cell[11994, 331, 399, 10, 135, "Text"],
+Cell[12396, 343, 195, 4, 43, "Input"],
+Cell[CellGroupData[{
+Cell[12616, 351, 1456, 40, 169, "Input"],
+Cell[14075, 393, 110, 2, 43, "Output"]
+}, Open  ]],
+Cell[14200, 398, 351, 9, 135, "Text"],
+Cell[14554, 409, 246, 5, 43, "Input"],
+Cell[14803, 416, 380, 9, 135, "Text"],
+Cell[15186, 427, 246, 5, 43, "Input"],
+Cell[15435, 434, 396, 9, 164, "Text"],
+Cell[15834, 445, 243, 5, 43, "Input"],
+Cell[16080, 452, 510, 11, 194, "Text"],
+Cell[16593, 465, 244, 5, 43, "Input"],
+Cell[16840, 472, 370, 9, 135, "Text"],
+Cell[17213, 483, 247, 5, 43, "Input"],
+Cell[17463, 490, 360, 9, 164, "Text"],
+Cell[17826, 501, 198, 4, 44, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
