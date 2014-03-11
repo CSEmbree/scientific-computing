@@ -1,0 +1,1803 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     74211,       1794]
+NotebookOptionsPosition[     69518,       1635]
+NotebookOutlinePosition[     70494,       1668]
+CellTagsIndexPosition[     70415,       1663]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+EXTRACTING DATA FROM *.TXT DOCS
+(Or playing with Assginment 5 with cool data)\
+\>", "Title",
+ CellChangeTimes->{{3.601574177064061*^9, 3.601574178420884*^9}, 
+   3.601574363378152*^9, {3.601582258011003*^9, 3.601582284601357*^9}, {
+   3.6015823171615143`*^9, 3.6015823330167017`*^9}, {3.601731771714809*^9, 
+   3.6017317792907457`*^9}, {3.601731854693861*^9, 3.601731876813367*^9}, {
+   3.601751234845879*^9, 3.601751246456231*^9}}],
+
+Cell["\<\
+Cameron Embree
+MATH 448-01
+
+Spring 2014
+Tues, 18 February\
+\>", "Subtitle",
+ CellChangeTimes->{{3.6015741910140133`*^9, 3.6015742056684933`*^9}, {
+  3.601582250135569*^9, 3.601582252729858*^9}, {3.601582289154587*^9, 
+  3.601582296995287*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["Find Some Data to Work With", "Section",
+ CellChangeTimes->{{3.601574154789566*^9, 3.601574163724279*^9}}],
+
+Cell["\<\
+Here is some data (Assignment 5 Sports (baseball) team info):
+http://www.retrosheet.org/gamelogs/index.html
+
+Aquire the dictionary for you data:
+http://www.retrosheet.org/gamelogs/glfields.txt
+
+Many data elements is good practice. Finding good (and interesting) is \
+important!\
+\>", "Text",
+ CellChangeTimes->{{3.601574002359323*^9, 3.60157411208464*^9}, {
+  3.601574669782379*^9, 3.601574701933406*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["Understand Your Data and Prepare", "Section",
+ CellChangeTimes->{{3.601574225381361*^9, 3.601574234116066*^9}, {
+  3.601574634045755*^9, 3.601574635661216*^9}}],
+
+Cell["\<\
+WARNING: Just like programming, do not just jump in.
+ - Mathematia is an interpretive algebraic tool where quick testing is easy \
+but debugging is hard.
+
+Do not go to the next task until you are satisfied with current data state, \
+avoids some debugging!
+
+Check out the Dictionary for delimiters and element information:
+http://www.retrosheet.org/gamelogs/glfields.txt\
+\>", "Text",
+ CellChangeTimes->{{3.6015742580886097`*^9, 3.60157434748218*^9}, {
+  3.601574558374185*^9, 3.6015746581681347`*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["Check Out The Data", "Section",
+ CellChangeTimes->{{3.6015744167479467`*^9, 3.601574420157424*^9}, {
+  3.601574468998914*^9, 3.601574480213665*^9}}],
+
+Cell["Import and check out the raw data", "Text",
+ CellChangeTimes->{{3.601574778481269*^9, 3.6015747830074778`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"bbd", "=", 
+  RowBox[{"List", "[", 
+   RowBox[{"Import", "[", "\"\<GL2012.txt\>\"", "]"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.6015744278996067`*^9, 3.601574463689701*^9}, {
+   3.601574524761238*^9, 3.6015745397910337`*^9}, 3.601574814097526*^9, {
+   3.601580654046533*^9, 3.601580663566931*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  TagBox[
+   PanelBox[GridBox[{
+      {
+       StyleBox[
+        StyleBox[
+         DynamicBox[ToBoxes[
+           FEPrivate`FrontEndResource["FEStrings", "sizeExplanation"], 
+           StandardForm],
+          ImageSizeCache->{278., {2., 8.}}],
+         StripOnInput->False,
+         DynamicUpdating->True], "Panel",
+        StripOnInput->False,
+        Background->None]},
+      {
+       ItemBox[
+        TagBox[
+         RowBox[{"{", 
+          
+          RowBox[{"\<\"\\\"20120328\\\",\\\"0\\\",\\\"Wed\\\",\\\"SEA\\\",\\\"\
+AL\\\",1,\\\"OAK\\\",\\\"AL\\\",1,3,1,66,\\\"N\\\",\\\"\\\",\\\"\\\",\\\"\\\",\
+\\\"TOK01\\\",44227,184,\\\"00010000002\\\",\\\"00010000000\\\",39,9,1,0,1,3,\
+1,0,0,0,0,4,2,1,1,0,4,3,1,1,0,0,33,7,1,0,0,0,39,6,3,0,0,1,0,0,2,0,0,10,2,1,0,\
+0,7,6,3,3,0,0,\"\>", 
+           "\[Ellipsis]", "\<\"Mark DeRosa\\\",9,\\\"zimmr001\\\",\\\"Ryan \
+Zimmerman\\\",5,\\\"morsm001\\\",\\\"Mike \
+Morse\\\",7,\\\"moort002\\\",\\\"Tyler Moore\\\",3,\\\"desmi001\\\",\\\"Ian \
+Desmond\\\",6,\\\"espid001\\\",\\\"Danny \
+Espinosa\\\",4,\\\"florj002\\\",\\\"Jesus \
+Flores\\\",2,\\\"jacke001\\\",\\\"Edwin \
+Jackson\\\",1,\\\"\\\",\\\"Y\\\"\"\>"}], "}"}],
+         Short[#, 5]& ],
+        Background->GrayLevel[1],
+        BaseStyle->{Deployed -> False},
+        Frame->True,
+        FrameStyle->GrayLevel[0, 0.2],
+        StripOnInput->False]},
+      {
+       RowBox[{
+        ButtonBox[
+         StyleBox[
+          StyleBox[
+           DynamicBox[ToBoxes[
+             FEPrivate`FrontEndResource["FEStrings", "sizeShowLess"], 
+             StandardForm],
+            ImageSizeCache->{49., {1., 8.}}],
+           StripOnInput->False,
+           DynamicUpdating->True], "Panel",
+          StripOnInput->False,
+          Background->None],
+         Appearance->Automatic,
+         ButtonFunction:>OutputSizeLimit`ButtonFunction[
+          Identity, 2, 27126853915723271557, 5/2],
+         Enabled->True,
+         Evaluator->Automatic,
+         Method->"Queued"], "\[ThinSpace]", 
+        ButtonBox[
+         StyleBox[
+          StyleBox[
+           DynamicBox[ToBoxes[
+             FEPrivate`FrontEndResource["FEStrings", "sizeShowMore"], 
+             StandardForm],
+            ImageSizeCache->{52., {1., 8.}}],
+           StripOnInput->False,
+           DynamicUpdating->True], "Panel",
+          StripOnInput->False,
+          Background->None],
+         Appearance->Automatic,
+         ButtonFunction:>OutputSizeLimit`ButtonFunction[
+          Identity, 2, 27126853915723271557, 5 2],
+         Enabled->True,
+         Evaluator->Automatic,
+         Method->"Queued"], "\[ThinSpace]", 
+        ButtonBox[
+         StyleBox[
+          StyleBox[
+           DynamicBox[ToBoxes[
+             FEPrivate`FrontEndResource["FEStrings", "sizeShowAll"], 
+             StandardForm],
+            ImageSizeCache->{82., {2., 8.}}],
+           StripOnInput->False,
+           DynamicUpdating->True], "Panel",
+          StripOnInput->False,
+          Background->None],
+         Appearance->Automatic,
+         ButtonFunction:>OutputSizeLimit`ButtonFunction[
+          Identity, 2, 27126853915723271557, Infinity],
+         Enabled->True,
+         Evaluator->Automatic,
+         Method->"Queued"], "\[ThinSpace]", 
+        ButtonBox[
+         StyleBox[
+          StyleBox[
+           DynamicBox[ToBoxes[
+             FEPrivate`FrontEndResource["FEStrings", "sizeChangeLimit"], 
+             StandardForm],
+            ImageSizeCache->{74., {1., 8.}}],
+           StripOnInput->False,
+           DynamicUpdating->True], "Panel",
+          StripOnInput->False,
+          Background->None],
+         Appearance->Automatic,
+         ButtonFunction:>FrontEndExecute[{
+            FrontEnd`SetOptions[
+            FrontEnd`$FrontEnd, 
+             FrontEnd`PreferencesSettings -> {"Page" -> "Evaluation"}], 
+            FrontEnd`FrontEndToken["PreferencesDialog"]}],
+         Evaluator->None,
+         Method->"Preemptive"]}]}
+     },
+     DefaultBaseStyle->"Column",
+     GridBoxAlignment->{
+      "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+       "RowsIndexed" -> {}},
+     GridBoxDividers->{
+      "Columns" -> {{False}}, "ColumnsIndexed" -> {}, "Rows" -> {{False}}, 
+       "RowsIndexed" -> {}},
+     GridBoxItemSize->{
+      "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+       "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[1.2]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    DefaultBaseStyle->{},
+    FrameMargins->5],
+   Deploy,
+   DefaultBaseStyle->"Deploy"],
+  Out[2]]], "Output",
+ CellChangeTimes->{3.601580664420739*^9, 3.601582350729498*^9, 
+  3.6017325700167217`*^9}]
+}, Open  ]],
+
+Cell["\<\
+NOTICE:
+ - No NULL sections as our dictionary suggested, instead have empty quotes
+ - Each sport event delimeterized by a \\[NewLine ] or \[OpenCurlyQuote]\\n\
+\[CloseCurlyQuote] charcter
+ - Each part of an event is comma seperated
+ - Each part of an event that is a String is in quotes, including empty \
+valued fields
+ - Each part of an event that is a Value (Integer), is only comma seperated \
+(I am kind of liying, more on that later)
+
+Consider working with a smaller subset of data when testing. Allows for \
+easier checking of values and debugging\
+\>", "Text",
+ CellChangeTimes->{{3.6015748355718307`*^9, 3.60157503333816*^9}, {
+  3.601575247706519*^9, 3.6015753365331173`*^9}, {3.60158070619634*^9, 
+  3.601580717200005*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"bbd", "=", 
+  RowBox[{"List", "[", 
+   RowBox[{"Import", "[", "\"\<bbdtest.txt\>\"", "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{3.6015748939994583`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", \
+"\<\"\\\"20120328\\\",\\\"0\\\",\\\"Wed\\\",\\\"SEA\\\",\\\"AL\\\",1,\\\"OAK\\\
+\",\\\"AL\\\",1,3,1,66,\\\"N\\\",\\\"\\\",\\\"\\\",\\\"\\\",\\\"TOK01\\\",\
+44227,184,\\\"00010000002\\\",\\\"00010000000\\\",39,9,1,0,1,3,1,0,0,0,0,4,2,\
+1,1,0,4,3,1,1,0,0,33,7,1,0,0,0,39,6,3,0,0,1,0,0,2,0,0,10,2,1,0,0,7,6,3,3,0,0,\
+33,19,1,0,1,0,\\\"hallt901\\\",\\\"Tom Hallion\\\",\\\"nelsj901\\\",\\\"Jeff \
+Nelson\\\",\\\"hudsm901\\\",\\\"Marvin Hudson\\\",\\\"belld901\\\",\\\"Dan \
+Bellino\\\",\\\"\\\",\\\"(none)\\\",\\\"\\\",\\\"(none)\\\",\\\"wedge001\\\",\
+\\\"Eric Wedge\\\",\\\"melvb001\\\",\\\"Bob \
+Melvin\\\",\\\"wilht001\\\",\\\"Tom \
+Wilhelmsen\\\",\\\"caria001\\\",\\\"Andrew \
+Carignan\\\",\\\"leagb001\\\",\\\"Brandon \
+League\\\",\\\"ackld001\\\",\\\"Dustin Ackley\\\",\\\"hernf002\\\",\\\"Felix \
+Hernandez\\\",\\\"mccab001\\\",\\\"Brandon \
+McCarthy\\\",\\\"figgc001\\\",\\\"Chone \
+Figgins\\\",5,\\\"ackld001\\\",\\\"Dustin \
+Ackley\\\",4,\\\"suzui001\\\",\\\"Ichiro \
+Suzuki\\\",9,\\\"smoaj001\\\",\\\"Justin \
+Smoak\\\",3,\\\"montj003\\\",\\\"Jesus \
+Montero\\\",10,\\\"carpm001\\\",\\\"Mike \
+Carp\\\",7,\\\"olivm001\\\",\\\"Miguel \
+Olivo\\\",2,\\\"saunm001\\\",\\\"Michael \
+Saunders\\\",8,\\\"ryanb002\\\",\\\"Brendan \
+Ryan\\\",6,\\\"weekj001\\\",\\\"Jemile Weeks\\\",4,\\\"pennc001\\\",\\\"Cliff \
+Pennington\\\",6,\\\"crisc001\\\",\\\"Coco \
+Crisp\\\",7,\\\"smits002\\\",\\\"Seth Smith\\\",10,\\\"suzuk001\\\",\\\"Kurt \
+Suzuki\\\",2,\\\"reddj001\\\",\\\"Josh \
+Reddick\\\",9,\\\"cespy001\\\",\\\"Yoenis \
+Cespedes\\\",8,\\\"alleb001\\\",\\\"Brandon \
+Allen\\\",3,\\\"sogae001\\\",\\\"Eric \
+Sogard\\\",5,\\\"\\\",\\\"Y\\\"\\n\\\"20120329\\\",\\\"0\\\",\\\"Thu\\\",\\\"\
+SEA\\\",\\\"AL\\\",2,\\\"OAK\\\",\\\"AL\\\",2,1,4,51,\\\"N\\\",\\\"\\\",\\\"\\\
+\",\\\"\\\",\\\"TOK01\\\",43391,143,\\\"000000100\\\",\\\"00000031x\\\",30,3,\
+0,0,1,1,0,0,0,1,0,7,0,0,0,0,3,4,4,4,0,0,24,7,0,0,0,0,30,7,1,0,3,4,0,0,0,2,0,5,\
+0,1,0,0,4,2,1,1,0,0,27,9,0,0,0,0,\\\"nelsj901\\\",\\\"Jeff \
+Nelson\\\",\\\"hudsm901\\\",\\\"Marvin Hudson\\\",\\\"belld901\\\",\\\"Dan \
+Bellino\\\",\\\"hallt901\\\",\\\"Tom Hallion\\\",\\\"\\\",\\\"(none)\\\",\\\"\
+\\\",\\\"(none)\\\",\\\"wedge001\\\",\\\"Eric \
+Wedge\\\",\\\"melvb001\\\",\\\"Bob Melvin\\\",\\\"colob001\\\",\\\"Bartolo \
+Colon\\\",\\\"kells001\\\",\\\"Shawn Kelley\\\",\\\"balfg001\\\",\\\"Grant \
+Balfour\\\",\\\"cespy001\\\",\\\"Yoenis \
+Cespedes\\\",\\\"vargj001\\\",\\\"Jason \
+Vargas\\\",\\\"colob001\\\",\\\"Bartolo Colon\\\",\\\"figgc001\\\",\\\"Chone \
+Figgins\\\",7,\\\"ackld001\\\",\\\"Dustin \
+Ackley\\\",4,\\\"suzui001\\\",\\\"Ichiro \
+Suzuki\\\",9,\\\"smoaj001\\\",\\\"Justin \
+Smoak\\\",3,\\\"montj003\\\",\\\"Jesus \
+Montero\\\",10,\\\"seagk001\\\",\\\"Kyle \
+Seager\\\",5,\\\"olivm001\\\",\\\"Miguel \
+Olivo\\\",2,\\\"saunm001\\\",\\\"Michael \
+Saunders\\\",8,\\\"ryanb002\\\",\\\"Brendan \
+Ryan\\\",6,\\\"weekj001\\\",\\\"Jemile Weeks\\\",4,\\\"pennc001\\\",\\\"Cliff \
+Pennington\\\",6,\\\"crisc001\\\",\\\"Coco \
+Crisp\\\",7,\\\"gomej001\\\",\\\"Jonny Gomes\\\",10,\\\"suzuk001\\\",\\\"Kurt \
+Suzuki\\\",2,\\\"cespy001\\\",\\\"Yoenis \
+Cespedes\\\",8,\\\"reddj001\\\",\\\"Josh \
+Reddick\\\",9,\\\"donaj001\\\",\\\"Joshua Donaldson\\\",5,\\\"kaaik001\\\",\\\
+\"Kila Ka'aihue\\\",3,\\\"\\\",\\\"Y\\\"\"\>", "}"}]], "Output",
+ CellChangeTimes->{3.601574894641226*^9, 3.601580753983303*^9, 
+  3.6015824233802967`*^9, 3.6017326958542624`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Play with the data a bit to understand how ",
+ StyleBox["Mathematica",
+  FontSlant->"Italic"],
+ " imported it."
+}], "Text",
+ CellChangeTimes->{{3.60157506946887*^9, 3.601575085515841*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"bbd", "//", "Length", " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Check", " ", "how", " ", "data", " ", "was", " ", "brought", " ", "in"}], 
+   " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.601575097784082*^9, 3.60157511095647*^9}, {
+  3.601575531179837*^9, 3.6015755420036573`*^9}}],
+
+Cell[BoxData["1"], "Output",
+ CellChangeTimes->{{3.601575101851735*^9, 3.601575111420425*^9}, 
+   3.601582354801813*^9, 3.601582425863433*^9, 3.60173270051519*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"bbd", "//", "Head"}]], "Input",
+ CellChangeTimes->{{3.601575104451647*^9, 3.6015751192326202`*^9}}],
+
+Cell[BoxData["List"], "Output",
+ CellChangeTimes->{3.601575119704927*^9, 3.60158235629322*^9, 
+  3.601582427285445*^9, 3.6017327034004374`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"bbd", "[", 
+   RowBox[{"[", "1", "]"}], "]"}], "//", "Head"}], "\[IndentingNewLine]", 
+ RowBox[{"bbd", "[", 
+  RowBox[{"[", "1", "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.601575124571598*^9, 3.60157512881697*^9}, {
+  3.601580794100979*^9, 3.601580810308403*^9}}],
+
+Cell[BoxData["String"], "Output",
+ CellChangeTimes->{
+  3.601575129240047*^9, {3.601580799611103*^9, 3.60158081105532*^9}, 
+   3.601582357687888*^9, 3.601582428614306*^9, 3.601732707383665*^9}],
+
+Cell[BoxData["\<\"\\\"20120328\\\",\\\"0\\\",\\\"Wed\\\",\\\"SEA\\\",\\\"AL\\\
+\",1,\\\"OAK\\\",\\\"AL\\\",1,3,1,66,\\\"N\\\",\\\"\\\",\\\"\\\",\\\"\\\",\\\"\
+TOK01\\\",44227,184,\\\"00010000002\\\",\\\"00010000000\\\",39,9,1,0,1,3,1,0,\
+0,0,0,4,2,1,1,0,4,3,1,1,0,0,33,7,1,0,0,0,39,6,3,0,0,1,0,0,2,0,0,10,2,1,0,0,7,\
+6,3,3,0,0,33,19,1,0,1,0,\\\"hallt901\\\",\\\"Tom \
+Hallion\\\",\\\"nelsj901\\\",\\\"Jeff Nelson\\\",\\\"hudsm901\\\",\\\"Marvin \
+Hudson\\\",\\\"belld901\\\",\\\"Dan \
+Bellino\\\",\\\"\\\",\\\"(none)\\\",\\\"\\\",\\\"(none)\\\",\\\"wedge001\\\",\
+\\\"Eric Wedge\\\",\\\"melvb001\\\",\\\"Bob \
+Melvin\\\",\\\"wilht001\\\",\\\"Tom \
+Wilhelmsen\\\",\\\"caria001\\\",\\\"Andrew \
+Carignan\\\",\\\"leagb001\\\",\\\"Brandon \
+League\\\",\\\"ackld001\\\",\\\"Dustin Ackley\\\",\\\"hernf002\\\",\\\"Felix \
+Hernandez\\\",\\\"mccab001\\\",\\\"Brandon \
+McCarthy\\\",\\\"figgc001\\\",\\\"Chone \
+Figgins\\\",5,\\\"ackld001\\\",\\\"Dustin \
+Ackley\\\",4,\\\"suzui001\\\",\\\"Ichiro \
+Suzuki\\\",9,\\\"smoaj001\\\",\\\"Justin \
+Smoak\\\",3,\\\"montj003\\\",\\\"Jesus \
+Montero\\\",10,\\\"carpm001\\\",\\\"Mike \
+Carp\\\",7,\\\"olivm001\\\",\\\"Miguel \
+Olivo\\\",2,\\\"saunm001\\\",\\\"Michael \
+Saunders\\\",8,\\\"ryanb002\\\",\\\"Brendan \
+Ryan\\\",6,\\\"weekj001\\\",\\\"Jemile Weeks\\\",4,\\\"pennc001\\\",\\\"Cliff \
+Pennington\\\",6,\\\"crisc001\\\",\\\"Coco \
+Crisp\\\",7,\\\"smits002\\\",\\\"Seth Smith\\\",10,\\\"suzuk001\\\",\\\"Kurt \
+Suzuki\\\",2,\\\"reddj001\\\",\\\"Josh \
+Reddick\\\",9,\\\"cespy001\\\",\\\"Yoenis \
+Cespedes\\\",8,\\\"alleb001\\\",\\\"Brandon \
+Allen\\\",3,\\\"sogae001\\\",\\\"Eric \
+Sogard\\\",5,\\\"\\\",\\\"Y\\\"\\n\\\"20120329\\\",\\\"0\\\",\\\"Thu\\\",\\\"\
+SEA\\\",\\\"AL\\\",2,\\\"OAK\\\",\\\"AL\\\",2,1,4,51,\\\"N\\\",\\\"\\\",\\\"\\\
+\",\\\"\\\",\\\"TOK01\\\",43391,143,\\\"000000100\\\",\\\"00000031x\\\",30,3,\
+0,0,1,1,0,0,0,1,0,7,0,0,0,0,3,4,4,4,0,0,24,7,0,0,0,0,30,7,1,0,3,4,0,0,0,2,0,5,\
+0,1,0,0,4,2,1,1,0,0,27,9,0,0,0,0,\\\"nelsj901\\\",\\\"Jeff \
+Nelson\\\",\\\"hudsm901\\\",\\\"Marvin Hudson\\\",\\\"belld901\\\",\\\"Dan \
+Bellino\\\",\\\"hallt901\\\",\\\"Tom Hallion\\\",\\\"\\\",\\\"(none)\\\",\\\"\
+\\\",\\\"(none)\\\",\\\"wedge001\\\",\\\"Eric \
+Wedge\\\",\\\"melvb001\\\",\\\"Bob Melvin\\\",\\\"colob001\\\",\\\"Bartolo \
+Colon\\\",\\\"kells001\\\",\\\"Shawn Kelley\\\",\\\"balfg001\\\",\\\"Grant \
+Balfour\\\",\\\"cespy001\\\",\\\"Yoenis \
+Cespedes\\\",\\\"vargj001\\\",\\\"Jason \
+Vargas\\\",\\\"colob001\\\",\\\"Bartolo Colon\\\",\\\"figgc001\\\",\\\"Chone \
+Figgins\\\",7,\\\"ackld001\\\",\\\"Dustin \
+Ackley\\\",4,\\\"suzui001\\\",\\\"Ichiro \
+Suzuki\\\",9,\\\"smoaj001\\\",\\\"Justin \
+Smoak\\\",3,\\\"montj003\\\",\\\"Jesus \
+Montero\\\",10,\\\"seagk001\\\",\\\"Kyle \
+Seager\\\",5,\\\"olivm001\\\",\\\"Miguel \
+Olivo\\\",2,\\\"saunm001\\\",\\\"Michael \
+Saunders\\\",8,\\\"ryanb002\\\",\\\"Brendan \
+Ryan\\\",6,\\\"weekj001\\\",\\\"Jemile Weeks\\\",4,\\\"pennc001\\\",\\\"Cliff \
+Pennington\\\",6,\\\"crisc001\\\",\\\"Coco \
+Crisp\\\",7,\\\"gomej001\\\",\\\"Jonny Gomes\\\",10,\\\"suzuk001\\\",\\\"Kurt \
+Suzuki\\\",2,\\\"cespy001\\\",\\\"Yoenis \
+Cespedes\\\",8,\\\"reddj001\\\",\\\"Josh \
+Reddick\\\",9,\\\"donaj001\\\",\\\"Joshua Donaldson\\\",5,\\\"kaaik001\\\",\\\
+\"Kila Ka'aihue\\\",3,\\\"\\\",\\\"Y\\\"\"\>"], "Output",
+ CellChangeTimes->{
+  3.601575129240047*^9, {3.601580799611103*^9, 3.60158081105532*^9}, 
+   3.601582357687888*^9, 3.601582428614306*^9, 3.601732707386017*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"bbd", "//", "InputForm", " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"Looking", " ", 
+    RowBox[{"for", " ", "'"}], 
+    RowBox[{"\\n", "'"}], " ", "char"}], " ", "*)"}]}]], "Input",
+ CellChangeTimes->{{3.601575207167151*^9, 3.6015752178025103`*^9}, {
+  3.601575512972809*^9, 3.6015755254198914`*^9}, {3.601582380569903*^9, 
+  3.601582389421186*^9}}],
+
+Cell["\<\
+{\"\\\"20120328\\\",\\\"0\\\",\\\"Wed\\\",\\\"SEA\\\",\\\"AL\\\",1,\\\"OAK\\\"\
+,\\\"AL\\\",1,3,1,66,\\\"N\\\",\\\"\\\",\\\"\\\",\\\"\\\",\\\"TOK01\\\",44227,\
+184,\\\"00010\\
+000002\\\",\\\"00010000000\\\",39,9,1,0,1,3,1,0,0,0,0,4,2,1,1,0,4,3,1,1,0,0,\
+33,7,1,0,0,0,39,6,3,0,0,1,0,0,2,0,0,10,2,1,0,0,7\\
+,6,3,3,0,0,33,19,1,0,1,0,\\\"hallt901\\\",\\\"Tom \
+Hallion\\\",\\\"nelsj901\\\",\\\"Jeff Nelson\\\",\\\"hudsm901\\\",\\\"Marvin \\
+Hudson\\\",\\\"belld901\\\",\\\"Dan \
+Bellino\\\",\\\"\\\",\\\"(none)\\\",\\\"\\\",\\\"(none)\\\",\\\"wedge001\\\",\
+\\\"Eric Wedge\\\",\\\"melvb001\\\",\\\"Bob \\
+Melvin\\\",\\\"wilht001\\\",\\\"Tom \
+Wilhelmsen\\\",\\\"caria001\\\",\\\"Andrew \
+Carignan\\\",\\\"leagb001\\\",\\\"Brandon \\
+League\\\",\\\"ackld001\\\",\\\"Dustin Ackley\\\",\\\"hernf002\\\",\\\"Felix \
+Hernandez\\\",\\\"mccab001\\\",\\\"Brandon \\
+McCarthy\\\",\\\"figgc001\\\",\\\"Chone \
+Figgins\\\",5,\\\"ackld001\\\",\\\"Dustin \
+Ackley\\\",4,\\\"suzui001\\\",\\\"Ichiro \\
+Suzuki\\\",9,\\\"smoaj001\\\",\\\"Justin \
+Smoak\\\",3,\\\"montj003\\\",\\\"Jesus \
+Montero\\\",10,\\\"carpm001\\\",\\\"Mike \\
+Carp\\\",7,\\\"olivm001\\\",\\\"Miguel \
+Olivo\\\",2,\\\"saunm001\\\",\\\"Michael \
+Saunders\\\",8,\\\"ryanb002\\\",\\\"Brendan \\
+Ryan\\\",6,\\\"weekj001\\\",\\\"Jemile Weeks\\\",4,\\\"pennc001\\\",\\\"Cliff \
+Pennington\\\",6,\\\"crisc001\\\",\\\"Coco \\
+Crisp\\\",7,\\\"smits002\\\",\\\"Seth Smith\\\",10,\\\"suzuk001\\\",\\\"Kurt \
+Suzuki\\\",2,\\\"reddj001\\\",\\\"Josh \\
+Reddick\\\",9,\\\"cespy001\\\",\\\"Yoenis \
+Cespedes\\\",8,\\\"alleb001\\\",\\\"Brandon \
+Allen\\\",3,\\\"sogae001\\\",\\\"Eric \\
+Sogard\\\",5,\\\"\\\",\\\"Y\\\"\\n\\\"20120329\\\",\\\"0\\\",\\\"Thu\\\",\\\"\
+SEA\\\",\\\"AL\\\",2,\\\"OAK\\\",\\\"AL\\\",2,1,4,51,\\\"N\\\",\\\"\\\",\\\"\\\
+\",\\\"\\\",\\\"TOK0\\
+1\\\",43391,143,\\\"000000100\\\",\\\"00000031x\\\",30,3,0,0,1,1,0,0,0,1,0,7,\
+0,0,0,0,3,4,4,4,0,0,24,7,0,0,0,0,30,7,1,0,3,4,0,0,0\\
+,2,0,5,0,1,0,0,4,2,1,1,0,0,27,9,0,0,0,0,\\\"nelsj901\\\",\\\"Jeff Nelson\\\",\
+\\\"hudsm901\\\",\\\"Marvin Hudson\\\",\\\"belld901\\\",\\\"Dan \\
+Bellino\\\",\\\"hallt901\\\",\\\"Tom Hallion\\\",\\\"\\\",\\\"(none)\\\",\\\"\
+\\\",\\\"(none)\\\",\\\"wedge001\\\",\\\"Eric \
+Wedge\\\",\\\"melvb001\\\",\\\"Bob \\
+Melvin\\\",\\\"colob001\\\",\\\"Bartolo Colon\\\",\\\"kells001\\\",\\\"Shawn \
+Kelley\\\",\\\"balfg001\\\",\\\"Grant \\
+Balfour\\\",\\\"cespy001\\\",\\\"Yoenis \
+Cespedes\\\",\\\"vargj001\\\",\\\"Jason \
+Vargas\\\",\\\"colob001\\\",\\\"Bartolo \\
+Colon\\\",\\\"figgc001\\\",\\\"Chone \
+Figgins\\\",7,\\\"ackld001\\\",\\\"Dustin \
+Ackley\\\",4,\\\"suzui001\\\",\\\"Ichiro \\
+Suzuki\\\",9,\\\"smoaj001\\\",\\\"Justin \
+Smoak\\\",3,\\\"montj003\\\",\\\"Jesus \
+Montero\\\",10,\\\"seagk001\\\",\\\"Kyle \\
+Seager\\\",5,\\\"olivm001\\\",\\\"Miguel \
+Olivo\\\",2,\\\"saunm001\\\",\\\"Michael \
+Saunders\\\",8,\\\"ryanb002\\\",\\\"Brendan \\
+Ryan\\\",6,\\\"weekj001\\\",\\\"Jemile Weeks\\\",4,\\\"pennc001\\\",\\\"Cliff \
+Pennington\\\",6,\\\"crisc001\\\",\\\"Coco \\
+Crisp\\\",7,\\\"gomej001\\\",\\\"Jonny Gomes\\\",10,\\\"suzuk001\\\",\\\"Kurt \
+Suzuki\\\",2,\\\"cespy001\\\",\\\"Yoenis \\
+Cespedes\\\",8,\\\"reddj001\\\",\\\"Josh \
+Reddick\\\",9,\\\"donaj001\\\",\\\"Joshua Donaldson\\\",5,\\\"kaaik001\\\",\\\
+\"Kila \\
+Ka'aihue\\\",3,\\\"\\\",\\\"Y\\\"\"}\
+\>", "Output",
+ CellChangeTimes->{
+  3.6015752181110277`*^9, 3.601580821461944*^9, {3.6015823614647093`*^9, 
+   3.6015823903977203`*^9}, 3.6015824317941027`*^9, 3.601732971120496*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"bbd", "//", "FullForm"}]], "Input",
+ CellChangeTimes->{{3.6015754113144283`*^9, 3.601575452238398*^9}, {
+  3.601576575737228*^9, 3.601576588664308*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   RowBox[{
+   "List", "[", 
+    "\"\<\\\"20120328\\\",\\\"0\\\",\\\"Wed\\\",\\\"SEA\\\",\\\"AL\\\",1,\\\"\
+OAK\\\",\\\"AL\\\",1,3,1,66,\\\"N\\\",\\\"\\\",\\\"\\\",\\\"\\\",\\\"TOK01\\\"\
+,44227,184,\\\"00010000002\\\",\\\"00010000000\\\",39,9,1,0,1,3,1,0,0,0,0,4,2,\
+1,1,0,4,3,1,1,0,0,33,7,1,0,0,0,39,6,3,0,0,1,0,0,2,0,0,10,2,1,0,0,7,6,3,3,0,0,\
+33,19,1,0,1,0,\\\"hallt901\\\",\\\"Tom Hallion\\\",\\\"nelsj901\\\",\\\"Jeff \
+Nelson\\\",\\\"hudsm901\\\",\\\"Marvin Hudson\\\",\\\"belld901\\\",\\\"Dan \
+Bellino\\\",\\\"\\\",\\\"(none)\\\",\\\"\\\",\\\"(none)\\\",\\\"wedge001\\\",\
+\\\"Eric Wedge\\\",\\\"melvb001\\\",\\\"Bob \
+Melvin\\\",\\\"wilht001\\\",\\\"Tom \
+Wilhelmsen\\\",\\\"caria001\\\",\\\"Andrew \
+Carignan\\\",\\\"leagb001\\\",\\\"Brandon \
+League\\\",\\\"ackld001\\\",\\\"Dustin Ackley\\\",\\\"hernf002\\\",\\\"Felix \
+Hernandez\\\",\\\"mccab001\\\",\\\"Brandon \
+McCarthy\\\",\\\"figgc001\\\",\\\"Chone \
+Figgins\\\",5,\\\"ackld001\\\",\\\"Dustin \
+Ackley\\\",4,\\\"suzui001\\\",\\\"Ichiro \
+Suzuki\\\",9,\\\"smoaj001\\\",\\\"Justin \
+Smoak\\\",3,\\\"montj003\\\",\\\"Jesus \
+Montero\\\",10,\\\"carpm001\\\",\\\"Mike \
+Carp\\\",7,\\\"olivm001\\\",\\\"Miguel \
+Olivo\\\",2,\\\"saunm001\\\",\\\"Michael \
+Saunders\\\",8,\\\"ryanb002\\\",\\\"Brendan \
+Ryan\\\",6,\\\"weekj001\\\",\\\"Jemile Weeks\\\",4,\\\"pennc001\\\",\\\"Cliff \
+Pennington\\\",6,\\\"crisc001\\\",\\\"Coco \
+Crisp\\\",7,\\\"smits002\\\",\\\"Seth Smith\\\",10,\\\"suzuk001\\\",\\\"Kurt \
+Suzuki\\\",2,\\\"reddj001\\\",\\\"Josh \
+Reddick\\\",9,\\\"cespy001\\\",\\\"Yoenis \
+Cespedes\\\",8,\\\"alleb001\\\",\\\"Brandon \
+Allen\\\",3,\\\"sogae001\\\",\\\"Eric \
+Sogard\\\",5,\\\"\\\",\\\"Y\\\"\\n\\\"20120329\\\",\\\"0\\\",\\\"Thu\\\",\\\"\
+SEA\\\",\\\"AL\\\",2,\\\"OAK\\\",\\\"AL\\\",2,1,4,51,\\\"N\\\",\\\"\\\",\\\"\\\
+\",\\\"\\\",\\\"TOK01\\\",43391,143,\\\"000000100\\\",\\\"00000031x\\\",30,3,\
+0,0,1,1,0,0,0,1,0,7,0,0,0,0,3,4,4,4,0,0,24,7,0,0,0,0,30,7,1,0,3,4,0,0,0,2,0,5,\
+0,1,0,0,4,2,1,1,0,0,27,9,0,0,0,0,\\\"nelsj901\\\",\\\"Jeff \
+Nelson\\\",\\\"hudsm901\\\",\\\"Marvin Hudson\\\",\\\"belld901\\\",\\\"Dan \
+Bellino\\\",\\\"hallt901\\\",\\\"Tom Hallion\\\",\\\"\\\",\\\"(none)\\\",\\\"\
+\\\",\\\"(none)\\\",\\\"wedge001\\\",\\\"Eric \
+Wedge\\\",\\\"melvb001\\\",\\\"Bob Melvin\\\",\\\"colob001\\\",\\\"Bartolo \
+Colon\\\",\\\"kells001\\\",\\\"Shawn Kelley\\\",\\\"balfg001\\\",\\\"Grant \
+Balfour\\\",\\\"cespy001\\\",\\\"Yoenis \
+Cespedes\\\",\\\"vargj001\\\",\\\"Jason \
+Vargas\\\",\\\"colob001\\\",\\\"Bartolo Colon\\\",\\\"figgc001\\\",\\\"Chone \
+Figgins\\\",7,\\\"ackld001\\\",\\\"Dustin \
+Ackley\\\",4,\\\"suzui001\\\",\\\"Ichiro \
+Suzuki\\\",9,\\\"smoaj001\\\",\\\"Justin \
+Smoak\\\",3,\\\"montj003\\\",\\\"Jesus \
+Montero\\\",10,\\\"seagk001\\\",\\\"Kyle \
+Seager\\\",5,\\\"olivm001\\\",\\\"Miguel \
+Olivo\\\",2,\\\"saunm001\\\",\\\"Michael \
+Saunders\\\",8,\\\"ryanb002\\\",\\\"Brendan \
+Ryan\\\",6,\\\"weekj001\\\",\\\"Jemile Weeks\\\",4,\\\"pennc001\\\",\\\"Cliff \
+Pennington\\\",6,\\\"crisc001\\\",\\\"Coco \
+Crisp\\\",7,\\\"gomej001\\\",\\\"Jonny Gomes\\\",10,\\\"suzuk001\\\",\\\"Kurt \
+Suzuki\\\",2,\\\"cespy001\\\",\\\"Yoenis \
+Cespedes\\\",8,\\\"reddj001\\\",\\\"Josh \
+Reddick\\\",9,\\\"donaj001\\\",\\\"Joshua Donaldson\\\",5,\\\"kaaik001\\\",\\\
+\"Kila Ka'aihue\\\",3,\\\"\\\",\\\"Y\\\"\>\"", "]"}],
+   ShowSpecialCharacters->False,
+   ShowStringCharacters->True,
+   NumberMarks->True],
+  FullForm]], "Output",
+ CellChangeTimes->{{3.601575415402659*^9, 3.601575452522128*^9}, {
+   3.601576579495047*^9, 3.6015765889755096`*^9}, 3.601580861899898*^9, 
+   3.601582435761455*^9, 3.601733327369631*^9}]
+}, Open  ]],
+
+Cell["\<\
+Create plan of attack:
+
+PLAN A:
+- Remove extra unecessary details (quotes, etc.)
+  * Should be easy but is this the best order?
+- Break events into seperate list elements by \[OpenCurlyQuote]\\n\
+\[CloseCurlyQuote] character (We expect 2 for test data)
+  * Have to figure out how to break a string up by \[OpenCurlyQuote]\\n\
+\[CloseCurlyQuote] - Should be easy...
+- Make each event element it\[CloseCurlyQuote]s own list of event detail \
+fields (We expect 161)
+  * Comma delimeters should help, maybe use rules
+
+PLAN B:
+- Break every element by commas
+  * Causes problem with end of last event element not having a \
+\[OpenCurlyQuote],\[CloseCurlyQuote] !!!
+- Extract elements in sets of 161 to make up each event
+  * What if some data is in an incorrect spot?\
+\>", "Text",
+ CellChangeTimes->{{3.601575154748955*^9, 3.601575203677005*^9}, {
+  3.6015755573551273`*^9, 3.6015758382673473`*^9}, {3.601575872719022*^9, 
+  3.601575979619711*^9}, {3.6015808781953773`*^9, 3.6015809486447144`*^9}, {
+  3.601733737957821*^9, 3.601733742421647*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["Choose a plan and get started", "Section",
+ CellChangeTimes->{{3.6015760002206373`*^9, 3.6015760073477983`*^9}}],
+
+Cell["\<\
+PLAN A:
+- Remove extra unecessary details (quotes, etc.)
+- Break events into seperate list elements by \[OpenCurlyQuote]\\n\
+\[CloseCurlyQuote] character (We expect 2 for test data)
+- Make each event element into it\[CloseCurlyQuote]s own list of event detail \
+fields (We expect 161)
+  
+TEST ALONG THE WAY!!\
+\>", "Text",
+ CellChangeTimes->{{3.60157601428459*^9, 3.601576035203261*^9}, {
+  3.601578621799233*^9, 3.601578632335019*^9}, {3.601581009222436*^9, 
+  3.601581009995772*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"bbd", "=", 
+  RowBox[{"List", "[", 
+   RowBox[{"Import", "[", "\"\<bbdtest.txt\>\"", "]"}], "]"}]}]}], "Input",
+ CellChangeTimes->{{3.601576064453457*^9, 3.60157606544559*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", \
+"\<\"\\\"20120328\\\",\\\"0\\\",\\\"Wed\\\",\\\"SEA\\\",\\\"AL\\\",1,\\\"OAK\\\
+\",\\\"AL\\\",1,3,1,66,\\\"N\\\",\\\"\\\",\\\"\\\",\\\"\\\",\\\"TOK01\\\",\
+44227,184,\\\"00010000002\\\",\\\"00010000000\\\",39,9,1,0,1,3,1,0,0,0,0,4,2,\
+1,1,0,4,3,1,1,0,0,33,7,1,0,0,0,39,6,3,0,0,1,0,0,2,0,0,10,2,1,0,0,7,6,3,3,0,0,\
+33,19,1,0,1,0,\\\"hallt901\\\",\\\"Tom Hallion\\\",\\\"nelsj901\\\",\\\"Jeff \
+Nelson\\\",\\\"hudsm901\\\",\\\"Marvin Hudson\\\",\\\"belld901\\\",\\\"Dan \
+Bellino\\\",\\\"\\\",\\\"(none)\\\",\\\"\\\",\\\"(none)\\\",\\\"wedge001\\\",\
+\\\"Eric Wedge\\\",\\\"melvb001\\\",\\\"Bob \
+Melvin\\\",\\\"wilht001\\\",\\\"Tom \
+Wilhelmsen\\\",\\\"caria001\\\",\\\"Andrew \
+Carignan\\\",\\\"leagb001\\\",\\\"Brandon \
+League\\\",\\\"ackld001\\\",\\\"Dustin Ackley\\\",\\\"hernf002\\\",\\\"Felix \
+Hernandez\\\",\\\"mccab001\\\",\\\"Brandon \
+McCarthy\\\",\\\"figgc001\\\",\\\"Chone \
+Figgins\\\",5,\\\"ackld001\\\",\\\"Dustin \
+Ackley\\\",4,\\\"suzui001\\\",\\\"Ichiro \
+Suzuki\\\",9,\\\"smoaj001\\\",\\\"Justin \
+Smoak\\\",3,\\\"montj003\\\",\\\"Jesus \
+Montero\\\",10,\\\"carpm001\\\",\\\"Mike \
+Carp\\\",7,\\\"olivm001\\\",\\\"Miguel \
+Olivo\\\",2,\\\"saunm001\\\",\\\"Michael \
+Saunders\\\",8,\\\"ryanb002\\\",\\\"Brendan \
+Ryan\\\",6,\\\"weekj001\\\",\\\"Jemile Weeks\\\",4,\\\"pennc001\\\",\\\"Cliff \
+Pennington\\\",6,\\\"crisc001\\\",\\\"Coco \
+Crisp\\\",7,\\\"smits002\\\",\\\"Seth Smith\\\",10,\\\"suzuk001\\\",\\\"Kurt \
+Suzuki\\\",2,\\\"reddj001\\\",\\\"Josh \
+Reddick\\\",9,\\\"cespy001\\\",\\\"Yoenis \
+Cespedes\\\",8,\\\"alleb001\\\",\\\"Brandon \
+Allen\\\",3,\\\"sogae001\\\",\\\"Eric \
+Sogard\\\",5,\\\"\\\",\\\"Y\\\"\\n\\\"20120329\\\",\\\"0\\\",\\\"Thu\\\",\\\"\
+SEA\\\",\\\"AL\\\",2,\\\"OAK\\\",\\\"AL\\\",2,1,4,51,\\\"N\\\",\\\"\\\",\\\"\\\
+\",\\\"\\\",\\\"TOK01\\\",43391,143,\\\"000000100\\\",\\\"00000031x\\\",30,3,\
+0,0,1,1,0,0,0,1,0,7,0,0,0,0,3,4,4,4,0,0,24,7,0,0,0,0,30,7,1,0,3,4,0,0,0,2,0,5,\
+0,1,0,0,4,2,1,1,0,0,27,9,0,0,0,0,\\\"nelsj901\\\",\\\"Jeff \
+Nelson\\\",\\\"hudsm901\\\",\\\"Marvin Hudson\\\",\\\"belld901\\\",\\\"Dan \
+Bellino\\\",\\\"hallt901\\\",\\\"Tom Hallion\\\",\\\"\\\",\\\"(none)\\\",\\\"\
+\\\",\\\"(none)\\\",\\\"wedge001\\\",\\\"Eric \
+Wedge\\\",\\\"melvb001\\\",\\\"Bob Melvin\\\",\\\"colob001\\\",\\\"Bartolo \
+Colon\\\",\\\"kells001\\\",\\\"Shawn Kelley\\\",\\\"balfg001\\\",\\\"Grant \
+Balfour\\\",\\\"cespy001\\\",\\\"Yoenis \
+Cespedes\\\",\\\"vargj001\\\",\\\"Jason \
+Vargas\\\",\\\"colob001\\\",\\\"Bartolo Colon\\\",\\\"figgc001\\\",\\\"Chone \
+Figgins\\\",7,\\\"ackld001\\\",\\\"Dustin \
+Ackley\\\",4,\\\"suzui001\\\",\\\"Ichiro \
+Suzuki\\\",9,\\\"smoaj001\\\",\\\"Justin \
+Smoak\\\",3,\\\"montj003\\\",\\\"Jesus \
+Montero\\\",10,\\\"seagk001\\\",\\\"Kyle \
+Seager\\\",5,\\\"olivm001\\\",\\\"Miguel \
+Olivo\\\",2,\\\"saunm001\\\",\\\"Michael \
+Saunders\\\",8,\\\"ryanb002\\\",\\\"Brendan \
+Ryan\\\",6,\\\"weekj001\\\",\\\"Jemile Weeks\\\",4,\\\"pennc001\\\",\\\"Cliff \
+Pennington\\\",6,\\\"crisc001\\\",\\\"Coco \
+Crisp\\\",7,\\\"gomej001\\\",\\\"Jonny Gomes\\\",10,\\\"suzuk001\\\",\\\"Kurt \
+Suzuki\\\",2,\\\"cespy001\\\",\\\"Yoenis \
+Cespedes\\\",8,\\\"reddj001\\\",\\\"Josh \
+Reddick\\\",9,\\\"donaj001\\\",\\\"Joshua Donaldson\\\",5,\\\"kaaik001\\\",\\\
+\"Kila Ka'aihue\\\",3,\\\"\\\",\\\"Y\\\"\"\>", "}"}]], "Output",
+ CellChangeTimes->{3.601576066066626*^9, 3.60157618499723*^9, 
+  3.601581018695566*^9, 3.601582451983262*^9, 3.6017338755319366`*^9}]
+}, Open  ]],
+
+Cell["\<\
+WANT: Remove quotes from data now as opposed to later
+
+TRY: Replace or remove from String\
+\>", "Text",
+ CellChangeTimes->{{3.601581079045906*^9, 3.601581120933127*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Check", " ", "out", " ", "what", " ", "we", " ", "are", " ", "dealing", 
+    " ", "with"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"bbd", "//", "InputForm"}]}]], "Input",
+ CellChangeTimes->{{3.601581159666636*^9, 3.601581169733436*^9}}],
+
+Cell["\<\
+{\"\\\"20120328\\\",\\\"0\\\",\\\"Wed\\\",\\\"SEA\\\",\\\"AL\\\",1,\\\"OAK\\\"\
+,\\\"AL\\\",1,3,1,66,\\\"N\\\",\\\"\\\",\\\"\\\",\\\"\\\",\\\"TOK01\\\",44227,\
+184,\\\"00010\\
+000002\\\",\\\"00010000000\\\",39,9,1,0,1,3,1,0,0,0,0,4,2,1,1,0,4,3,1,1,0,0,\
+33,7,1,0,0,0,39,6,3,0,0,1,0,0,2,0,0,10,2,1,0,0,7\\
+,6,3,3,0,0,33,19,1,0,1,0,\\\"hallt901\\\",\\\"Tom \
+Hallion\\\",\\\"nelsj901\\\",\\\"Jeff Nelson\\\",\\\"hudsm901\\\",\\\"Marvin \\
+Hudson\\\",\\\"belld901\\\",\\\"Dan \
+Bellino\\\",\\\"\\\",\\\"(none)\\\",\\\"\\\",\\\"(none)\\\",\\\"wedge001\\\",\
+\\\"Eric Wedge\\\",\\\"melvb001\\\",\\\"Bob \\
+Melvin\\\",\\\"wilht001\\\",\\\"Tom \
+Wilhelmsen\\\",\\\"caria001\\\",\\\"Andrew \
+Carignan\\\",\\\"leagb001\\\",\\\"Brandon \\
+League\\\",\\\"ackld001\\\",\\\"Dustin Ackley\\\",\\\"hernf002\\\",\\\"Felix \
+Hernandez\\\",\\\"mccab001\\\",\\\"Brandon \\
+McCarthy\\\",\\\"figgc001\\\",\\\"Chone \
+Figgins\\\",5,\\\"ackld001\\\",\\\"Dustin \
+Ackley\\\",4,\\\"suzui001\\\",\\\"Ichiro \\
+Suzuki\\\",9,\\\"smoaj001\\\",\\\"Justin \
+Smoak\\\",3,\\\"montj003\\\",\\\"Jesus \
+Montero\\\",10,\\\"carpm001\\\",\\\"Mike \\
+Carp\\\",7,\\\"olivm001\\\",\\\"Miguel \
+Olivo\\\",2,\\\"saunm001\\\",\\\"Michael \
+Saunders\\\",8,\\\"ryanb002\\\",\\\"Brendan \\
+Ryan\\\",6,\\\"weekj001\\\",\\\"Jemile Weeks\\\",4,\\\"pennc001\\\",\\\"Cliff \
+Pennington\\\",6,\\\"crisc001\\\",\\\"Coco \\
+Crisp\\\",7,\\\"smits002\\\",\\\"Seth Smith\\\",10,\\\"suzuk001\\\",\\\"Kurt \
+Suzuki\\\",2,\\\"reddj001\\\",\\\"Josh \\
+Reddick\\\",9,\\\"cespy001\\\",\\\"Yoenis \
+Cespedes\\\",8,\\\"alleb001\\\",\\\"Brandon \
+Allen\\\",3,\\\"sogae001\\\",\\\"Eric \\
+Sogard\\\",5,\\\"\\\",\\\"Y\\\"\\n\\\"20120329\\\",\\\"0\\\",\\\"Thu\\\",\\\"\
+SEA\\\",\\\"AL\\\",2,\\\"OAK\\\",\\\"AL\\\",2,1,4,51,\\\"N\\\",\\\"\\\",\\\"\\\
+\",\\\"\\\",\\\"TOK0\\
+1\\\",43391,143,\\\"000000100\\\",\\\"00000031x\\\",30,3,0,0,1,1,0,0,0,1,0,7,\
+0,0,0,0,3,4,4,4,0,0,24,7,0,0,0,0,30,7,1,0,3,4,0,0,0\\
+,2,0,5,0,1,0,0,4,2,1,1,0,0,27,9,0,0,0,0,\\\"nelsj901\\\",\\\"Jeff Nelson\\\",\
+\\\"hudsm901\\\",\\\"Marvin Hudson\\\",\\\"belld901\\\",\\\"Dan \\
+Bellino\\\",\\\"hallt901\\\",\\\"Tom Hallion\\\",\\\"\\\",\\\"(none)\\\",\\\"\
+\\\",\\\"(none)\\\",\\\"wedge001\\\",\\\"Eric \
+Wedge\\\",\\\"melvb001\\\",\\\"Bob \\
+Melvin\\\",\\\"colob001\\\",\\\"Bartolo Colon\\\",\\\"kells001\\\",\\\"Shawn \
+Kelley\\\",\\\"balfg001\\\",\\\"Grant \\
+Balfour\\\",\\\"cespy001\\\",\\\"Yoenis \
+Cespedes\\\",\\\"vargj001\\\",\\\"Jason \
+Vargas\\\",\\\"colob001\\\",\\\"Bartolo \\
+Colon\\\",\\\"figgc001\\\",\\\"Chone \
+Figgins\\\",7,\\\"ackld001\\\",\\\"Dustin \
+Ackley\\\",4,\\\"suzui001\\\",\\\"Ichiro \\
+Suzuki\\\",9,\\\"smoaj001\\\",\\\"Justin \
+Smoak\\\",3,\\\"montj003\\\",\\\"Jesus \
+Montero\\\",10,\\\"seagk001\\\",\\\"Kyle \\
+Seager\\\",5,\\\"olivm001\\\",\\\"Miguel \
+Olivo\\\",2,\\\"saunm001\\\",\\\"Michael \
+Saunders\\\",8,\\\"ryanb002\\\",\\\"Brendan \\
+Ryan\\\",6,\\\"weekj001\\\",\\\"Jemile Weeks\\\",4,\\\"pennc001\\\",\\\"Cliff \
+Pennington\\\",6,\\\"crisc001\\\",\\\"Coco \\
+Crisp\\\",7,\\\"gomej001\\\",\\\"Jonny Gomes\\\",10,\\\"suzuk001\\\",\\\"Kurt \
+Suzuki\\\",2,\\\"cespy001\\\",\\\"Yoenis \\
+Cespedes\\\",8,\\\"reddj001\\\",\\\"Josh \
+Reddick\\\",9,\\\"donaj001\\\",\\\"Joshua Donaldson\\\",5,\\\"kaaik001\\\",\\\
+\"Kila \\
+Ka'aihue\\\",3,\\\"\\\",\\\"Y\\\"\"}\
+\>", "Output",
+ CellChangeTimes->{3.601581155227953*^9, 3.60158245571426*^9, 
+  3.601733913298386*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Remove", " ", "extra", " ", "quotes", " ", 
+    RowBox[{"(", " ", "\\\"", " ", ")"}], " ", "from", " ", "data", " ", 
+    "string"}], " ", "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "These", " ", "quotes", " ", "are", " ", "from", " ", "the", " ", "input",
+      " ", "string"}], ",", " ", 
+    RowBox[{"not", " ", 
+     RowBox[{"mathematica", "'"}], "s", " ", "interpretation", " ", "of", " ",
+      "the", " ", 
+     RowBox[{"string", "!!"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"sp", "[", "x_", "]"}], ":=", 
+    RowBox[{"StringReplace", "[", 
+     RowBox[{"x", ",", 
+      RowBox[{"\"\<\\\"\>\"", "\[Rule]", "\"\<\>\""}]}], "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"dim1", "=", 
+    RowBox[{"Map", "[", 
+     RowBox[{"sp", ",", " ", "bbd"}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.601578663470871*^9, 3.601578687896351*^9}, {
+  3.601581148579522*^9, 3.601581152258647*^9}, {3.6015811872842607`*^9, 
+  3.60158118895584*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", \
+"\<\"20120328,0,Wed,SEA,AL,1,OAK,AL,1,3,1,66,N,,,,TOK01,44227,184,00010000002,\
+00010000000,39,9,1,0,1,3,1,0,0,0,0,4,2,1,1,0,4,3,1,1,0,0,33,7,1,0,0,0,39,6,3,\
+0,0,1,0,0,2,0,0,10,2,1,0,0,7,6,3,3,0,0,33,19,1,0,1,0,hallt901,Tom \
+Hallion,nelsj901,Jeff Nelson,hudsm901,Marvin Hudson,belld901,Dan \
+Bellino,,(none),,(none),wedge001,Eric Wedge,melvb001,Bob Melvin,wilht001,Tom \
+Wilhelmsen,caria001,Andrew Carignan,leagb001,Brandon League,ackld001,Dustin \
+Ackley,hernf002,Felix Hernandez,mccab001,Brandon McCarthy,figgc001,Chone \
+Figgins,5,ackld001,Dustin Ackley,4,suzui001,Ichiro Suzuki,9,smoaj001,Justin \
+Smoak,3,montj003,Jesus Montero,10,carpm001,Mike Carp,7,olivm001,Miguel \
+Olivo,2,saunm001,Michael Saunders,8,ryanb002,Brendan Ryan,6,weekj001,Jemile \
+Weeks,4,pennc001,Cliff Pennington,6,crisc001,Coco Crisp,7,smits002,Seth \
+Smith,10,suzuk001,Kurt Suzuki,2,reddj001,Josh Reddick,9,cespy001,Yoenis \
+Cespedes,8,alleb001,Brandon Allen,3,sogae001,Eric \
+Sogard,5,,Y\\n20120329,0,Thu,SEA,AL,2,OAK,AL,2,1,4,51,N,,,,TOK01,43391,143,\
+000000100,00000031x,30,3,0,0,1,1,0,0,0,1,0,7,0,0,0,0,3,4,4,4,0,0,24,7,0,0,0,0,\
+30,7,1,0,3,4,0,0,0,2,0,5,0,1,0,0,4,2,1,1,0,0,27,9,0,0,0,0,nelsj901,Jeff \
+Nelson,hudsm901,Marvin Hudson,belld901,Dan Bellino,hallt901,Tom \
+Hallion,,(none),,(none),wedge001,Eric Wedge,melvb001,Bob \
+Melvin,colob001,Bartolo Colon,kells001,Shawn Kelley,balfg001,Grant \
+Balfour,cespy001,Yoenis Cespedes,vargj001,Jason Vargas,colob001,Bartolo \
+Colon,figgc001,Chone Figgins,7,ackld001,Dustin Ackley,4,suzui001,Ichiro \
+Suzuki,9,smoaj001,Justin Smoak,3,montj003,Jesus Montero,10,seagk001,Kyle \
+Seager,5,olivm001,Miguel Olivo,2,saunm001,Michael Saunders,8,ryanb002,Brendan \
+Ryan,6,weekj001,Jemile Weeks,4,pennc001,Cliff Pennington,6,crisc001,Coco \
+Crisp,7,gomej001,Jonny Gomes,10,suzuk001,Kurt Suzuki,2,cespy001,Yoenis \
+Cespedes,8,reddj001,Josh Reddick,9,donaj001,Joshua Donaldson,5,kaaik001,Kila \
+Ka'aihue,3,,Y\"\>", "}"}]], "Output",
+ CellChangeTimes->{{3.6015786721960573`*^9, 3.601578690679792*^9}, 
+   3.601581131692257*^9, 3.601581175616476*^9, 3.601582461773201*^9, 
+   3.601733916265195*^9}]
+}, Open  ]],
+
+Cell["\<\
+WANT: Break up String by NewLine char ( \\n ) characters for each event to \
+get all events.
+
+TRY: 
+- Start with looking up String
+- Maybe substring?
+- Parition (Create sets of 161 if comme sept.)?
+- Parition-> Split -> StringSplit\
+\>", "Text",
+ CellChangeTimes->{{3.601576485541582*^9, 3.601576494100143*^9}, {
+  3.601576524807803*^9, 3.601576532550935*^9}, {3.60157678653067*^9, 
+  3.601576787585335*^9}, {3.601576848744872*^9, 3.601576895055244*^9}, {
+  3.601576951274466*^9, 3.601576952072606*^9}, {3.6015772186278687`*^9, 
+  3.601577242051959*^9}, {3.601734006106576*^9, 3.601734024143385*^9}, {
+  3.601734221955566*^9, 3.6017342248076677`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Break", " ", "up", " ", "String", " ", "by", " ", "NewLine", " ", "char", 
+    " ", 
+    RowBox[{"(", " ", "\\n", " ", ")"}], " ", "characters", " ", "for", " ", 
+    "each", " ", "event", " ", "to", " ", "get", " ", "all", " ", "events"}], 
+   " ", "*)"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", "TEST", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"dim2", "=", 
+    RowBox[{"StringSplit", "[", 
+     RowBox[{"dim1", ",", "\"\<\\n\>\""}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"dim2", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "//", "Length"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dim2", "//", "InputForm"}], " ", ";", 
+    RowBox[{"(*", " ", 
+     RowBox[{"NOTE", ":", " ", 
+      RowBox[{
+      "Check", " ", "out", " ", "the", " ", "quotes", " ", "and", " ", 
+       "commas", " ", "in", " ", "output"}]}], " ", "*)"}], 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"(*", " ", 
+     RowBox[{"Maybe", " ", 
+      RowBox[{"Flatten", "?"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"dim2", "=", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"StringSplit", "[", 
+       RowBox[{"dim1", ",", "\"\<\\n\>\""}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dim2", "//", "Length"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dim2", "//", "InputForm"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "We", " ", "now", " ", "have", " ", "1", " ", "list", " ", "of", " ", 
+     "multiple", " ", "strings", " ", "where", " ", "each", " ", "is", " ", 
+     "for", " ", "one", " ", "event"}], " ", "*)"}]}]}]], "Input",
+ CellChangeTimes->{{3.601576169533317*^9, 3.6015763336882153`*^9}, {
+   3.6015765619051447`*^9, 3.601576563719707*^9}, {3.601577252437551*^9, 
+   3.601577342677758*^9}, {3.601577590273196*^9, 3.601577597055565*^9}, 
+   3.601577631067142*^9, {3.601578697616025*^9, 3.601578741192227*^9}, {
+   3.601581260910359*^9, 3.601581305324432*^9}, {3.601581346388709*^9, 
+   3.601581408366582*^9}, {3.601734331618532*^9, 3.601734333599737*^9}, {
+   3.6017344092916317`*^9, 3.6017344108897*^9}, {3.601735066998413*^9, 
+   3.601735070426598*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{"\<\"20120328,0,Wed,SEA,AL,1,OAK,AL,1,3,1,66,N,,,,TOK01,44227,184,\
+00010000002,00010000000,39,9,1,0,1,3,1,0,0,0,0,4,2,1,1,0,4,3,1,1,0,0,33,7,1,0,\
+0,0,39,6,3,0,0,1,0,0,2,0,0,10,2,1,0,0,7,6,3,3,0,0,33,19,1,0,1,0,hallt901,Tom \
+Hallion,nelsj901,Jeff Nelson,hudsm901,Marvin Hudson,belld901,Dan \
+Bellino,,(none),,(none),wedge001,Eric Wedge,melvb001,Bob Melvin,wilht001,Tom \
+Wilhelmsen,caria001,Andrew Carignan,leagb001,Brandon League,ackld001,Dustin \
+Ackley,hernf002,Felix Hernandez,mccab001,Brandon McCarthy,figgc001,Chone \
+Figgins,5,ackld001,Dustin Ackley,4,suzui001,Ichiro Suzuki,9,smoaj001,Justin \
+Smoak,3,montj003,Jesus Montero,10,carpm001,Mike Carp,7,olivm001,Miguel \
+Olivo,2,saunm001,Michael Saunders,8,ryanb002,Brendan Ryan,6,weekj001,Jemile \
+Weeks,4,pennc001,Cliff Pennington,6,crisc001,Coco Crisp,7,smits002,Seth \
+Smith,10,suzuk001,Kurt Suzuki,2,reddj001,Josh Reddick,9,cespy001,Yoenis \
+Cespedes,8,alleb001,Brandon Allen,3,sogae001,Eric Sogard,5,,Y\"\>", 
+    ",", "\<\"20120329,0,Thu,SEA,AL,2,OAK,AL,2,1,4,51,N,,,,TOK01,43391,143,\
+000000100,00000031x,30,3,0,0,1,1,0,0,0,1,0,7,0,0,0,0,3,4,4,4,0,0,24,7,0,0,0,0,\
+30,7,1,0,3,4,0,0,0,2,0,5,0,1,0,0,4,2,1,1,0,0,27,9,0,0,0,0,nelsj901,Jeff \
+Nelson,hudsm901,Marvin Hudson,belld901,Dan Bellino,hallt901,Tom \
+Hallion,,(none),,(none),wedge001,Eric Wedge,melvb001,Bob \
+Melvin,colob001,Bartolo Colon,kells001,Shawn Kelley,balfg001,Grant \
+Balfour,cespy001,Yoenis Cespedes,vargj001,Jason Vargas,colob001,Bartolo \
+Colon,figgc001,Chone Figgins,7,ackld001,Dustin Ackley,4,suzui001,Ichiro \
+Suzuki,9,smoaj001,Justin Smoak,3,montj003,Jesus Montero,10,seagk001,Kyle \
+Seager,5,olivm001,Miguel Olivo,2,saunm001,Michael Saunders,8,ryanb002,Brendan \
+Ryan,6,weekj001,Jemile Weeks,4,pennc001,Cliff Pennington,6,crisc001,Coco \
+Crisp,7,gomej001,Jonny Gomes,10,suzuk001,Kurt Suzuki,2,cespy001,Yoenis \
+Cespedes,8,reddj001,Josh Reddick,9,donaj001,Joshua Donaldson,5,kaaik001,Kila \
+Ka'aihue,3,,Y\"\>"}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{3.601734334206296*^9, 3.6017344137675734`*^9}]
+}, Open  ]],
+
+Cell["\<\
+WANT: Break up each string in our list (representing an event) into a sublist \
+for that event
+
+TRY:
+- Parition that we found earlier!\
+\>", "Text",
+ CellChangeTimes->{{3.601577356279224*^9, 3.601577370078043*^9}, {
+  3.601577427851053*^9, 3.601577468536804*^9}, {3.601581431610435*^9, 
+  3.601581444497561*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "Each", " ", "event", " ", "is", " ", "one", " ", "big", " ", "string"}], 
+    ",", " ", 
+    RowBox[{"so", " ", "make", " ", "each", " ", "event", " ", "into", " ", 
+     RowBox[{"it", "'"}], "s", " ", "own", " ", "element", " ", "in", " ", 
+     "the", " ", "list"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"dim3", "=", 
+    RowBox[{"Partition", "[", 
+     RowBox[{"dim2", ",", "1"}], "]"}]}], " ", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "partitions", " ", "some", " ", "list", " ", "into", " ", 
+     "nonoverlapping", " ", "sublists", " ", "of", " ", "some", " ", 
+     RowBox[{"length", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dim3", "//", "FullForm"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dim3", "//", "InputForm"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dim3", "[", 
+     RowBox[{"[", "1", "]"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"dim3", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "//", "Length"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"dim3", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "[", 
+     RowBox[{"[", "1", "]"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"dim3", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "//", "Head"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "We", " ", "now", " ", "have", " ", "each", " ", "event", " ", "string", 
+     " ", "broken", " ", "up", " ", "into", " ", "sublists", " ", "of", " ", 
+     "our", " ", "total", " ", "data", " ", "list"}], "  ", 
+    "*)"}]}]}]], "Input",
+ CellChangeTimes->{{3.60157635686587*^9, 3.6015764254957037`*^9}, {
+   3.60157756786491*^9, 3.601577571058131*^9}, {3.6015776360653057`*^9, 
+   3.601577863586952*^9}, {3.601578751824645*^9, 3.601578762838682*^9}, {
+   3.6015814874527607`*^9, 3.601581513852022*^9}, 3.601581822850329*^9, 
+   3.601735021836669*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+   "{", "\<\"20120328,0,Wed,SEA,AL,1,OAK,AL,1,3,1,66,N,,,,TOK01,44227,184,\
+00010000002,00010000000,39,9,1,0,1,3,1,0,0,0,0,4,2,1,1,0,4,3,1,1,0,0,33,7,1,0,\
+0,0,39,6,3,0,0,1,0,0,2,0,0,10,2,1,0,0,7,6,3,3,0,0,33,19,1,0,1,0,hallt901,Tom \
+Hallion,nelsj901,Jeff Nelson,hudsm901,Marvin Hudson,belld901,Dan \
+Bellino,,(none),,(none),wedge001,Eric Wedge,melvb001,Bob Melvin,wilht001,Tom \
+Wilhelmsen,caria001,Andrew Carignan,leagb001,Brandon League,ackld001,Dustin \
+Ackley,hernf002,Felix Hernandez,mccab001,Brandon McCarthy,figgc001,Chone \
+Figgins,5,ackld001,Dustin Ackley,4,suzui001,Ichiro Suzuki,9,smoaj001,Justin \
+Smoak,3,montj003,Jesus Montero,10,carpm001,Mike Carp,7,olivm001,Miguel \
+Olivo,2,saunm001,Michael Saunders,8,ryanb002,Brendan Ryan,6,weekj001,Jemile \
+Weeks,4,pennc001,Cliff Pennington,6,crisc001,Coco Crisp,7,smits002,Seth \
+Smith,10,suzuk001,Kurt Suzuki,2,reddj001,Josh Reddick,9,cespy001,Yoenis \
+Cespedes,8,alleb001,Brandon Allen,3,sogae001,Eric Sogard,5,,Y\"\>", "}"}], 
+   ",", 
+   RowBox[{
+   "{", "\<\"20120329,0,Thu,SEA,AL,2,OAK,AL,2,1,4,51,N,,,,TOK01,43391,143,\
+000000100,00000031x,30,3,0,0,1,1,0,0,0,1,0,7,0,0,0,0,3,4,4,4,0,0,24,7,0,0,0,0,\
+30,7,1,0,3,4,0,0,0,2,0,5,0,1,0,0,4,2,1,1,0,0,27,9,0,0,0,0,nelsj901,Jeff \
+Nelson,hudsm901,Marvin Hudson,belld901,Dan Bellino,hallt901,Tom \
+Hallion,,(none),,(none),wedge001,Eric Wedge,melvb001,Bob \
+Melvin,colob001,Bartolo Colon,kells001,Shawn Kelley,balfg001,Grant \
+Balfour,cespy001,Yoenis Cespedes,vargj001,Jason Vargas,colob001,Bartolo \
+Colon,figgc001,Chone Figgins,7,ackld001,Dustin Ackley,4,suzui001,Ichiro \
+Suzuki,9,smoaj001,Justin Smoak,3,montj003,Jesus Montero,10,seagk001,Kyle \
+Seager,5,olivm001,Miguel Olivo,2,saunm001,Michael Saunders,8,ryanb002,Brendan \
+Ryan,6,weekj001,Jemile Weeks,4,pennc001,Cliff Pennington,6,crisc001,Coco \
+Crisp,7,gomej001,Jonny Gomes,10,suzuk001,Kurt Suzuki,2,cespy001,Yoenis \
+Cespedes,8,reddj001,Josh Reddick,9,donaj001,Joshua Donaldson,5,kaaik001,Kila \
+Ka'aihue,3,,Y\"\>", "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.601576357177909*^9, {3.601577636550282*^9, 3.601577864135996*^9}, 
+   3.601578763105254*^9, {3.601581469281316*^9, 3.601581515469367*^9}, 
+   3.601581823607773*^9, 3.601582475087482*^9, 3.6017348068713837`*^9, 
+   3.6017350228497868`*^9}]
+}, Open  ]],
+
+Cell["\<\
+WANT: Break each String representing one event into the 161 fields for each \
+aspect of event.
+
+TRY: String split like we used before but only applied in the sublists \
+representing each event\
+\>", "Text",
+ CellChangeTimes->{{3.601577923931447*^9, 3.6015779666826153`*^9}, {
+  3.601578043992497*^9, 3.601578086568619*^9}, {3.601578121265424*^9, 
+  3.601578137312421*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"Break", " ", "each", " ", 
+     RowBox[{"event", "'"}], "s", " ", "string", " ", "into", " ", "sub", " ",
+      "elements", " ", "for", " ", "team", " ", "name"}], ",", " ", "score", 
+    ",", " ", 
+    RowBox[{"etc", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", 
+  RowBox[{"(*", "TEST", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"StringSplit", "[", 
+    RowBox[{
+     RowBox[{"dim3", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], ",", "\"\<,\>\""}], "]"}], " ", 
+   RowBox[{"(*", 
+    RowBox[{
+    "Notice", " ", "Comma", " ", "diff", " ", "in", " ", "old", " ", 
+     "input"}], "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"StringSplit", "[", 
+      RowBox[{
+       RowBox[{"dim3", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", "\"\<,\>\""}], "]"}], "[", 
+     RowBox[{"[", "1", "]"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"StringSplit", "[", 
+       RowBox[{
+        RowBox[{"dim3", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", "\"\<,\>\""}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "//", "Length"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"So", " ", "the", " ", "idea", " ", "works"}], ",", " ", 
+     RowBox[{"now", " ", "perform", " ", "across", " ", "all", " ", 
+      RowBox[{"fields", ".", " ", "Maybe"}], " ", "use", " ", 
+      RowBox[{
+       RowBox[{"Flatten", "[", "]"}], "?"}]}]}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"commaSplit", "[", "x_", "]"}], ":=", 
+     RowBox[{"StringSplit", "[", 
+      RowBox[{"x", ",", "\"\<,\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{"dim4", "=", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{
+       RowBox[{"Map", "[", 
+        RowBox[{"commaSplit", ",", "dim3"}], "]"}], ",", "1"}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dim4", "//", "Length"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dim4", "[", 
+     RowBox[{"[", "1", "]"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"dim4", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "//", "Length"}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "We", " ", "now", " ", "have", " ", "a", " ", "list", " ", "of", " ", 
+      "each", " ", "event"}], ",", " ", 
+     RowBox[{
+     "each", " ", "event", " ", "is", " ", "a", " ", "list", " ", "of", " ", 
+      "event", " ", "details", " ", "that", " ", "are", " ", "each", " ", 
+      "strings"}]}], " ", "*)"}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.601577895653657*^9, 3.601577899045725*^9}, {
+   3.60157815480543*^9, 3.601578593239039*^9}, {3.601578769474865*^9, 
+   3.6015788000812263`*^9}, {3.60157906848522*^9, 3.601579091427917*^9}, {
+   3.601579166313629*^9, 3.601579230649444*^9}, {3.601579276846901*^9, 
+   3.6015792817822027`*^9}, {3.601581539794654*^9, 3.601581624938099*^9}, {
+   3.6015816683921328`*^9, 3.601581668845401*^9}, 3.601581796063151*^9, {
+   3.6015818310275927`*^9, 3.601581844380411*^9}, {3.6015818816028147`*^9, 
+   3.601581937199266*^9}, {3.6015819947797527`*^9, 3.601582095512495*^9}, {
+   3.601735052168539*^9, 3.601735054440531*^9}, {3.601735092661078*^9, 
+   3.601735147760322*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{"\<\"20120328\"\>", ",", "\<\"0\"\>", ",", "\<\"Wed\"\>", 
+    ",", "\<\"SEA\"\>", ",", "\<\"AL\"\>", ",", "\<\"1\"\>", 
+    ",", "\<\"OAK\"\>", ",", "\<\"AL\"\>", ",", "\<\"1\"\>", ",", "\<\"3\"\>",
+     ",", "\<\"1\"\>", ",", "\<\"66\"\>", ",", "\<\"N\"\>", ",", "\<\"\"\>", 
+    ",", "\<\"\"\>", ",", "\<\"\"\>", ",", "\<\"TOK01\"\>", 
+    ",", "\<\"44227\"\>", ",", "\<\"184\"\>", ",", "\<\"00010000002\"\>", 
+    ",", "\<\"00010000000\"\>", ",", "\<\"39\"\>", ",", "\<\"9\"\>", 
+    ",", "\<\"1\"\>", ",", "\<\"0\"\>", ",", "\<\"1\"\>", ",", "\<\"3\"\>", 
+    ",", "\<\"1\"\>", ",", "\<\"0\"\>", ",", "\<\"0\"\>", ",", "\<\"0\"\>", 
+    ",", "\<\"0\"\>", ",", "\<\"4\"\>", ",", "\<\"2\"\>", ",", "\<\"1\"\>", 
+    ",", "\<\"1\"\>", ",", "\<\"0\"\>", ",", "\<\"4\"\>", ",", "\<\"3\"\>", 
+    ",", "\<\"1\"\>", ",", "\<\"1\"\>", ",", "\<\"0\"\>", ",", "\<\"0\"\>", 
+    ",", "\<\"33\"\>", ",", "\<\"7\"\>", ",", "\<\"1\"\>", ",", "\<\"0\"\>", 
+    ",", "\<\"0\"\>", ",", "\<\"0\"\>", ",", "\<\"39\"\>", ",", "\<\"6\"\>", 
+    ",", "\<\"3\"\>", ",", "\<\"0\"\>", ",", "\<\"0\"\>", ",", "\<\"1\"\>", 
+    ",", "\<\"0\"\>", ",", "\<\"0\"\>", ",", "\<\"2\"\>", ",", "\<\"0\"\>", 
+    ",", "\<\"0\"\>", ",", "\<\"10\"\>", ",", "\<\"2\"\>", ",", "\<\"1\"\>", 
+    ",", "\<\"0\"\>", ",", "\<\"0\"\>", ",", "\<\"7\"\>", ",", "\<\"6\"\>", 
+    ",", "\<\"3\"\>", ",", "\<\"3\"\>", ",", "\<\"0\"\>", ",", "\<\"0\"\>", 
+    ",", "\<\"33\"\>", ",", "\<\"19\"\>", ",", "\<\"1\"\>", ",", "\<\"0\"\>", 
+    ",", "\<\"1\"\>", ",", "\<\"0\"\>", ",", "\<\"hallt901\"\>", 
+    ",", "\<\"Tom Hallion\"\>", ",", "\<\"nelsj901\"\>", 
+    ",", "\<\"Jeff Nelson\"\>", ",", "\<\"hudsm901\"\>", 
+    ",", "\<\"Marvin Hudson\"\>", ",", "\<\"belld901\"\>", 
+    ",", "\<\"Dan Bellino\"\>", ",", "\<\"\"\>", ",", "\<\"(none)\"\>", 
+    ",", "\<\"\"\>", ",", "\<\"(none)\"\>", ",", "\<\"wedge001\"\>", 
+    ",", "\<\"Eric Wedge\"\>", ",", "\<\"melvb001\"\>", 
+    ",", "\<\"Bob Melvin\"\>", ",", "\<\"wilht001\"\>", 
+    ",", "\<\"Tom Wilhelmsen\"\>", ",", "\<\"caria001\"\>", 
+    ",", "\<\"Andrew Carignan\"\>", ",", "\<\"leagb001\"\>", 
+    ",", "\<\"Brandon League\"\>", ",", "\<\"ackld001\"\>", 
+    ",", "\<\"Dustin Ackley\"\>", ",", "\<\"hernf002\"\>", 
+    ",", "\<\"Felix Hernandez\"\>", ",", "\<\"mccab001\"\>", 
+    ",", "\<\"Brandon McCarthy\"\>", ",", "\<\"figgc001\"\>", 
+    ",", "\<\"Chone Figgins\"\>", ",", "\<\"5\"\>", ",", "\<\"ackld001\"\>", 
+    ",", "\<\"Dustin Ackley\"\>", ",", "\<\"4\"\>", ",", "\<\"suzui001\"\>", 
+    ",", "\<\"Ichiro Suzuki\"\>", ",", "\<\"9\"\>", ",", "\<\"smoaj001\"\>", 
+    ",", "\<\"Justin Smoak\"\>", ",", "\<\"3\"\>", ",", "\<\"montj003\"\>", 
+    ",", "\<\"Jesus Montero\"\>", ",", "\<\"10\"\>", ",", "\<\"carpm001\"\>", 
+    ",", "\<\"Mike Carp\"\>", ",", "\<\"7\"\>", ",", "\<\"olivm001\"\>", 
+    ",", "\<\"Miguel Olivo\"\>", ",", "\<\"2\"\>", ",", "\<\"saunm001\"\>", 
+    ",", "\<\"Michael Saunders\"\>", ",", "\<\"8\"\>", 
+    ",", "\<\"ryanb002\"\>", ",", "\<\"Brendan Ryan\"\>", ",", "\<\"6\"\>", 
+    ",", "\<\"weekj001\"\>", ",", "\<\"Jemile Weeks\"\>", ",", "\<\"4\"\>", 
+    ",", "\<\"pennc001\"\>", ",", "\<\"Cliff Pennington\"\>", 
+    ",", "\<\"6\"\>", ",", "\<\"crisc001\"\>", ",", "\<\"Coco Crisp\"\>", 
+    ",", "\<\"7\"\>", ",", "\<\"smits002\"\>", ",", "\<\"Seth Smith\"\>", 
+    ",", "\<\"10\"\>", ",", "\<\"suzuk001\"\>", ",", "\<\"Kurt Suzuki\"\>", 
+    ",", "\<\"2\"\>", ",", "\<\"reddj001\"\>", ",", "\<\"Josh Reddick\"\>", 
+    ",", "\<\"9\"\>", ",", "\<\"cespy001\"\>", ",", "\<\"Yoenis Cespedes\"\>",
+     ",", "\<\"8\"\>", ",", "\<\"alleb001\"\>", ",", "\<\"Brandon Allen\"\>", 
+    ",", "\<\"3\"\>", ",", "\<\"sogae001\"\>", ",", "\<\"Eric Sogard\"\>", 
+    ",", "\<\"5\"\>", ",", "\<\"\"\>", ",", "\<\"Y\"\>"}], "}"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.60173511818257*^9}]
+}, Open  ]],
+
+Cell["\<\
+WANT: Extract relevant pieces of infro from data
+
+TRY: Just index to them and create a new list of team vs. points\
+\>", "Text",
+ CellChangeTimes->{{3.6015793047498426`*^9, 3.601579336360693*^9}, {
+  3.601579367280778*^9, 3.601579369736651*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Create", " ", "a", " ", "list", " ", "of", " ", "team", " ", "names", " ",
+     "and", " ", "scores", " ", "for", " ", "each", " ", "event"}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Indecies", " ", "of", " ", "data", " ", "for", " ", "event", " ", "team", 
+    " ", "and", " ", "score", " ", "for", " ", "each", " ", "event"}], " ", 
+   "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"visI", "=", "4"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"homI", "=", "7"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"visScoreI", "=", "10"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"homScoreI", "=", "11"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Method", " ", "for", " ", "makeing", " ", "list", " ", "of", " ", 
+     RowBox[{"{", 
+      RowBox[{"Hname", ",", "Hscore", ",", "Aname", ",", "Ascore"}], "}"}], 
+     " ", "extracted", " ", "data"}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"extractDetails", "[", "x_", "]"}], ":=", 
+    RowBox[{"List", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"x", "[", 
+       RowBox[{"[", "visI", "]"}], "]"}], ",", " ", "\[IndentingNewLine]", 
+      RowBox[{"x", "[", 
+       RowBox[{"[", "visScoreI", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"x", "[", 
+       RowBox[{"[", "homI", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"x", "[", 
+       RowBox[{"[", "homScoreI", "]"}], "]"}]}], "\[IndentingNewLine]", 
+     "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"played", "=", 
+    RowBox[{"Map", "[", 
+     RowBox[{"extractDetails", ",", "dim4"}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"played", "//", 
+         RowBox[{"InputForm", "\[IndentingNewLine]", "played"}]}], "//", 
+        RowBox[{"Length", "\[IndentingNewLine]", 
+         RowBox[{"played", "[", 
+          RowBox[{"[", "1", "]"}], "]"}]}]}], "//", 
+       RowBox[{"Length", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"played", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"played", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}]}], "//", 
+      RowBox[{"Head", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"played", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "[", 
+        RowBox[{"[", "2", "]"}], "]"}], "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"played", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "[", 
+        RowBox[{"[", "2", "]"}], "]"}]}]}], "//", "Head"}], 
+    "\[IndentingNewLine]", "*)"}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.6015792638499126`*^9, 3.601579263920719*^9}, {
+  3.601579372266828*^9, 3.601579463920767*^9}, {3.601579509241057*^9, 
+  3.601579598165852*^9}, {3.601735662564171*^9, 3.601735665321521*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"SEA\"\>", ",", "\<\"3\"\>", ",", "\<\"OAK\"\>", 
+     ",", "\<\"1\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"SEA\"\>", ",", "\<\"1\"\>", ",", "\<\"OAK\"\>", 
+     ",", "\<\"4\"\>"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6015792471137667`*^9, 3.601579264460691*^9}, {
+   3.601579395588135*^9, 3.601579472278158*^9}, {3.60157951301829*^9, 
+   3.6015795921491337`*^9}, 3.6015818697278137`*^9, 3.601582035602893*^9, 
+   3.6015821108843946`*^9, 3.601582483072403*^9, 3.601735667937649*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Method", " ", "for", " ", "makeing", " ", "list", " ", "of", " ", 
+    RowBox[{"{", 
+     RowBox[{"Hname", ",", "Hscore", ",", "Aname", ",", "Ascore"}], "}"}], 
+    " ", "extracted", " ", "data"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"extractDetails", "[", "x_", "]"}], ":=", 
+    RowBox[{"List", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"x", "[", 
+       RowBox[{"[", "visI", "]"}], "]"}], ",", " ", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"x", "[", 
+        RowBox[{"[", "visScoreI", "]"}], "]"}], "//", "ToExpression"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"x", "[", 
+       RowBox[{"[", "homI", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"x", "[", 
+        RowBox[{"[", "homScoreI", "]"}], "]"}], "//", "ToExpression"}]}], 
+     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"played", "=", 
+    RowBox[{"Map", "[", 
+     RowBox[{"extractDetails", ",", "dim4"}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"played", "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "[", 
+    RowBox[{"[", "1", "]"}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"played", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "//", "Head"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"played", "[", 
+     RowBox[{"[", "1", "]"}], "]"}], "[", 
+    RowBox[{"[", "2", "]"}], "]"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"played", "[", 
+      RowBox[{"[", "1", "]"}], "]"}], "[", 
+     RowBox[{"[", "2", "]"}], "]"}], "//", "Head"}]}]}]], "Input",
+ CellChangeTimes->{{3.6015796032636547`*^9, 3.6015796364711933`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"SEA\"\>", ",", "3", ",", "\<\"OAK\"\>", ",", "1"}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"SEA\"\>", ",", "1", ",", "\<\"OAK\"\>", ",", "4"}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.601579601180348*^9, 3.601579637052701*^9}, 
+   3.601582118497242*^9, 3.60158248654137*^9, 3.6017356855561247`*^9}],
+
+Cell[BoxData["\<\"SEA\"\>"], "Output",
+ CellChangeTimes->{{3.601579601180348*^9, 3.601579637052701*^9}, 
+   3.601582118497242*^9, 3.60158248654137*^9, 3.60173568555786*^9}],
+
+Cell[BoxData["String"], "Output",
+ CellChangeTimes->{{3.601579601180348*^9, 3.601579637052701*^9}, 
+   3.601582118497242*^9, 3.60158248654137*^9, 3.601735685559153*^9}],
+
+Cell[BoxData["3"], "Output",
+ CellChangeTimes->{{3.601579601180348*^9, 3.601579637052701*^9}, 
+   3.601582118497242*^9, 3.60158248654137*^9, 3.6017356855604353`*^9}],
+
+Cell[BoxData["Integer"], "Output",
+ CellChangeTimes->{{3.601579601180348*^9, 3.601579637052701*^9}, 
+   3.601582118497242*^9, 3.60158248654137*^9, 3.601735685561673*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["Clean Up and Consolodate", "Section",
+ CellChangeTimes->{{3.6015796665052147`*^9, 3.6015796759026012`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"bbd", "=", 
+   RowBox[{"List", "[", 
+    RowBox[{"Import", "[", "\"\<bbdtest.txt\>\"", "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"bbd", "=", 
+    RowBox[{"List", "[", 
+     RowBox[{"Import", "[", "\"\<GL2012.txt\>\"", "]"}], "]"}]}], " ", 
+   "*)"}]}]}], "Input",
+ CellChangeTimes->{
+  3.6015796952153807`*^9, {3.601579848174766*^9, 3.601579883655184*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Remove", " ", "extra", " ", "quotes", " ", 
+    RowBox[{"(", " ", "\\\"", " ", ")"}], " ", "from", " ", "data", " ", 
+    "string"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"sp", "[", "x_", "]"}], ":=", 
+    RowBox[{"StringReplace", "[", 
+     RowBox[{"x", ",", 
+      RowBox[{"\"\<\\\"\>\"", "\[Rule]", "\"\<\>\""}]}], "]"}]}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dim1", "=", 
+     RowBox[{"Map", "[", 
+      RowBox[{"sp", ",", " ", "bbd"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "Break", " ", "up", " ", "String", " ", "by", " ", "NewLine", " ", "char",
+      " ", 
+     RowBox[{"(", " ", "\\n", " ", ")"}], " ", "characters", " ", "for", " ", 
+     "each", " ", "event", " ", "to", " ", "get", " ", "all", " ", "events"}],
+     " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dim2", "=", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{"StringSplit", "[", 
+       RowBox[{"dim1", ",", "\"\<\\n\>\""}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{
+     "Each", " ", "event", " ", "is", " ", "one", " ", "big", " ", "string"}],
+      ",", " ", 
+     RowBox[{"so", " ", "make", " ", "each", " ", "event", " ", "into", " ", 
+      RowBox[{"it", "'"}], "s", " ", "own", " ", "element", " ", "in", " ", 
+      "the", " ", "list"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"dim3", "=", 
+     RowBox[{"Partition", "[", 
+      RowBox[{"dim2", ",", "1"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+     RowBox[{"Break", " ", "each", " ", 
+      RowBox[{"event", "'"}], "s", " ", "string", " ", "into", " ", "sub", 
+      " ", "elements", " ", "for", " ", "team", " ", "name"}], ",", " ", 
+     "score", ",", " ", 
+     RowBox[{"etc", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"commaSplit", "[", "x_", "]"}], ":=", 
+     RowBox[{"StringSplit", "[", 
+      RowBox[{"x", ",", "\"\<,\>\""}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   
+   RowBox[{
+    RowBox[{"dim4", "=", 
+     RowBox[{"Flatten", "[", 
+      RowBox[{
+       RowBox[{"Map", "[", 
+        RowBox[{"commaSplit", ",", "dim3"}], "]"}], ",", "1"}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "Create", " ", "a", " ", "list", " ", "of", " ", "team", " ", "names", 
+     " ", "and", " ", "scores", " ", "for", " ", "each", " ", "event"}], " ", 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "Indecies", " ", "of", " ", "data", " ", "for", " ", "event", " ", "team",
+      " ", "and", " ", "score", " ", "for", " ", "each", " ", "event"}], " ", 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"visI", "=", "4"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"homI", "=", "7"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"visScoreI", "=", "10"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"homScoreI", "=", "11"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Method", " ", "for", " ", "makeing", " ", "list", " ", "of", " ", 
+     RowBox[{"{", 
+      RowBox[{"Hname", ",", "Hscore", ",", "Aname", ",", "Ascore"}], "}"}], 
+     " ", "extracted", " ", "data"}], " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"extractDetails", "[", "x_", "]"}], ":=", 
+    RowBox[{"List", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"x", "[", 
+       RowBox[{"[", "visI", "]"}], "]"}], ",", " ", "\[IndentingNewLine]", 
+      RowBox[{"x", "[", 
+       RowBox[{"[", "visScoreI", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"x", "[", 
+       RowBox[{"[", "homI", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"x", "[", 
+       RowBox[{"[", "homScoreI", "]"}], "]"}]}], "\[IndentingNewLine]", 
+     "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"played", "=", 
+    RowBox[{"Map", "[", 
+     RowBox[{"extractDetails", ",", "dim4"}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.601579713990655*^9, 3.601579718029413*^9}, {
+  3.601579891765176*^9, 3.6015799093671722`*^9}, {3.601582167739334*^9, 
+  3.6015822022489233`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"\<\"SEA\"\>", ",", "\<\"3\"\>", ",", "\<\"OAK\"\>", 
+     ",", "\<\"1\"\>"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\<\"SEA\"\>", ",", "\<\"1\"\>", ",", "\<\"OAK\"\>", 
+     ",", "\<\"4\"\>"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.6015797934433517`*^9, 3.6015798697380123`*^9, 3.601579914474127*^9, 
+   3.601580013193531*^9, {3.6015821963815947`*^9, 3.601582202923011*^9}, 
+   3.6015824945211782`*^9, 3.601735694292118*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+
+Cell[CellGroupData[{
+
+Cell["End", "Section",
+ CellChangeTimes->{{3.601582582797667*^9, 3.6015825830207253`*^9}}],
+
+Cell["Thank you!", "Text",
+ CellChangeTimes->{{3.60158258727846*^9, 3.6015825886925488`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+ScreenStyleEnvironment->"SlideShow",
+WindowSize->{1175, 856},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "SlideShowHeader"->{
+  Cell[1314, 46, 64, 1, 1, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"],
+  Cell[1982, 71, 64, 1, 1, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"],
+  Cell[2800, 98, 64, 1, 1, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"],
+  Cell[26822, 654, 64, 1, 1, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"],
+  Cell[63433, 1466, 64, 1, 1, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"],
+  Cell[69215, 1622, 64, 1, 1, "SlideShowNavigationBar",
+   CellTags->"SlideShowHeader"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"SlideShowHeader", 69867, 1647}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 442, 8, 459, "Title"],
+Cell[1024, 32, 253, 9, 335, "Subtitle"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1314, 46, 64, 1, 1, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[1403, 51, 112, 1, 123, "Section"],
+Cell[1518, 54, 415, 11, 225, "Text"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1982, 71, 64, 1, 1, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[2071, 76, 166, 2, 123, "Section"],
+Cell[2240, 80, 511, 12, 225, "Text"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2800, 98, 64, 1, 1, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[2889, 103, 154, 2, 80, "Section"],
+Cell[3046, 107, 117, 1, 30, "Text"],
+Cell[CellGroupData[{
+Cell[3188, 112, 454, 10, 46, "Input"],
+Cell[3645, 124, 4879, 134, 181, "Output"]
+}, Open  ]],
+Cell[8539, 261, 744, 16, 163, "Text"],
+Cell[CellGroupData[{
+Cell[9308, 281, 178, 4, 28, "Input"],
+Cell[9489, 287, 3432, 60, 386, "Output"]
+}, Open  ]],
+Cell[12936, 350, 206, 6, 30, "Text"],
+Cell[CellGroupData[{
+Cell[13167, 360, 308, 7, 28, "Input"],
+Cell[13478, 369, 163, 2, 28, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13678, 376, 123, 2, 28, "Input"],
+Cell[13804, 380, 143, 2, 28, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13984, 387, 303, 7, 46, "Input"],
+Cell[14290, 396, 193, 3, 28, "Output"],
+Cell[14486, 401, 3455, 60, 369, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17978, 466, 370, 8, 28, "Input"],
+Cell[18351, 476, 3495, 67, 400, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21883, 548, 176, 3, 28, "Input"],
+Cell[22062, 553, 3643, 68, 499, "Output"]
+}, Open  ]],
+Cell[25720, 624, 1053, 24, 296, "Text"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26822, 654, 64, 1, 1, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[26911, 659, 118, 1, 80, "Section"],
+Cell[27032, 662, 495, 12, 125, "Text"],
+Cell[CellGroupData[{
+Cell[27552, 678, 328, 8, 46, "Input"],
+Cell[27883, 688, 3451, 60, 386, "Output"]
+}, Open  ]],
+Cell[31349, 751, 179, 5, 68, "Text"],
+Cell[CellGroupData[{
+Cell[31553, 760, 306, 7, 46, "Input"],
+Cell[31862, 769, 3414, 66, 400, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35313, 840, 1101, 27, 97, "Input"],
+Cell[36417, 869, 2141, 31, 352, "Output"]
+}, Open  ]],
+Cell[38573, 903, 661, 15, 144, "Text"],
+Cell[CellGroupData[{
+Cell[39259, 922, 2320, 52, 233, "Input"],
+Cell[41582, 976, 2095, 30, 352, "Output"]
+}, Open  ]],
+Cell[43692, 1009, 322, 9, 87, "Text"],
+Cell[CellGroupData[{
+Cell[44039, 1022, 2186, 55, 216, "Input"],
+Cell[46228, 1079, 2323, 37, 352, "Output"]
+}, Open  ]],
+Cell[48566, 1119, 382, 9, 68, "Text"],
+Cell[CellGroupData[{
+Cell[48973, 1132, 3473, 85, 284, "Input"],
+Cell[52449, 1219, 3893, 57, 182, "Output"]
+}, Open  ]],
+Cell[56357, 1279, 255, 6, 68, "Text"],
+Cell[CellGroupData[{
+Cell[56637, 1289, 3188, 75, 471, "Input"],
+Cell[59828, 1366, 582, 12, 28, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[60447, 1383, 1841, 48, 250, "Input"],
+Cell[62291, 1433, 395, 10, 28, "Output"],
+Cell[62689, 1445, 172, 2, 28, "Output"],
+Cell[62864, 1449, 168, 2, 28, "Output"],
+Cell[63035, 1453, 165, 2, 28, "Output"],
+Cell[63203, 1457, 169, 2, 28, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[63433, 1466, 64, 1, 1, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[63522, 1471, 113, 1, 80, "Section"],
+Cell[63638, 1474, 570, 17, 63, "Input"],
+Cell[CellGroupData[{
+Cell[64233, 1495, 4406, 106, 522, "Input"],
+Cell[68642, 1603, 512, 12, 86, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[69215, 1622, 64, 1, 1, "SlideShowNavigationBar",
+ CellTags->"SlideShowHeader"],
+Cell[CellGroupData[{
+Cell[69304, 1627, 90, 1, 80, "Section"],
+Cell[69397, 1630, 93, 1, 30, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

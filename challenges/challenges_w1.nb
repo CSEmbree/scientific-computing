@@ -1,0 +1,767 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     23861,        758]
+NotebookOptionsPosition[     21039,        661]
+NotebookOutlinePosition[     21425,        678]
+CellTagsIndexPosition[     21382,        675]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Challenges Week 1 Class 2", "Section",
+ CellChangeTimes->{{3.5993452536759357`*^9, 3.599345274274427*^9}, {
+  3.599345332766952*^9, 3.5993453485400877`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Group: Cowboy Meteor
+Name: Cameron Embree\
+\>", "Subsection",
+ CellChangeTimes->{{3.599345352745947*^9, 3.599345356033267*^9}, {
+  3.5995061604665956`*^9, 3.5995061723878717`*^9}}],
+
+Cell["\<\
+Challenge 1: Check that 123456789098765432111 is prime in two different ways.\
+\
+\>", "Text",
+ CellChangeTimes->{{3.598890813807907*^9, 3.598890834676403*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Challenge", " ", "1", " ", "solution", " ", 
+   RowBox[{"by", ":"}]}], "*)"}]], "Input",
+ CellChangeTimes->{
+  3.598891261956697*^9, {3.5988914227453747`*^9, 3.598891462114196*^9}, {
+   3.5993455547926207`*^9, 3.5993455905381002`*^9}, {3.599345933740127*^9, 
+   3.599345934354272*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"maybePrime", ":=", "123456789098765432111"}], "\[IndentingNewLine]", 
+ RowBox[{"PrimeQ", "[", "maybePrime", "]"}]}], "Input",
+ CellChangeTimes->{{3.599502316926154*^9, 3.599502345157288*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{
+  3.5993459427380457`*^9, 3.599502057534892*^9, {3.599502335590665*^9, 
+   3.5995023479916973`*^9}, 3.599502533113655*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FactorInteger", "[", "maybePrime", "]"}]], "Input",
+ CellChangeTimes->{{3.599345676692325*^9, 3.5993456816295433`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"{", 
+   RowBox[{"123456789098765432111", ",", "1"}], "}"}], "}"}]], "Output",
+ CellChangeTimes->{3.599345682118143*^9, 3.599502059582725*^9, 
+  3.599502533169656*^9}]
+}, Open  ]],
+
+Cell["\<\
+
+
+Challenge 2: Check that for any given positive integer n \[GreaterEqual] 3, \
+the least common multiple of the numbers 1, 2, \[CenterDot] \[CenterDot] \
+\[CenterDot] , n is greater than 2^(n\[Minus]1).\
+\>", "Text",
+ CellChangeTimes->{{3.5988908445818377`*^9, 3.598890879261509*^9}, {
+  3.59950601584446*^9, 3.599506015964596*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Challenge", " ", "2", " ", "solution", " ", 
+   RowBox[{"by", ":"}]}], " ", "*)"}]], "Input",
+ CellChangeTimes->{
+  3.598891265863412*^9, {3.598891420585001*^9, 3.5988914560821466`*^9}, 
+   3.5993456921712503`*^9, 3.599345946944446*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"n", ":=", "5"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"LCM", "@@", 
+   RowBox[{"Range", "[", "n", "]"}]}], ">", 
+  SuperscriptBox["2", 
+   RowBox[{"(", 
+    RowBox[{"n", "-", "1"}], ")"}]]}]}], "Input",
+ CellChangeTimes->{{3.599504299784686*^9, 3.599504302713443*^9}, {
+  3.5995045426514597`*^9, 3.599504574844695*^9}, {3.5995046471476994`*^9, 
+  3.599504650813035*^9}, {3.599504723470936*^9, 3.599504756675416*^9}, {
+  3.599504978762054*^9, 3.5995049854079227`*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.599504565399226*^9, 3.5995045752686872`*^9}, 
+   3.599504651313553*^9, {3.599504728510949*^9, 3.599504756894109*^9}, 
+   3.599504985930634*^9}]
+}, Open  ]],
+
+Cell["\<\
+
+
+Challenge 3: Check that the number 32! ends with 7 zeros in two different \
+ways.\
+\>", "Text",
+ CellChangeTimes->{{3.5988909026233587`*^9, 3.598890918614172*^9}, {
+  3.599506013292613*^9, 3.599506013404501*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Challenge", " ", "3", " ", "solution", " ", 
+    RowBox[{"by", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"numerator", ":=", 
+    RowBox[{"32", "!"}]}], "\[IndentingNewLine]", 
+   RowBox[{"denominator", ":=", "1000000"}], "\[IndentingNewLine]", 
+   RowBox[{"QuotientRemainder", "[", 
+    RowBox[{"numerator", ",", " ", "denominator"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{
+  3.598891468739785*^9, 3.598891501667235*^9, 3.599345710306363*^9, {
+   3.5993457573050222`*^9, 3.5993457674117813`*^9}, {3.5993459562766113`*^9, 
+   3.5993459575640078`*^9}, {3.599503321628962*^9, 3.59950336337323*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"263130836933693530167218012160", ",", "0"}], "}"}]], "Output",
+ CellChangeTimes->{3.5995033640856037`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Element", "[", 
+  RowBox[{
+   FractionBox["numerator", "denominator"], ",", "Integers"}], "]"}]], "Input",\
+
+ CellChangeTimes->{{3.599503431590682*^9, 3.599503479782365*^9}, {
+  3.5995035097941217`*^9, 3.5995035358422623`*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.5995034806779737`*^9, 3.599503536674466*^9}]
+}, Open  ]],
+
+Cell["\<\
+
+
+Challenge 4: Factorize the polynomial (1 + x)^30 + (1 \[Minus] x)^30.\
+\>", "Text",
+ CellChangeTimes->{{3.598890941464096*^9, 3.598890952870879*^9}, {
+  3.599505966168623*^9, 3.599505966272533*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Challenge", " ", "4", " ", "solution", " ", 
+    RowBox[{"by", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"FactorizeThisPoly", ":=", 
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"1", "+", "x"}], ")"}], "30"], "+", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"1", "-", "x"}], ")"}], "30"]}]}], "\[IndentingNewLine]", 
+   RowBox[{"Factor", "[", "FactorizeThisPoly", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.598891473308649*^9, 3.598891499011157*^9}, 
+   3.599345713263401*^9, 3.599345962652223*^9, 3.5995039285449133`*^9, {
+   3.599504060270924*^9, 3.599504096083256*^9}}],
+
+Cell[BoxData[
+ RowBox[{"2", " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "+", 
+    SuperscriptBox["x", "2"]}], ")"}], " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "+", 
+    RowBox[{"14", " ", 
+     SuperscriptBox["x", "2"]}], "+", 
+    SuperscriptBox["x", "4"]}], ")"}], " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "+", 
+    RowBox[{"44", " ", 
+     SuperscriptBox["x", "2"]}], "+", 
+    RowBox[{"166", " ", 
+     SuperscriptBox["x", "4"]}], "+", 
+    RowBox[{"44", " ", 
+     SuperscriptBox["x", "6"]}], "+", 
+    SuperscriptBox["x", "8"]}], ")"}], " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "+", 
+    RowBox[{"376", " ", 
+     SuperscriptBox["x", "2"]}], "+", 
+    RowBox[{"4380", " ", 
+     SuperscriptBox["x", "4"]}], "+", 
+    RowBox[{"15944", " ", 
+     SuperscriptBox["x", "6"]}], "+", 
+    RowBox[{"24134", " ", 
+     SuperscriptBox["x", "8"]}], "+", 
+    RowBox[{"15944", " ", 
+     SuperscriptBox["x", "10"]}], "+", 
+    RowBox[{"4380", " ", 
+     SuperscriptBox["x", "12"]}], "+", 
+    RowBox[{"376", " ", 
+     SuperscriptBox["x", "14"]}], "+", 
+    SuperscriptBox["x", "16"]}], ")"}]}]], "Output",
+ CellChangeTimes->{3.5995040969224443`*^9}]
+}, Open  ]],
+
+Cell["\<\
+
+
+Challenge 5: Print out the first five rows of Pascals triangle.\
+\>", "Text",
+ CellChangeTimes->{{3.5988909749763117`*^9, 3.598890979063529*^9}, {
+   3.598891239133972*^9, 3.598891251564993*^9}, 3.598891296653932*^9, {
+   3.599505964104783*^9, 3.59950596420859*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Challenge", " ", "5", " ", "solution", " ", 
+    RowBox[{"by", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"Column", "[", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Binomial", "[", 
+       RowBox[{"n", ",", "k"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"n", ",", "0", ",", "5"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "0", ",", "n"}], "}"}]}], "]"}], ",", " ", 
+    "Center"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.598891474701232*^9, 3.5988914962431993`*^9}, 
+   3.599345715271483*^9, 3.599345964361376*^9, 3.59950259939524*^9, 
+   3.599502700625051*^9, {3.5995030794349117`*^9, 3.599503093054289*^9}, {
+   3.5995060865089483`*^9, 3.599506092289102*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {
+     RowBox[{"{", "1", "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "1"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2", ",", "1"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "3", ",", "3", ",", "1"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "4", ",", "6", ",", "4", ",", "1"}], "}"}]},
+    {
+     RowBox[{"{", 
+      RowBox[{"1", ",", "5", ",", "10", ",", "10", ",", "5", ",", "1"}], "}"}]}
+   },
+   DefaultBaseStyle->"Column",
+   GridBoxAlignment->{"Columns" -> {{Center}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Column"]], "Output",
+ CellChangeTimes->{
+  3.5995027025613728`*^9, {3.599506087031761*^9, 3.59950609267769*^9}}]
+}, Open  ]],
+
+Cell["\<\
+
+
+Challenge 6: Create a list of all the primes less than 10,000 in two \
+different ways.\
+\>", "Text",
+ CellChangeTimes->{{3.598891286632777*^9, 3.598891324222485*^9}, {
+  3.599505959024495*^9, 3.599505959128611*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Challenge", " ", "6", " ", "solution", " ", 
+   RowBox[{"by", ":"}]}], " ", "*)"}]], "Input",
+ CellChangeTimes->{{3.598891337288447*^9, 3.598891340112451*^9}, 
+   3.598891413377211*^9, {3.5988914778693857`*^9, 3.598891493035285*^9}, 
+   3.599345717511401*^9, 3.599345966305332*^9}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.5995059605483513`*^9, 3.59950596062017*^9}}],
+
+Cell["\<\
+Challenge 7: Calculate the 5th power of the 2x2 matrix with entries a,b,c,d\
+\>", "Text",
+ CellChangeTimes->{{3.5988913510961027`*^9, 3.5988913895918207`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Challenge", " ", "7", " ", "solution", " ", 
+   RowBox[{"by", ":"}]}], " ", "*)"}]], "Input",
+ CellChangeTimes->{{3.598891479365572*^9, 3.598891490938946*^9}, 
+   3.5993457234041433`*^9, 3.599345967670521*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ SuperscriptBox[
+  RowBox[{"(", GridBox[{
+     {"a", "b"},
+     {"c", "d"}
+    }], ")"}], "5"]], "Input",
+ CellChangeTimes->{{3.5995038027650957`*^9, 3.599503814488175*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     SuperscriptBox["a", "5"], ",", 
+     SuperscriptBox["b", "5"]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     SuperscriptBox["c", "5"], ",", 
+     SuperscriptBox["d", "5"]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.599503815892953*^9, 3.5995038829123783`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.599503844756692*^9, 3.5995038719363537`*^9}}],
+
+Cell["\<\
+
+
+Challenge 8:  Integrate and diffenential 3 different polynomials.\
+\>", "Text",
+ CellChangeTimes->{{3.598891399680954*^9, 3.598891402215946*^9}, {
+  3.598891517170492*^9, 3.5988915311787252`*^9}, {3.599505956773733*^9, 
+  3.599505956901742*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Challenge", " ", "8", " ", "solution", " ", 
+    RowBox[{"by", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"poly1", ":=", 
+    RowBox[{
+     SuperscriptBox["x", "3"], "+", 
+     SuperscriptBox["x", "2"], "+", "5"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"integralOfPoly1", "=", 
+    RowBox[{"Integrate", "[", 
+     RowBox[{"poly1", ",", "x"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"origPoly1", "=", 
+    RowBox[{"D", "[", 
+     RowBox[{"integralOfPoly1", ",", "x"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"poly1", "\[Equal]", "origPoly1"}]}]}]], "Input",
+ CellChangeTimes->{{3.598891485069233*^9, 3.5988914876527348`*^9}, 
+   3.599345726660371*^9, 3.5993459756942453`*^9, {3.599346924790195*^9, 
+   3.599346925112007*^9}, {3.5995031283893633`*^9, 3.599503138161076*^9}, {
+   3.599503185627007*^9, 3.599503187618105*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"5", " ", "x"}], "+", 
+  FractionBox[
+   SuperscriptBox["x", "3"], "3"], "+", 
+  FractionBox[
+   SuperscriptBox["x", "4"], "4"]}]], "Output",
+ CellChangeTimes->{3.599346926310059*^9, 3.5995024346338043`*^9, 
+  3.599502533329864*^9, 3.599503188473041*^9}],
+
+Cell[BoxData[
+ RowBox[{"5", "+", 
+  SuperscriptBox["x", "2"], "+", 
+  SuperscriptBox["x", "3"]}]], "Output",
+ CellChangeTimes->{3.599346926310059*^9, 3.5995024346338043`*^9, 
+  3.599502533329864*^9, 3.599503188474378*^9}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.599346926310059*^9, 3.5995024346338043`*^9, 
+  3.599502533329864*^9, 3.599503188475337*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"poly2", ":=", 
+   FractionBox[
+    RowBox[{"Sin", "[", "x", "]"}], 
+    RowBox[{"Cos", "[", "x", "]"}]]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"integralOfPoly2", "=", 
+  RowBox[{"Integrate", "[", 
+   RowBox[{"poly2", ",", "x"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"origPoly2", "=", 
+  RowBox[{"D", "[", 
+   RowBox[{"integralOfPoly2", ",", "x"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"poly2", "\[Equal]", "origPoly2"}]}], "Input"],
+
+Cell[BoxData[
+ RowBox[{"-", 
+  RowBox[{"Log", "[", 
+   RowBox[{"Cos", "[", "x", "]"}], "]"}]}]], "Output",
+ CellChangeTimes->{3.599346933873397*^9, 3.599502533368993*^9}],
+
+Cell[BoxData[
+ RowBox[{"Tan", "[", "x", "]"}]], "Output",
+ CellChangeTimes->{3.599346933873397*^9, 3.599502533370008*^9}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.599346933873397*^9, 3.5995025333707943`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"poly3", ":=", 
+  RowBox[{"Log", "[", 
+   RowBox[{"\[Pi]", ",", "x"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"integralOfPoly3", "=", 
+  RowBox[{"Integrate", "[", 
+   RowBox[{"poly3", ",", "x"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"origPoly3", "=", 
+  RowBox[{"D", "[", 
+   RowBox[{"integralOfPoly3", ",", "x"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"poly3", "\[Equal]", "origPoly3"}]}], "Input",
+ CellChangeTimes->{{3.5993469796789293`*^9, 3.599346990018277*^9}, {
+  3.5993471078378057`*^9, 3.59934711002593*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   RowBox[{"-", "x"}], "+", 
+   RowBox[{"x", " ", 
+    RowBox[{"Log", "[", "x", "]"}]}]}], 
+  RowBox[{"Log", "[", "\[Pi]", "]"}]]], "Output",
+ CellChangeTimes->{3.599347116353507*^9, 3.5995025334202347`*^9}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"Log", "[", "x", "]"}], 
+  RowBox[{"Log", "[", "\[Pi]", "]"}]]], "Output",
+ CellChangeTimes->{3.599347116353507*^9, 3.59950253342161*^9}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{3.599347116353507*^9, 3.599502533422675*^9}]
+}, Open  ]],
+
+Cell["\<\
+
+
+Challenge 9:  Factor the first 20 intergers into primes.\
+\>", "Text",
+ CellChangeTimes->{{3.598891750976384*^9, 3.598891798712061*^9}, {
+  3.5995059476888866`*^9, 3.599505947808297*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Challenge", " ", "9", " ", "solution", " ", 
+    RowBox[{"by", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"firstTwentyIntegers", "=", 
+    RowBox[{"Range", "[", "20", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"FactorInteger", "[", "firstTwentyIntegers", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.598891579131146*^9, 3.5988915825882463`*^9}, {
+   3.598891762426935*^9, 3.598891779282165*^9}, 3.599345728412372*^9, 
+   3.599345977502397*^9, {3.5993472301959476`*^9, 3.599347281085561*^9}, {
+   3.599505092709408*^9, 3.5995051527263727`*^9}, {3.599505195505446*^9, 
+   3.599505197520204*^9}, {3.599505408906959*^9, 3.599505412030051*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7", ",", "8", 
+   ",", "9", ",", "10", ",", "11", ",", "12", ",", "13", ",", "14", ",", "15",
+    ",", "16", ",", "17", ",", "18", ",", "19", ",", "20"}], "}"}]], "Output",\
+
+ CellChangeTimes->{{3.59934727723398*^9, 3.5993472814677067`*^9}, 
+   3.599502533470004*^9, {3.599505110805423*^9, 3.59950515332069*^9}, 
+   3.5995051982281*^9, 3.599505356896532*^9, 3.5995054133175097`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "1"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"3", ",", "1"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "2"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"5", ",", "1"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"2", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "1"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"7", ",", "1"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "3"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"3", ",", "2"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"2", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "1"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"11", ",", "1"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"2", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "1"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"13", ",", "1"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"2", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"7", ",", "1"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"3", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "1"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "4"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"17", ",", "1"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"2", ",", "1"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "2"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"{", 
+     RowBox[{"19", ",", "1"}], "}"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"2", ",", "2"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "1"}], "}"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.59934727723398*^9, 3.5993472814677067`*^9}, 
+   3.599502533470004*^9, {3.599505110805423*^9, 3.59950515332069*^9}, 
+   3.5995051982281*^9, 3.599505356896532*^9, 3.599505413320426*^9}]
+}, Open  ]],
+
+Cell["\<\
+
+
+Challenge 10: Determine if there are any consequtive zeros in first 10,000 \
+digits of pi.\
+\>", "Text",
+ CellChangeTimes->{{3.598891766952734*^9, 3.598891770183373*^9}, {
+  3.598891916299624*^9, 3.5988919533629827`*^9}, {3.5995059440987387`*^9, 
+  3.599505944210717*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Challenge", " ", "10", " ", "solution", " ", 
+    RowBox[{"by", ":"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"firstdDigits", ":=", 
+    RowBox[{"ToString", "[", 
+     RowBox[{"N", "[", 
+      RowBox[{"\[Pi]", ",", "10000"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+   
+   RowBox[{"seq", ":=", 
+    RowBox[{"ToString", "[", "00", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"StringCount", "[", 
+     RowBox[{"firstdDigits", ",", " ", "seq"}], "]"}], "==", 
+    "0"}]}]}]], "Input",
+ CellChangeTimes->{{3.598891783665037*^9, 3.598891783776909*^9}, 
+   3.5993457300200977`*^9, 3.599345979166193*^9, 3.599347335453506*^9, {
+   3.599347380759033*^9, 3.599347388420507*^9}, {3.599347500643907*^9, 
+   3.5993475142612677`*^9}, {3.599347645239602*^9, 3.599347734692164*^9}, {
+   3.599505499701762*^9, 3.599505511096939*^9}, {3.5995056666786013`*^9, 
+   3.599505694205761*^9}, {3.599505840343871*^9, 3.599505860571601*^9}, {
+   3.599506039795435*^9, 3.599506055070767*^9}}],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{{3.599347705170988*^9, 3.599347735279994*^9}, 
+   3.599502533519043*^9, 3.5995054617826242`*^9, {3.5995055008732157`*^9, 
+   3.599505511635152*^9}, {3.599505676472961*^9, 3.599505694587768*^9}, 
+   3.599505860858157*^9, {3.5995060422720413`*^9, 3.599506055527631*^9}}]
+}, Open  ]],
+
+Cell["\<\
+
+
+Challenge 11: Do something cool with the plot of a function, it\
+\[CloseCurlyQuote]s derivative, and one of it\[CloseCurlyQuote]s anti \
+derivatives.\
+\>", "Text",
+ CellChangeTimes->{{3.598891975734311*^9, 3.59889201193258*^9}, {
+  3.599505942085312*^9, 3.599505942202547*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Challenge", " ", "10", " ", "solution", " ", 
+   RowBox[{"by", ":"}]}], " ", "*)"}]], "Input",
+ CellChangeTimes->{{3.59889201578366*^9, 3.598892016902656*^9}, 
+   3.599345733665146*^9, 3.5993459815434437`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1222, 1032},
+WindowMargins->{{4, Automatic}, {0, Automatic}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 163, 2, 119, "Section"],
+Cell[CellGroupData[{
+Cell[767, 28, 190, 5, 102, "Subsection"],
+Cell[960, 35, 169, 4, 46, "Text"],
+Cell[1132, 41, 326, 7, 43, "Input"],
+Cell[CellGroupData[{
+Cell[1483, 52, 216, 3, 69, "Input"],
+Cell[1702, 57, 174, 3, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1913, 65, 143, 2, 43, "Input"],
+Cell[2059, 69, 206, 5, 43, "Output"]
+}, Open  ]],
+Cell[2280, 77, 343, 8, 135, "Text"],
+Cell[2626, 87, 277, 6, 43, "Input"],
+Cell[CellGroupData[{
+Cell[2928, 97, 499, 11, 71, "Input"],
+Cell[3430, 110, 197, 3, 43, "Output"]
+}, Open  ]],
+Cell[3642, 116, 224, 7, 105, "Text"],
+Cell[CellGroupData[{
+Cell[3891, 127, 676, 14, 119, "Input"],
+Cell[4570, 143, 146, 3, 43, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4753, 151, 251, 6, 69, "Input"],
+Cell[5007, 159, 97, 1, 43, "Output"]
+}, Open  ]],
+Cell[5119, 163, 210, 6, 105, "Text"],
+Cell[CellGroupData[{
+Cell[5354, 173, 688, 17, 144, "Input"],
+Cell[6045, 192, 1129, 36, 123, "Output"]
+}, Open  ]],
+Cell[7189, 231, 278, 7, 157, "Text"],
+Cell[CellGroupData[{
+Cell[7492, 242, 779, 19, 103, "Input"],
+Cell[8274, 263, 766, 25, 301, "Output"]
+}, Open  ]],
+Cell[9055, 291, 227, 7, 157, "Text"],
+Cell[9285, 300, 322, 6, 64, "Input"],
+Cell[9610, 308, 147, 2, 141, "Input"],
+Cell[9760, 312, 169, 3, 69, "Text"],
+Cell[9932, 317, 250, 5, 64, "Input"],
+Cell[CellGroupData[{
+Cell[10207, 326, 187, 6, 102, "Input"],
+Cell[10397, 334, 345, 11, 75, "Output"]
+}, Open  ]],
+Cell[10757, 348, 94, 1, 64, "Input"],
+Cell[10854, 351, 257, 7, 157, "Text"],
+Cell[CellGroupData[{
+Cell[11136, 362, 936, 21, 256, "Input"],
+Cell[12075, 385, 288, 8, 105, "Output"],
+Cell[12366, 395, 221, 5, 67, "Output"],
+Cell[12590, 402, 144, 2, 64, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12771, 409, 502, 13, 262, "Input"],
+Cell[13276, 424, 170, 4, 64, "Output"],
+Cell[13449, 430, 121, 2, 64, "Output"],
+Cell[13573, 434, 97, 1, 64, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13707, 440, 553, 12, 178, "Input"],
+Cell[14263, 454, 246, 7, 102, "Output"],
+Cell[14512, 463, 175, 4, 102, "Output"],
+Cell[14690, 469, 95, 1, 64, "Output"]
+}, Open  ]],
+Cell[14800, 473, 199, 6, 157, "Text"],
+Cell[CellGroupData[{
+Cell[15024, 483, 716, 13, 141, "Input"],
+Cell[15743, 498, 485, 9, 64, "Output"],
+Cell[16231, 509, 2523, 86, 141, "Output"]
+}, Open  ]],
+Cell[18769, 598, 284, 8, 157, "Text"],
+Cell[CellGroupData[{
+Cell[19078, 610, 1053, 23, 178, "Input"],
+Cell[20134, 635, 320, 4, 115, "Output"]
+}, Open  ]],
+Cell[20469, 642, 289, 8, 157, "Text"],
+Cell[20761, 652, 250, 5, 64, "Input"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
