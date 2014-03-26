@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    562641,      10187]
-NotebookOptionsPosition[    561360,      10144]
-NotebookOutlinePosition[    561747,      10161]
-CellTagsIndexPosition[    561704,      10158]
+NotebookDataLength[    566079,      10272]
+NotebookOptionsPosition[    564534,      10223]
+NotebookOutlinePosition[    564921,      10240]
+CellTagsIndexPosition[    564878,      10237]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -8019,8 +8019,9 @@ Cell[BoxData[
     Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
     "\"untitled\"", Typeset`specs$$ = {{
       Hold[$CellContext`i$$], 1, 200, 1}}, Typeset`size$$ = {
-    250., {122., 128.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
-    Typeset`skipInitDone$$ = True, $CellContext`i$24498$$ = 0}, 
+    625.503173828125, {25., 12.2509765625}}, Typeset`update$$ = 0, 
+    Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`i$24498$$ = 0}, 
     DynamicBox[Manipulate`ManipulateBoxes[
      1, StandardForm, "Variables" :> {$CellContext`i$$ = 1}, 
       "ControllerVariables" :> {
@@ -8043,7 +8044,7 @@ Cell[BoxData[
             ImageData[$CellContext`image], $CellContext`i$$], 3]]]], 
       "Specifications" :> {{$CellContext`i$$, 1, 200, 1}}, "Options" :> {}, 
       "DefaultOptions" :> {}],
-     ImageSizeCache->{307., {176., 183.}},
+     ImageSizeCache->{681., {70., 77.}},
      SingleEvaluation->True],
     Deinitialization:>None,
     DynamicModuleValues:>{},
@@ -8060,7 +8061,85 @@ Cell[BoxData[
    3.6029607326584053`*^9, {3.60296087134945*^9, 3.6029608762148743`*^9}, 
    3.603051051982348*^9, 3.6031360242047777`*^9, 3.603136997712174*^9, {
    3.603137131445464*^9, 3.603137162058652*^9}, 3.603138843291792*^9, 
-   3.6031388912118063`*^9, 3.603222322610186*^9, 3.603224372253824*^9}]
+   3.6031388912118063`*^9, 3.603222322610186*^9, 3.603224372253824*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"ImageData", "::", "imginv"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Expecting an image or graphics instead of \
+\[NoBreak]\\!\\(image\\)\[NoBreak]. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\
+\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/ImageData\\\", ButtonNote -> \\\"ImageData::imginv\
+\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.603739171454726*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"ImageData", "::", "imginv"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Expecting an image or graphics instead of \
+\[NoBreak]\\!\\(image\\)\[NoBreak]. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\
+\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/ImageData\\\", ButtonNote -> \\\"ImageData::imginv\
+\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.603739171518984*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"ImageData", "::", "imginv"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Expecting an image or graphics instead of \
+\[NoBreak]\\!\\(image\\)\[NoBreak]. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\
+\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/ImageData\\\", ButtonNote -> \\\"ImageData::imginv\
+\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6037391715521393`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \[NoBreak]\\!\\(\\*StyleBox[\\(ImageData \
+:: imginv\\), \\\"MessageName\\\"]\\)\[NoBreak] will be suppressed during \
+this calculation. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/stop\\\", ButtonNote -> \
+\\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.603739171585347*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(3\\)\[NoBreak] of \
+\[NoBreak]\\!\\(SingularValueDecomposition[\\(\\(\\(\\(ImageData[image]\\)\\),\
+ 1\\)\\)]\\)\[NoBreak] does not exist. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/partw\\\", \
+ButtonNote -> \\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.603739171618917*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Image", "::", "imgarray"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"The specified argument \
+\[NoBreak]\\!\\(\\(\\(ImageData[image]\\)\\) . 1 . \
+\\(\\(Transpose[\\(\\(\\(\\(SingularValueDecomposition[\\(\\(\\(\\(ImageData[\
+image]\\)\\), 1\\)\\)]\\)\\) \[LeftDoubleBracket] 3 \
+\[RightDoubleBracket]\\)\\)]\\)\\)\\)\[NoBreak] should be an array of rank 2 \
+or 3 with machine-sized numbers. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/Image\\\", ButtonNote -> \
+\\\"Image::imgarray\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6037391716531277`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -10180,14 +10259,20 @@ Cell[60568, 1149, 614, 8, 35, "Output"],
 Cell[61185, 1159, 3789, 68, 172, "Output"],
 Cell[64977, 1229, 4730, 128, 135, "Output"],
 Cell[69710, 1359, 405607, 6652, 268, "Output"],
-Cell[475320, 8013, 2409, 49, 413, "Output"]
+Cell[475320, 8013, 2432, 50, 167, "Output"],
+Cell[477755, 8065, 456, 10, 29, "Message"],
+Cell[478214, 8077, 456, 10, 29, "Message"],
+Cell[478673, 8089, 458, 10, 29, "Message"],
+Cell[479134, 8101, 534, 11, 29, "Message"],
+Cell[479671, 8114, 536, 11, 29, "Message"],
+Cell[480210, 8127, 693, 14, 71, "Message"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[477766, 8067, 6567, 184, 540, "Input"],
-Cell[484336, 8253, 1527, 28, 492, "Output"],
-Cell[485866, 8283, 31163, 856, 645, "Output"],
-Cell[517032, 9141, 20880, 448, 1074, "Output"],
-Cell[537915, 9591, 23429, 550, 386, "Output"]
+Cell[480940, 8146, 6567, 184, 540, "Input"],
+Cell[487510, 8332, 1527, 28, 492, "Output"],
+Cell[489040, 8362, 31163, 856, 806, "Output"],
+Cell[520206, 9220, 20880, 448, 1342, "Output"],
+Cell[541089, 9670, 23429, 550, 482, "Output"]
 }, Open  ]]
 }
 ]

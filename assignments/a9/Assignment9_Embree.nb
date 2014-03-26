@@ -1,0 +1,840 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     29087,        831]
+NotebookOptionsPosition[     28070,        791]
+NotebookOutlinePosition[     28427,        807]
+CellTagsIndexPosition[     28384,        804]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Assignment 9 - W8", "Title",
+ CellChangeTimes->{{3.603742453079062*^9, 3.6037424606528254`*^9}}],
+
+Cell["\<\
+Cameron Embree, worked with Allie\
+\>", "Subtitle",
+ CellChangeTimes->{{3.603742470014182*^9, 3.603742478882617*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"data", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+    "\"\<http://www.nhl.com/ice/teamstats.htm?season=20122013&gameType=2&\
+viewName=summary\>\"", ",", "\"\<Data\>\""}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.603732150704938*^9, 3.6037322020165033`*^9}, 
+   3.603734392179953*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"colID", "=", 
+   RowBox[{"data", "[", 
+    RowBox[{"[", 
+     RowBox[{"4", ",", "2", ",", "3", ",", "2"}], "]"}], "]"}]}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{"column", " ", "data", " ", "names"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"extDat", "=", 
+    RowBox[{"data", "[", 
+     RowBox[{"[", 
+      RowBox[{"4", ",", "2", ",", "3", ",", "4"}], "]"}], "]"}]}], ";"}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "the", " ", "data", " ", "by", " ", "row", " ", "based", " ", "on", " ", 
+    "team"}], " ", "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.603732206411428*^9, 3.6037322706791*^9}, {
+   3.603732340798164*^9, 3.6037323488608913`*^9}, {3.60373245748927*^9, 
+   3.603732470110046*^9}, 3.603732510111228*^9, {3.60373279442461*^9, 
+   3.6037328259627447`*^9}, {3.603732902235792*^9, 3.6037329027557993`*^9}, {
+   3.6037329327690783`*^9, 3.603732933822651*^9}, {3.60373444993775*^9, 
+   3.6037344579687634`*^9}, {3.603742379132988*^9, 3.603742404161281*^9}, {
+   3.60374255282447*^9, 3.603742586315282*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Team\"\>", ",", "\<\"GP\"\>", ",", "\<\"W\"\>", 
+   ",", "\<\"L\"\>", ",", "\<\"OT\"\>", ",", "\<\"P\"\>", ",", "\<\"ROW\"\>", 
+   ",", "\<\"HROW\"\>", ",", "\<\"RROW\"\>", ",", "\<\"P%\"\>", 
+   ",", "\<\"G/G\"\>", ",", "\<\"GA/G\"\>", ",", "\<\"5-5 F/A\"\>", 
+   ",", "\<\"PP%\"\>", ",", "\<\"PK%\"\>", ",", "\<\"S/G\"\>", 
+   ",", "\<\"SA/G\"\>", ",", "\<\"Sc 1%\"\>", ",", "\<\"Tr 1st%\"\>", 
+   ",", "\<\"Ld 1%\"\>", ",", "\<\"Ld 2%\"\>", ",", "\<\"OS%\"\>", 
+   ",", "\<\"OSB%\"\>", ",", "\<\"FO%\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6037322170810337`*^9, 3.603732271166519*^9}, {
+   3.603732341834425*^9, 3.6037323492918243`*^9}, {3.6037324647651043`*^9, 
+   3.6037324705014353`*^9}, 3.603732510776936*^9, 3.603732833680559*^9, 
+   3.603732911123496*^9, 3.603732947392152*^9, {3.603742543679947*^9, 
+   3.603742586914722*^9}, 3.603742774339188*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"aa", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"#", "[", 
+        RowBox[{"[", "11", "]"}], "]"}], ",", 
+       RowBox[{"#", "[", 
+        RowBox[{"[", "12", "]"}], "]"}], ",", 
+       RowBox[{"#", "[", 
+        RowBox[{"[", "4", "]"}], "]"}], ",", 
+       RowBox[{"#", "[", 
+        RowBox[{"[", "19", "]"}], "]"}], ",", 
+       RowBox[{"#", "[", 
+        RowBox[{"[", "8", "]"}], "]"}], ",", 
+       RowBox[{"#", "[", 
+        RowBox[{"[", "22", "]"}], "]"}]}], "}"}], "&"}], "/@", "extData"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"u", ",", "w", ",", "v"}], "}"}], "=", 
+   RowBox[{"SingularValueDecomposition", "[", "aa", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"w", "//", "MatrixForm"}]}], "Input",
+ CellChangeTimes->{{3.6037325197519913`*^9, 3.603732522658777*^9}, {
+  3.603732701778352*^9, 3.603732744163589*^9}, {3.603732828611602*^9, 
+  3.603732844144474*^9}, {3.603732894467483*^9, 3.603732895091585*^9}, {
+  3.603732943360021*^9, 3.60373294351081*^9}, {3.603733111541636*^9, 
+  3.6037331161399193`*^9}, {3.603733332558864*^9, 3.603733332716518*^9}, {
+  3.603733375487955*^9, 3.6037333768905354`*^9}, {3.603733458841793*^9, 
+  3.603733512422098*^9}, {3.6037335650125504`*^9, 3.603733565253868*^9}, {
+  3.6037335967748203`*^9, 3.603733620717527*^9}, {3.603733672089251*^9, 
+  3.6037336731982107`*^9}, {3.6037337930368967`*^9, 3.603733795834361*^9}, {
+  3.6037339603395777`*^9, 3.603733990678792*^9}, {3.6037340334411077`*^9, 
+  3.603734074873562*^9}, {3.6037345059401283`*^9, 3.603734508032219*^9}, {
+  3.603742639434156*^9, 3.603742651575857*^9}, {3.603742688965057*^9, 
+  3.6037427655390263`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "0.802`", ",", "3.1`", ",", "36", ",", "0.897`", ",", "30", ",", 
+     "0.897`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.75`", ",", "3.38`", ",", "36", ",", "0.806`", ",", "33", ",", 
+     "0.95`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.688`", ",", "2.79`", ",", "30", ",", "0.75`", ",", "24", ",", 
+     "0.895`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.656`", ",", "3.04`", ",", "29", ",", "0.724`", ",", "26", ",", 
+     "0.81`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.625`", ",", "2.58`", ",", "29", ",", "0.793`", ",", "24", ",", 
+     "0.905`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.646`", ",", "2.65`", ",", "28", ",", "0.731`", ",", "24", ",", 
+     "0.652`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.615`", ",", "2.73`", ",", "27", ",", "0.808`", ",", "25", ",", 
+     "0.864`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.594`", ",", "3.04`", ",", "27", ",", "0.654`", ",", "24", ",", 
+     "0.864`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.615`", ",", "2.54`", ",", "26", ",", "0.645`", ",", "21", ",", 
+     "0.783`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.594`", ",", "3.02`", ",", "26", ",", "0.594`", ",", "26", ",", 
+     "0.87`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.583`", ",", "2.62`", ",", "26", ",", "0.857`", ",", "22", ",", "1.`"}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.573`", ",", "2.46`", ",", "26", ",", "0.783`", ",", "22", ",", 
+     "0.9`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.594`", ",", "2.42`", ",", "25", ",", "0.8`", ",", "17", ",", 
+     "0.833`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.583`", ",", "2.33`", ",", "25", ",", "0.72`", ",", "21", ",", 
+     "0.905`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.583`", ",", "2.54`", ",", "24", ",", "0.64`", ",", "22", ",", 
+     "0.857`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.573`", ",", "2.4`", ",", "24", ",", "0.6`", ",", "19", ",", "1.`"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.573`", ",", "2.81`", ",", "24", ",", "0.739`", ",", "20", ",", 
+     "0.842`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.531`", ",", "2.62`", ",", "24", ",", "0.696`", ",", "22", ",", 
+     "0.9`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.51`", ",", "2.75`", ",", "23", ",", "0.692`", ",", "22", ",", 
+     "0.85`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.5`", ",", "2.67`", ",", "22", ",", "0.696`", ",", "20", ",", 
+     "0.706`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.531`", ",", "2.52`", ",", "21", ",", "0.737`", ",", "17", ",", 
+     "0.938`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.5`", ",", "2.46`", ",", "21", ",", "0.667`", ",", "14", ",", 
+     "0.692`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.5`", ",", "2.29`", ",", "19", ",", "0.737`", ",", "17", ",", "0.75`"}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.469`", ",", "2.56`", ",", "19", ",", "0.5`", ",", "17", ",", "0.75`"}],
+     "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.438`", ",", "2.65`", ",", "19", ",", "0.579`", ",", "18", ",", 
+     "0.933`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.438`", ",", "2.67`", ",", "19", ",", "0.6`", ",", "19", ",", "0.8`"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.417`", ",", "3.06`", ",", "18", ",", "0.684`", ",", "17", ",", 
+     "0.786`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.427`", ",", "2.27`", ",", "16", ",", "0.611`", ",", "14", ",", 
+     "0.8`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.406`", ",", "2.38`", ",", "16", ",", "0.563`", ",", "14", ",", 
+     "0.643`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.375`", ",", "2.27`", ",", "15", ",", "0.647`", ",", "12", ",", 
+     "0.857`"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.603732751580707*^9, {3.6037328300878057`*^9, 3.603732844714349*^9}, {
+   3.603732906122519*^9, 3.603732912523163*^9}, 3.6037329496904182`*^9, 
+   3.603733116964205*^9, {3.6037335069594812`*^9, 3.603733513759515*^9}, 
+   3.6037335660603037`*^9, 3.603733610496271*^9, 3.603733640779858*^9, 
+   3.6037336745469913`*^9, 3.603733796468306*^9, {3.603733967906307*^9, 
+   3.603733992108549*^9}, {3.603734034659165*^9, 3.603734045809901*^9}, 
+   3.6037340819625483`*^9, 3.603734509323604*^9, 3.603742545880042*^9, {
+   3.603742645117989*^9, 3.603742652617416*^9}, {3.6037426941517477`*^9, 
+   3.603742774372842*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", GridBox[{
+     {"178.51672892675856`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "7.346635383498113`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "2.408231694105677`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.5907686941031667`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.3440696641195088`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.11664199897357626`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {"0.`", "0.`", "0.`", "0.`", "0.`", "0.`"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[0.7]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.603732751580707*^9, {3.6037328300878057`*^9, 3.603732844714349*^9}, {
+   3.603732906122519*^9, 3.603732912523163*^9}, 3.6037329496904182`*^9, 
+   3.603733116964205*^9, {3.6037335069594812`*^9, 3.603733513759515*^9}, 
+   3.6037335660603037`*^9, 3.603733610496271*^9, 3.603733640779858*^9, 
+   3.6037336745469913`*^9, 3.603733796468306*^9, {3.603733967906307*^9, 
+   3.603733992108549*^9}, {3.603734034659165*^9, 3.603734045809901*^9}, 
+   3.6037340819625483`*^9, 3.603734509323604*^9, 3.603742545880042*^9, {
+   3.603742645117989*^9, 3.603742652617416*^9}, {3.6037426941517477`*^9, 
+   3.6037427743769503`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ListPlot", "[", 
+  RowBox[{
+   RowBox[{"Diagonal", "[", "w", "]"}], ",", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ GraphicsBox[{{}, 
+   {RGBColor[0.24720000000000014`, 0.24, 0.6], 
+    PointBox[{{1., 178.51672892675856`}, {2., 7.346635383498113}, {3., 
+     2.408231694105677}, {4., 0.5907686941031667}, {5., 0.3440696641195088}, {
+     6., 0.11664199897357626`}}]}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->True,
+  AxesLabel->{None, None},
+  AxesOrigin->{1., 0.11664199897357626`},
+  Method->{},
+  PlotRangeClipping->True]], "Output",
+ CellChangeTimes->{3.6037329787395287`*^9, 3.60373351669156*^9, 
+  3.603734085927476*^9, 3.6037427744037523`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Two", " ", "dimentional", " ", "graph"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"Graphics", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Tooltip", "[", 
+       RowBox[{
+        RowBox[{"Point", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "]"}], ",", 
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "&"}], " ", "/@", 
+     RowBox[{"Transpose", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"extDat", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", "2"}], "]"}], "]"}], ",", 
+        RowBox[{"u", ".", "w", ".", 
+         RowBox[{"Transpose", "[", 
+          RowBox[{"v", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ";;", "2"}], "]"}], "]"}], "]"}]}]}], "}"}], "]"}]}],
+     ",", 
+    RowBox[{"Axes", "\[Rule]", "True"}], ",", " ", 
+    RowBox[{"AspectRatio", "\[Rule]", ".5"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.603733038695628*^9, 3.6037330393932056`*^9}, {
+  3.603733071553426*^9, 3.60373307663829*^9}, {3.603733192049878*^9, 
+  3.6037332258221893`*^9}, {3.603733286064643*^9, 3.603733289255378*^9}, {
+  3.6037424190841703`*^9, 3.6037424327530813`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   TagBox[
+    TooltipBox[PointBox[{0.8020000000000039, 3.0999999999999956`}],
+     "\"CHICAGO\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "CHICAGO", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.7500000000000054, 3.379999999999997}],
+     "\"PITTSBURGH\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "PITTSBURGH", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.6880000000000025, 2.7900000000000005`}],
+     "\"ANAHEIM\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "ANAHEIM", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.6560000000000031, 3.0399999999999983`}],
+     "\"MONTREAL\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "MONTREAL", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.625000000000004, 2.5800000000000005`}],
+     "\"ST LOUIS\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "ST LOUIS", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.6460000000000026, 2.6500000000000004`}],
+     "\"BOSTON\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "BOSTON", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.6150000000000028, 2.729999999999998}],
+     "\"LOS ANGELES\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "LOS ANGELES", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.5940000000000031, 3.0399999999999987`}],
+     "\"WASHINGTON\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "WASHINGTON", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.6150000000000018, 2.5400000000000005`}],
+     "\"VANCOUVER\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "VANCOUVER", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.5940000000000029, 3.019999999999998}],
+     "\"TORONTO\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "TORONTO", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.583000000000003, 2.6199999999999997`}],
+     "\"NY RANGERS\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "NY RANGERS", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.5730000000000033, 2.46}],
+     "\"MINNESOTA\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "MINNESOTA", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.5940000000000013, 2.4200000000000026`}],
+     "\"SAN JOSE\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "SAN JOSE", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.5830000000000022, 2.3300000000000005`}],
+     "\"OTTAWA\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "OTTAWA", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.5830000000000015, 2.539999999999999}],
+     "\"DETROIT\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "DETROIT", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.5730000000000015, 2.4000000000000012`}],
+     "\"COLUMBUS\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "COLUMBUS", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.5730000000000015, 2.8099999999999996`}],
+     "\"NY ISLANDERS\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "NY ISLANDERS", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.531000000000003, 2.6199999999999988`}],
+     "\"WINNIPEG\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "WINNIPEG", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.5100000000000029, 2.7499999999999987`}],
+     "\"PHILADELPHIA\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "PHILADELPHIA", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.5000000000000022, 2.6699999999999986`}],
+     "\"DALLAS\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "DALLAS", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.5310000000000007, 2.52}],
+     "\"PHOENIX\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "PHOENIX", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.500000000000001, 2.460000000000002}],
+     "\"BUFFALO\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "BUFFALO", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.5000000000000002, 2.2899999999999996`}],
+     "\"NEW JERSEY\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "NEW JERSEY", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.46900000000000075`, 2.5599999999999987`}],
+     "\"EDMONTON\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "EDMONTON", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.43800000000000183`, 2.6499999999999977`}],
+     "\"CAROLINA\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "CAROLINA", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.43800000000000205`, 2.669999999999998}],
+     "\"CALGARY\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "CALGARY", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.41700000000000154`, 3.0599999999999983`}],
+     "\"TAMPA BAY\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "TAMPA BAY", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.42699999999999994`, 2.2699999999999996`}],
+     "\"NASHVILLE\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "NASHVILLE", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.4060000000000004, 2.379999999999999}],
+     "\"COLORADO\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "COLORADO", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[PointBox[{0.37500000000000044`, 2.27}],
+     "\"FLORIDA\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "FLORIDA", "Tooltip"]& ]},
+  AspectRatio->0.5,
+  Axes->True]], "Output",
+ CellChangeTimes->{{3.603733182082309*^9, 3.603733226634787*^9}, {
+   3.6037332868201323`*^9, 3.603733289803749*^9}, 3.603734088678853*^9, 
+   3.603742774439*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Three", " ", "dimentional", " ", "graph"}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{"Graphics3D", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"Tooltip", "[", 
+       RowBox[{
+        RowBox[{"Point", "[", 
+         RowBox[{"#", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "]"}], ",", 
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "&"}], " ", "/@", 
+     RowBox[{"Transpose", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"extDat", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", "2"}], "]"}], "]"}], ",", 
+        RowBox[{"u", ".", "w", ".", 
+         RowBox[{"Transpose", "[", 
+          RowBox[{"v", "[", 
+           RowBox[{"[", 
+            RowBox[{"1", ";;", "3"}], "]"}], "]"}], "]"}]}]}], "}"}], "]"}]}],
+     ",", 
+    RowBox[{"Axes", "\[Rule]", "True"}], ",", " ", 
+    RowBox[{"AspectRatio", "\[Rule]", "1"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.603734100269586*^9, 3.603734102971075*^9}, {
+  3.603734183650597*^9, 3.603734196895727*^9}, {3.6037342615829678`*^9, 
+  3.603734293623687*^9}, {3.6037424376015472`*^9, 3.603742439952895*^9}}],
+
+Cell[BoxData[
+ Graphics3DBox[{
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.8020000000000039, 3.0999999999999956`, 
+      35.999999999999915`}],
+     "\"CHICAGO\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "CHICAGO", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.7500000000000054, 3.379999999999997, 35.999999999999964`}],
+     
+     "\"PITTSBURGH\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "PITTSBURGH", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.6880000000000025, 2.7900000000000005`, 
+      29.999999999999993`}],
+     "\"ANAHEIM\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "ANAHEIM", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.6560000000000031, 3.0399999999999983`, 28.99999999999998}],
+     
+     "\"MONTREAL\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "MONTREAL", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[Point3DBox[{0.625000000000004, 2.5800000000000005`, 29.}],
+     "\"ST LOUIS\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "ST LOUIS", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.6460000000000026, 2.6500000000000004`, 
+      27.999999999999986`}],
+     "\"BOSTON\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "BOSTON", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.6150000000000028, 2.729999999999998, 26.999999999999964`}],
+     
+     "\"LOS ANGELES\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "LOS ANGELES", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.5940000000000031, 3.0399999999999987`, 
+      26.999999999999982`}],
+     "\"WASHINGTON\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "WASHINGTON", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.6150000000000018, 2.5400000000000005`, 
+      25.999999999999996`}],
+     "\"VANCOUVER\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "VANCOUVER", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.5940000000000029, 3.019999999999998, 25.99999999999996}],
+     "\"TORONTO\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "TORONTO", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.583000000000003, 2.6199999999999997`, 25.99999999999999}],
+     "\"NY RANGERS\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "NY RANGERS", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[Point3DBox[{0.5730000000000033, 2.46, 25.999999999999996`}],
+     "\"MINNESOTA\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "MINNESOTA", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.5940000000000013, 2.4200000000000026`, 
+      25.000000000000025`}],
+     "\"SAN JOSE\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "SAN JOSE", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.5830000000000022, 2.3300000000000005`, 
+      24.999999999999993`}],
+     "\"OTTAWA\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "OTTAWA", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.5830000000000015, 2.539999999999999, 23.999999999999975`}],
+     
+     "\"DETROIT\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "DETROIT", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.5730000000000015, 2.4000000000000012`, 24.00000000000001}],
+     
+     "\"COLUMBUS\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "COLUMBUS", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.5730000000000015, 2.8099999999999996`, 
+      23.999999999999986`}],
+     "\"NY ISLANDERS\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "NY ISLANDERS", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.531000000000003, 2.6199999999999988`, 23.99999999999998}],
+     "\"WINNIPEG\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "WINNIPEG", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.5100000000000029, 2.7499999999999987`, 
+      22.999999999999968`}],
+     "\"PHILADELPHIA\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "PHILADELPHIA", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.5000000000000022, 2.6699999999999986`, 21.99999999999998}],
+     
+     "\"DALLAS\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "DALLAS", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[Point3DBox[{0.5310000000000007, 2.52, 20.999999999999996`}],
+     "\"PHOENIX\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "PHOENIX", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.500000000000001, 2.460000000000002, 21.00000000000003}],
+     "\"BUFFALO\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "BUFFALO", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.5000000000000002, 2.2899999999999996`, 18.99999999999999}],
+     
+     "\"NEW JERSEY\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "NEW JERSEY", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.46900000000000075`, 2.5599999999999987`, 
+      18.999999999999982`}],
+     "\"EDMONTON\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "EDMONTON", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.43800000000000183`, 2.6499999999999977`, 
+      18.999999999999975`}],
+     "\"CAROLINA\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "CAROLINA", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.43800000000000205`, 2.669999999999998, 18.99999999999997}],
+     
+     "\"CALGARY\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "CALGARY", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.41700000000000154`, 3.0599999999999983`, 
+      17.999999999999982`}],
+     "\"TAMPA BAY\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "TAMPA BAY", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.42699999999999994`, 2.2699999999999996`, 
+      15.99999999999999}],
+     "\"NASHVILLE\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "NASHVILLE", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[
+     Point3DBox[{0.4060000000000004, 2.379999999999999, 15.999999999999986`}],
+     
+     "\"COLORADO\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "COLORADO", "Tooltip"]& ], 
+   TagBox[
+    TooltipBox[Point3DBox[{0.37500000000000044`, 2.27, 14.999999999999998`}],
+     "\"FLORIDA\"",
+     TooltipStyle->"TextStyling"],
+    Annotation[#, "FLORIDA", "Tooltip"]& ]},
+  AspectRatio->1,
+  Axes->True,
+  ImageSize->{1093.435483885492, 266.},
+  ViewPoint->{-0.5320646183384933, -0.6199726707456665, 3.283677988086042},
+  ViewVertical->{-36.48412321908047, 7.011756539533724, 
+   0.5588447763438305}]], "Output",
+ CellChangeTimes->{{3.60373428235458*^9, 3.6037342941575413`*^9}, 
+   3.6037427744777308`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.603734278866867*^9, 3.603734278949953*^9}}]
+}, Open  ]]
+},
+WindowSize->{1295, 756},
+WindowMargins->{{Automatic, 58}, {12, Automatic}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 102, 1, 92, "Title"],
+Cell[684, 25, 127, 3, 51, "Subtitle"],
+Cell[814, 30, 328, 8, 28, "Input"],
+Cell[CellGroupData[{
+Cell[1167, 42, 1087, 25, 46, "Input"],
+Cell[2257, 69, 910, 14, 28, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3204, 88, 1761, 39, 80, "Input"],
+Cell[4968, 129, 4570, 132, 148, "Output"],
+Cell[9541, 263, 2751, 55, 534, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12329, 323, 160, 4, 28, "Input"],
+Cell[12492, 329, 582, 13, 237, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13111, 347, 1245, 33, 46, "Input"],
+Cell[14359, 382, 5634, 156, 197, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20030, 543, 1196, 32, 46, "Input"],
+Cell[21229, 577, 6718, 207, 315, "Output"]
+}, Open  ]],
+Cell[27962, 787, 92, 1, 28, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
