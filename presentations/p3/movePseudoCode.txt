@@ -1,0 +1,35 @@
+
+
+
+MH(matrix, ColS, ColM, ColE, Row) 
+	
+	IF ( ColM != ColE )
+	
+	    Left = ColM
+	    Right = ColM + 1
+
+	    IF ( Right == 0 )
+
+	        ShiftRight(matrix, ColS, ColM+1, Row) //blindly shift while overwritting 0's
+
+	        MV(matrix, ColS+1, ColM+1, ColE, Row)
+
+
+	    ELSE IF ( Right == Left )
+	    
+	        Right = Right + Left
+	    
+	        ShiftRight(matrix, ColS, ColM, Row) //not ColM+1 because we handled than manually
+        
+	        MV(matrix, ColS+1, ColM+1, ColE, Row)
+
+
+	    ELSE IF ( Right != Left && Right != 0 )
+	    
+	        MV(matrix, ColS, ColM+1, ColE, Row)
+    
+    ELSE
+    
+        DONE
+
+	
