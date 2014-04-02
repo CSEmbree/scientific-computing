@@ -1,0 +1,7 @@
+/@ - map - apply to a list
+@ - apply - stick argument into function
+
+f@2 - prefix notatiin
+
+2//f - postfix notation
+
