@@ -1,0 +1,222 @@
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[         0,          0]
+NotebookDataLength[      8872,        221]
+NotebookOptionsPosition[      8016,        188]
+NotebookOutlinePosition[      8403,        205]
+CellTagsIndexPosition[      8360,        202]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+Challenge 1: Calculate the gradient and Hessian of the following \
+multivariable functions\
+\>", "Text",
+ CellChangeTimes->{{3.5989058592692757`*^9, 3.598905867555654*^9}, {
+   3.59890590769239*^9, 3.598905907788473*^9}, {3.598906120362914*^9, 
+   3.598906197815778*^9}, {3.600007293676969*^9, 3.600007296655114*^9}, 
+   3.602264591499424*^9, {3.6022669474566183`*^9, 3.602267078729476*^9}, 
+   3.6022704107611313`*^9, {3.602900653993194*^9, 3.602900669200182*^9}, {
+   3.604949333549137*^9, 3.604949352947394*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Challenge", " ", "1", " ", "solution", " ", 
+    RowBox[{"by", ":"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"f", "[", 
+     RowBox[{"x_", ",", "y_"}], "]"}], ":=", 
+    RowBox[{"x", "*", 
+     RowBox[{"Exp", "[", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"x", "^", "2"}]}], "-", 
+       RowBox[{"y", "^", "2"}]}], "]"}]}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"g", "[", 
+     RowBox[{"x_", ",", "y_"}], "]"}], ":=", 
+    RowBox[{
+     RowBox[{"Exp", "[", 
+      RowBox[{
+       RowBox[{"-", 
+        RowBox[{"x", "^", "2"}]}], "*", 
+       RowBox[{"y", "^", "2"}]}], "]"}], "+", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"x", "-", "1"}], ")"}], "^", "2"}], "+", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"y", "-", "1"}], ")"}], "^", "2"}]}]}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.598905879062278*^9, 3.598905909862135*^9}, 
+   3.602270413472136*^9, {3.604949464543272*^9, 3.604949582817657*^9}}],
+
+Cell["\<\
+Challenge 2:  Construct code to perform Newton\[CloseCurlyQuote]s Method for \
+optimazion, and apply it to find mininma for the functions f and g above.  \
+Vary intial guess in an attempt to find all local minima.\
+\>", "Text",
+ CellChangeTimes->{{3.5989058592692757`*^9, 3.598905867555654*^9}, 
+   3.598905913309203*^9, {3.598906372909046*^9, 3.598906386731545*^9}, 
+   3.600007356967579*^9, {3.60000761690917*^9, 3.6000076497248373`*^9}, 
+   3.602264593683456*^9, {3.602264986434905*^9, 3.60226504792915*^9}, {
+   3.602265111169917*^9, 3.602265123794036*^9}, 3.60227041746367*^9, {
+   3.602900197224825*^9, 3.6029002789121532`*^9}, {3.602900554965949*^9, 
+   3.602900595470647*^9}, {3.6049496920747137`*^9, 3.6049497644517736`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Challenge", " ", "2", " ", "solution", " ", 
+   RowBox[{"by", ":"}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.598905879062278*^9, 3.598905881126705*^9}, {
+   3.598905915198028*^9, 3.5989059156062326`*^9}, 3.602270420128243*^9}],
+
+Cell["\<\
+Challenge 3: Consider the following symmetric data below.  Construct the \
+2-dimensional stress function for this data, and calculate the gradient and \
+hessian of this stress function\
+\>", "Text",
+ CellChangeTimes->{{3.5989058592692757`*^9, 3.598905867555654*^9}, {
+   3.59890591742029*^9, 3.598905917804646*^9}, {3.5989064227285013`*^9, 
+   3.59890642344928*^9}, 3.600007360030569*^9, 3.6000077489145308`*^9, 
+   3.6022646248687363`*^9, {3.6022650620501738`*^9, 3.60226513577004*^9}, 
+   3.602270424551632*^9, {3.602900341393702*^9, 3.602900383250381*^9}, {
+   3.604949770811996*^9, 3.604949841397216*^9}, {3.6049520010666533`*^9, 
+   3.604952014193935*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Challenge", " ", "3", " ", "solution", " ", 
+    RowBox[{"by", ":"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{"aa", "=", GridBox[{
+     {"0", "1", "5", "3", "8"},
+     {"1", "0", "7", "9", "2"},
+     {"5", "7", "0", "4", "10"},
+     {"3", "9", "4", "0", "6"},
+     {"8", "2", "10", "6", "0"}
+    }]}]}]], "Input",
+ CellChangeTimes->{{3.598905879062278*^9, 3.598905881126705*^9}, {
+  3.5989059196384172`*^9, 3.598905920654263*^9}, {3.60227043076036*^9, 
+  3.6022704355924683`*^9}, {3.604949844502162*^9, 3.604949952248711*^9}}],
+
+Cell["\<\
+Challenge 4: Use Newtons the newtons method you contructed (or a modification \
+there of) in challenge 2 to minimize the stress function from challenge 3.  \
+Compare the accuracty and timing with NMinimize applied to the stress function\
+\>", "Text",
+ CellChangeTimes->{{3.5989058592692757`*^9, 3.598905867555654*^9}, {
+   3.59890592353892*^9, 3.598905924044833*^9}, {3.5989064568000107`*^9, 
+   3.59890647282413*^9}, 3.6000073632946444`*^9, {3.60106595676474*^9, 
+   3.60106600321863*^9}, {3.601066050844728*^9, 3.601066070443901*^9}, 
+   3.6022646262916193`*^9, {3.602265819812248*^9, 3.602266004108459*^9}, 
+   3.602270438352062*^9, {3.6029004482997093`*^9, 3.602900464444075*^9}, 
+   3.604949776483921*^9, {3.60494995448785*^9, 3.604950008800836*^9}, {
+   3.6049500741623917`*^9, 3.6049500889314823`*^9}, {3.604952071811084*^9, 
+   3.604952095283506*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Challenge", " ", "4", " ", "solution", " ", 
+   RowBox[{"by", ":"}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.598905879062278*^9, 3.598905881126705*^9}, {
+   3.598905925942362*^9, 3.59890592645394*^9}, 3.602270441168579*^9}],
+
+Cell["\<\
+Challenge 5:  Use Newton\[CloseCurlyQuote]s methad to find the minma of the \
+following function, but udptate the Hessian matrix ever 3 iterations\
+\>", "Text",
+ CellChangeTimes->{{3.5989058592692757`*^9, 3.598905867555654*^9}, {
+   3.598905928619691*^9, 3.598905936275998*^9}, {3.598906499104944*^9, 
+   3.598906525699621*^9}, 3.6000073667907667`*^9, {3.601066388148576*^9, 
+   3.601066438884334*^9}, 3.602264627523613*^9, {3.602265253204561*^9, 
+   3.6022653855731564`*^9}, {3.6022655087025623`*^9, 3.602265521822672*^9}, {
+   3.602270442695984*^9, 3.602270446239904*^9}, {3.602900469964245*^9, 
+   3.6029005095809*^9}, 3.604949778575296*^9, {3.604952037922447*^9, 
+   3.604952065779017*^9}, {3.604952102171912*^9, 3.6049521033478603`*^9}, {
+   3.6049521751893682`*^9, 3.604952180829369*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Challenge", " ", "5", " ", "solution", " ", 
+    RowBox[{"by", ":"}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"h", "[", 
+    RowBox[{"x_", ",", "y_"}], "]"}], ":=", " ", 
+   RowBox[{
+    RowBox[{"x", "^", "4"}], "-", 
+    RowBox[{"2", "*", "x", "*", "y"}], "+", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"x", "-", "1"}], ")"}], "^", "2"}], 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"y", "-", "1"}], ")"}], "^", "2"}], 
+     RowBox[{"Exp", "[", 
+      RowBox[{
+       RowBox[{"-", "x"}], "*", "y"}], "]"}]}]}]}]}]], "Input",
+ CellChangeTimes->{{3.598905879062278*^9, 3.598905881126705*^9}, {
+  3.598905939717332*^9, 3.598905940174155*^9}, {3.602270448928625*^9, 
+  3.602270449024646*^9}, {3.604952114340764*^9, 3.604952167702298*^9}}],
+
+Cell["\<\
+Challenge 6: Implement multidimensional scalling on flying times between 10 \
+North American cities of your choice to create a 2 dimensional \
+\[OpenCurlyDoubleQuote]map\[CloseCurlyDoubleQuote] showing the relations \
+between those cities.\
+\>", "Text",
+ CellChangeTimes->{{3.5989058592692757`*^9, 3.598905867555654*^9}, {
+   3.598905942395351*^9, 3.598905945051447*^9}, {3.5989065522945957`*^9, 
+   3.598906555686469*^9}, 3.6000073690388308`*^9, {3.6010668656895523`*^9, 
+   3.6010668993432093`*^9}, {3.6022646288760433`*^9, 3.602264633043921*^9}, {
+   3.602265421152607*^9, 3.602265649336577*^9}, 3.602270453160282*^9, 
+   3.602900525501124*^9, {3.604952384795177*^9, 3.604952458123005*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"Challenge", " ", "6", " ", "solution", " ", 
+   RowBox[{"by", ":"}]}], "*)"}]], "Input",
+ CellChangeTimes->{{3.598905879062278*^9, 3.598905881126705*^9}, {
+   3.5989059470134563`*^9, 3.598905948133535*^9}, 3.60227045900067*^9}]
+},
+WindowSize->{1916, 1036},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[400, 13, 525, 9, 37, "Text"],
+Cell[928, 24, 1046, 32, 99, "Input"],
+Cell[1977, 58, 744, 11, 37, "Text"],
+Cell[2724, 71, 269, 5, 36, "Input"],
+Cell[2996, 78, 671, 11, 37, "Text"],
+Cell[3670, 91, 583, 14, 155, "Input"],
+Cell[4256, 107, 869, 13, 61, "Text"],
+Cell[5128, 122, 266, 5, 36, "Input"],
+Cell[5397, 129, 804, 12, 37, "Text"],
+Cell[6204, 143, 831, 23, 57, "Input"],
+Cell[7038, 168, 703, 11, 37, "Text"],
+Cell[7744, 181, 268, 5, 36, "Input"]
+}
+]
+*)
+
