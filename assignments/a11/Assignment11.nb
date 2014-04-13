@@ -1,0 +1,1366 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 9.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     57002,       1357]
+NotebookOptionsPosition[     55249,       1294]
+NotebookOutlinePosition[     55604,       1310]
+CellTagsIndexPosition[     55561,       1307]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Assignment 11 - Cameron Embree - 4/13/14\
+\>", "Title",
+ CellChangeTimes->{{3.606157000344532*^9, 3.606157008814822*^9}, {
+  3.606161374117334*^9, 3.6061613858823977`*^9}, {3.6064179479536543`*^9, 
+  3.606417956125787*^9}}],
+
+Cell["Worked with Allie", "Subtitle",
+ CellChangeTimes->{{3.606161412072092*^9, 3.606161416118059*^9}, {
+  3.606417943392988*^9, 3.606417944406918*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"PART", " ", "1"}], " ", "-", " ", "ANSWER", " ", "-", " ", 
+    RowBox[{"Monte", " ", "Hall", " ", "for", " ", "3", " ", "doors"}], " ", 
+    "-", " ", 
+    RowBox[{"Fixed", " ", "Code", " ", "from", " ", 
+     RowBox[{"Dr", ".", " ", 
+      RowBox[{"Buhl", "'"}]}], "s", " ", "notes"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"montyhall", "[", "x_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "initial", ",", "selection", ",", "reveal", ",", "switch", ",", 
+        "noswitch"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"initial", "=", 
+        RowBox[{"RandomSample", "[", 
+         RowBox[{"{", 
+          RowBox[{"\"\<Goat\>\"", ",", "\"\<Goat\>\"", ",", "\"\<Car\>\""}], 
+          "}"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"selection", "=", 
+        RowBox[{"RandomChoice", "[", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "2", ",", "3"}], "}"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"reveal", "=", 
+        RowBox[{"RandomChoice", "[", 
+         RowBox[{"Flatten", "[", 
+          RowBox[{"Position", "[", 
+           RowBox[{
+            RowBox[{"initial", "[", 
+             RowBox[{"[", 
+              RowBox[{"Complement", "[", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+                RowBox[{"{", "selection", "}"}]}], "]"}], "]"}], "]"}], ",", 
+            "\"\<Goat\>\""}], "]"}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"switch", "=", 
+        RowBox[{"First", "[", 
+         RowBox[{"Complement", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+           RowBox[{"{", "selection", "}"}], ",", 
+           RowBox[{"{", "reveal", "}"}]}], "]"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"noswitch", "=", "selection"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"x", "\[Equal]", "True"}], ",", 
+         RowBox[{"initial", "[", 
+          RowBox[{"[", "switch", "]"}], "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"initial", "[", 
+          RowBox[{"[", "noswitch", "]"}], "]"}]}], "]"}]}]}], 
+     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Count", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"montyhall", "[", "#", "]"}], " ", "&"}], " ", "/@", 
+        RowBox[{"ConstantArray", "[", 
+         RowBox[{"False", ",", "100000"}], "]"}]}], ",", "\"\<Car\>\""}], 
+      "]"}], "/", "100000"}], " ", "//", "N"}]}]}]], "Input",
+ CellChangeTimes->{{3.606157549853302*^9, 3.606157551068766*^9}, {
+  3.6061614211399517`*^9, 3.606161454938233*^9}, {3.606413132137877*^9, 
+  3.606413133583786*^9}, {3.606417848992629*^9, 3.606417853662582*^9}}],
+
+Cell[BoxData["0.33275`"], "Output",
+ CellChangeTimes->{3.6061575554268017`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"PART", " ", "2"}], " ", "-", " ", "EXAMPLE", " ", "-", " ", 
+    RowBox[{"Monte", " ", "Hall", " ", "for", " ", "7", " ", "doors"}], " ", 
+    "-", " ", "EXAMPLE"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"montyhall", "[", "x_", "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "initial", ",", "selection", ",", "reveal", ",", "switch1", ",", 
+        "switch2", ",", "noswitch"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"initial", "=", 
+        RowBox[{"RandomSample", "[", 
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<Goat\>\"", ",", "\"\<Goat\>\"", ",", "\"\<Goat\>\"", ",", 
+           "\"\<Goat\>\"", ",", "\"\<Goat\>\"", ",", "\"\<Goat\>\"", ",", 
+           "\"\<Car\>\""}], "}"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"copy", "=", "initial"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"locs", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{"i", ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", "7"}], "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<Initial: \>\"", ",", 
+         RowBox[{"Riffle", "[", 
+          RowBox[{"copy", ",", "locs"}], "]"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"selection", "=", 
+        RowBox[{"RandomSample", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+           "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7"}], 
+           "}"}], ",", "3"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<Selection: \>\"", ",", "selection"}], "]"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"possibleToReveal", "=", 
+        RowBox[{"Complement", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+           "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7"}], 
+           "}"}], ",", "selection"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<Possible to reveal: \>\"", ",", "possibleToReveal"}], 
+        "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"possibleToReveal", "=", 
+        RowBox[{"Select", "[", 
+         RowBox[{"possibleToReveal", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"initial", "[", 
+             RowBox[{"[", "#", "]"}], "]"}], "\[Equal]", "\"\<Goat\>\""}], 
+           "&"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<Non-winning possible to Reveal: \>\"", ",", "possibleToReveal"}],
+         "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"reveal", "=", 
+        RowBox[{"RandomSample", "[", 
+         RowBox[{"possibleToReveal", ",", "3"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<Reveal: \>\"", ",", "reveal"}], "]"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"switch1", "=", 
+        RowBox[{"Complement", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+           "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7"}], 
+           "}"}], ",", "selection", ",", "reveal"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<Door NOT chosen AND NOT revealed: \>\"", ",", " ", "switch1"}], 
+        "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"switch2", "=", 
+        RowBox[{"Flatten", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"RandomSample", "[", 
+            RowBox[{"selection", ",", "2"}], "]"}], ",", "switch1"}], "}"}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<IF switching, we choose: \>\"", ",", "switch2"}], "]"}], 
+       ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"noswitch", "=", "selection"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<IF NOT switching, we choose: \>\"", ",", "noswitch"}], 
+        "]"}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"x", "\[Equal]", "True"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"res", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"initial", "[", 
+             RowBox[{"[", 
+              RowBox[{"switch2", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", "3"}], "}"}]}], "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"res", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"initial", "[", 
+             RowBox[{"[", 
+              RowBox[{"noswitch", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", "3"}], "}"}]}], "]"}]}]}], "]"}], 
+       ";", "\[IndentingNewLine]", "\[IndentingNewLine]", "res"}]}], 
+     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"montyhall", "[", "False", "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{
+  3.606157037247416*^9, {3.606157092864291*^9, 3.606157093838748*^9}, {
+   3.606157139568905*^9, 3.6061572043819427`*^9}, {3.606157514647718*^9, 
+   3.6061575435886497`*^9}, {3.606158159687191*^9, 3.606158160229547*^9}, {
+   3.60615834987367*^9, 3.606158382474769*^9}, {3.606159138209921*^9, 
+   3.6061591633323107`*^9}, {3.606159224388451*^9, 3.606159228869129*^9}, {
+   3.606159260929646*^9, 3.606159267859605*^9}, {3.606159311205055*^9, 
+   3.606159315573327*^9}, {3.606159349856194*^9, 3.6061594059559813`*^9}, {
+   3.606159463890625*^9, 3.606159578954661*^9}, {3.606159707219737*^9, 
+   3.606159766610005*^9}, {3.606159822864759*^9, 3.6061598233472*^9}, {
+   3.606159958518675*^9, 3.6061600147794447`*^9}, {3.6061600909806623`*^9, 
+   3.606160123959298*^9}, {3.6061614595387707`*^9, 3.606161637457127*^9}, {
+   3.6062407419117203`*^9, 3.606240746310924*^9}, {3.606240988170204*^9, 
+   3.606241016549321*^9}, {3.606241124727687*^9, 3.6062411279261923`*^9}, {
+   3.606241228834915*^9, 3.6062412392732677`*^9}, {3.6062413073166647`*^9, 
+   3.606241312272361*^9}, {3.6062413602948437`*^9, 3.606241361746807*^9}, {
+   3.606241491823954*^9, 3.606241499431151*^9}, {3.606241560155734*^9, 
+   3.606241651312669*^9}, {3.606241735571604*^9, 3.606241749431478*^9}, {
+   3.6062418089770527`*^9, 3.606241949123436*^9}, {3.606241982925569*^9, 
+   3.606241983414036*^9}, {3.606242151873024*^9, 3.606242162726623*^9}, {
+   3.60624222810002*^9, 3.6062422469560413`*^9}, {3.606242895852956*^9, 
+   3.606243012439042*^9}, {3.606243321375304*^9, 3.606243322884461*^9}, {
+   3.606243390617466*^9, 3.6062434902092533`*^9}, {3.606243754000152*^9, 
+   3.6062439293359127`*^9}, {3.6062439652639112`*^9, 3.60624398542093*^9}, {
+   3.606244024912026*^9, 3.606244049821563*^9}, {3.606411331502325*^9, 
+   3.606411381864128*^9}, {3.606411432582281*^9, 3.606411465963455*^9}, {
+   3.6064128301480837`*^9, 3.606412878679599*^9}, {3.606412933826618*^9, 
+   3.6064129750880957`*^9}, {3.606413018727697*^9, 3.606413068330854*^9}, {
+   3.606413107230268*^9, 3.606413117787114*^9}, {3.6064141785402203`*^9, 
+   3.606414205607257*^9}, {3.606417837994813*^9, 3.606417842905364*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Initial: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Goat\"\>", ",", "1", ",", "\<\"Goat\"\>", ",", "2", 
+     ",", "\<\"Goat\"\>", ",", "3", ",", "\<\"Car\"\>", ",", "4", 
+     ",", "\<\"Goat\"\>", ",", "5", ",", "\<\"Goat\"\>", ",", "6", 
+     ",", "\<\"Goat\"\>", ",", "7"}], "}"}]}],
+  SequenceForm[
+  "Initial: ", {
+   "Goat", 1, "Goat", 2, "Goat", 3, "Car", 4, "Goat", 5, "Goat", 6, "Goat", 
+    7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6062429952063017`*^9, 3.606243021119795*^9}, {
+   3.606243455060997*^9, 3.6062434921282377`*^9}, 3.606243758469872*^9, 
+   3.606243847503107*^9, {3.606243884436655*^9, 3.606243897654703*^9}, 
+   3.60624393005532*^9, {3.606243978172289*^9, 3.606243986121882*^9}, {
+   3.6062440268421164`*^9, 3.606244050410191*^9}, 3.6064113156886063`*^9, {
+   3.606411373620318*^9, 3.606411383034758*^9}, {3.606411442399399*^9, 
+   3.606411470989841*^9}, 3.606412883070715*^9, 3.6064129350170603`*^9, 
+   3.606412992261859*^9, {3.606413046997191*^9, 3.606413068865857*^9}, {
+   3.606413108340478*^9, 3.606413118386957*^9}, {3.606414190013556*^9, 
+   3.606414206950976*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Selection: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "5", ",", "1"}], "}"}]}],
+  SequenceForm["Selection: ", {7, 5, 1}],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6062429952063017`*^9, 3.606243021119795*^9}, {
+   3.606243455060997*^9, 3.6062434921282377`*^9}, 3.606243758469872*^9, 
+   3.606243847503107*^9, {3.606243884436655*^9, 3.606243897654703*^9}, 
+   3.60624393005532*^9, {3.606243978172289*^9, 3.606243986121882*^9}, {
+   3.6062440268421164`*^9, 3.606244050410191*^9}, 3.6064113156886063`*^9, {
+   3.606411373620318*^9, 3.606411383034758*^9}, {3.606411442399399*^9, 
+   3.606411470989841*^9}, 3.606412883070715*^9, 3.6064129350170603`*^9, 
+   3.606412992261859*^9, {3.606413046997191*^9, 3.606413068865857*^9}, {
+   3.606413108340478*^9, 3.606413118386957*^9}, {3.606414190013556*^9, 
+   3.6064142069521723`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Possible to reveal: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "3", ",", "4", ",", "6"}], "}"}]}],
+  SequenceForm["Possible to reveal: ", {2, 3, 4, 6}],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6062429952063017`*^9, 3.606243021119795*^9}, {
+   3.606243455060997*^9, 3.6062434921282377`*^9}, 3.606243758469872*^9, 
+   3.606243847503107*^9, {3.606243884436655*^9, 3.606243897654703*^9}, 
+   3.60624393005532*^9, {3.606243978172289*^9, 3.606243986121882*^9}, {
+   3.6062440268421164`*^9, 3.606244050410191*^9}, 3.6064113156886063`*^9, {
+   3.606411373620318*^9, 3.606411383034758*^9}, {3.606411442399399*^9, 
+   3.606411470989841*^9}, 3.606412883070715*^9, 3.6064129350170603`*^9, 
+   3.606412992261859*^9, {3.606413046997191*^9, 3.606413068865857*^9}, {
+   3.606413108340478*^9, 3.606413118386957*^9}, {3.606414190013556*^9, 
+   3.606414206953354*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Non-winning possible to Reveal: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "3", ",", "6"}], "}"}]}],
+  SequenceForm["Non-winning possible to Reveal: ", {2, 3, 6}],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6062429952063017`*^9, 3.606243021119795*^9}, {
+   3.606243455060997*^9, 3.6062434921282377`*^9}, 3.606243758469872*^9, 
+   3.606243847503107*^9, {3.606243884436655*^9, 3.606243897654703*^9}, 
+   3.60624393005532*^9, {3.606243978172289*^9, 3.606243986121882*^9}, {
+   3.6062440268421164`*^9, 3.606244050410191*^9}, 3.6064113156886063`*^9, {
+   3.606411373620318*^9, 3.606411383034758*^9}, {3.606411442399399*^9, 
+   3.606411470989841*^9}, 3.606412883070715*^9, 3.6064129350170603`*^9, 
+   3.606412992261859*^9, {3.606413046997191*^9, 3.606413068865857*^9}, {
+   3.606413108340478*^9, 3.606413118386957*^9}, {3.606414190013556*^9, 
+   3.6064142069545317`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Reveal: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "2", ",", "6"}], "}"}]}],
+  SequenceForm["Reveal: ", {3, 2, 6}],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6062429952063017`*^9, 3.606243021119795*^9}, {
+   3.606243455060997*^9, 3.6062434921282377`*^9}, 3.606243758469872*^9, 
+   3.606243847503107*^9, {3.606243884436655*^9, 3.606243897654703*^9}, 
+   3.60624393005532*^9, {3.606243978172289*^9, 3.606243986121882*^9}, {
+   3.6062440268421164`*^9, 3.606244050410191*^9}, 3.6064113156886063`*^9, {
+   3.606411373620318*^9, 3.606411383034758*^9}, {3.606411442399399*^9, 
+   3.606411470989841*^9}, 3.606412883070715*^9, 3.6064129350170603`*^9, 
+   3.606412992261859*^9, {3.606413046997191*^9, 3.606413068865857*^9}, {
+   3.606413108340478*^9, 3.606413118386957*^9}, {3.606414190013556*^9, 
+   3.6064142069556923`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Door NOT chosen AND NOT revealed: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", "4", "}"}]}],
+  SequenceForm["Door NOT chosen AND NOT revealed: ", {4}],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6062429952063017`*^9, 3.606243021119795*^9}, {
+   3.606243455060997*^9, 3.6062434921282377`*^9}, 3.606243758469872*^9, 
+   3.606243847503107*^9, {3.606243884436655*^9, 3.606243897654703*^9}, 
+   3.60624393005532*^9, {3.606243978172289*^9, 3.606243986121882*^9}, {
+   3.6062440268421164`*^9, 3.606244050410191*^9}, 3.6064113156886063`*^9, {
+   3.606411373620318*^9, 3.606411383034758*^9}, {3.606411442399399*^9, 
+   3.606411470989841*^9}, 3.606412883070715*^9, 3.6064129350170603`*^9, 
+   3.606412992261859*^9, {3.606413046997191*^9, 3.606413068865857*^9}, {
+   3.606413108340478*^9, 3.606413118386957*^9}, {3.606414190013556*^9, 
+   3.606414206956831*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"IF switching, we choose: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "7", ",", "4"}], "}"}]}],
+  SequenceForm["IF switching, we choose: ", {1, 7, 4}],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6062429952063017`*^9, 3.606243021119795*^9}, {
+   3.606243455060997*^9, 3.6062434921282377`*^9}, 3.606243758469872*^9, 
+   3.606243847503107*^9, {3.606243884436655*^9, 3.606243897654703*^9}, 
+   3.60624393005532*^9, {3.606243978172289*^9, 3.606243986121882*^9}, {
+   3.6062440268421164`*^9, 3.606244050410191*^9}, 3.6064113156886063`*^9, {
+   3.606411373620318*^9, 3.606411383034758*^9}, {3.606411442399399*^9, 
+   3.606411470989841*^9}, 3.606412883070715*^9, 3.6064129350170603`*^9, 
+   3.606412992261859*^9, {3.606413046997191*^9, 3.606413068865857*^9}, {
+   3.606413108340478*^9, 3.606413118386957*^9}, {3.606414190013556*^9, 
+   3.606414206958003*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"IF NOT switching, we choose: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "5", ",", "1"}], "}"}]}],
+  SequenceForm["IF NOT switching, we choose: ", {7, 5, 1}],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6062429952063017`*^9, 3.606243021119795*^9}, {
+   3.606243455060997*^9, 3.6062434921282377`*^9}, 3.606243758469872*^9, 
+   3.606243847503107*^9, {3.606243884436655*^9, 3.606243897654703*^9}, 
+   3.60624393005532*^9, {3.606243978172289*^9, 3.606243986121882*^9}, {
+   3.6062440268421164`*^9, 3.606244050410191*^9}, 3.6064113156886063`*^9, {
+   3.606411373620318*^9, 3.606411383034758*^9}, {3.606411442399399*^9, 
+   3.606411470989841*^9}, 3.606412883070715*^9, 3.6064129350170603`*^9, 
+   3.606412992261859*^9, {3.606413046997191*^9, 3.606413068865857*^9}, {
+   3.606413108340478*^9, 3.606413118386957*^9}, {3.606414190013556*^9, 
+   3.60641420695924*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Goat\"\>", ",", "\<\"Goat\"\>", ",", "\<\"Goat\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.606414190021702*^9, 3.6064142069604797`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"PART", " ", "2"}], " ", "-", " ", 
+     RowBox[{"ANSWER", ":", " ", 
+      RowBox[{
+      "Monte", " ", "hall", " ", "problem", " ", "for", " ", "7", " ", 
+       "doors"}]}]}], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"6", " ", "Goats"}], " ", "+", " ", 
+     RowBox[{"1", " ", "Car"}]}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"montyhall", "[", "x_", "]"}], ":=", 
+    RowBox[{"Module", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "initial", ",", "selection", ",", "reveal", ",", "noswitch", ",", 
+        "possibleToReveal", ",", "switchTemp", ",", "switch"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"initial", "=", 
+        RowBox[{"RandomSample", "[", 
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<Goat\>\"", ",", "\"\<Goat\>\"", ",", "\"\<Goat\>\"", ",", 
+           "\"\<Goat\>\"", ",", "\"\<Goat\>\"", ",", "\"\<Goat\>\"", ",", 
+           "\"\<Car\>\""}], "}"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"selection", "=", 
+        RowBox[{"RandomSample", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+           "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7"}], 
+           "}"}], ",", "3"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"possibleToReveal", "=", 
+        RowBox[{"Complement", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+           "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7"}], 
+           "}"}], ",", "selection"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"possibleToReveal", "=", 
+        RowBox[{"Select", "[", 
+         RowBox[{"possibleToReveal", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"initial", "[", 
+             RowBox[{"[", "#", "]"}], "]"}], "\[Equal]", "\"\<Goat\>\""}], 
+           "&"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"reveal", "=", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Length", "[", "possibleToReveal", "]"}], "\[Equal]", 
+           "0"}], ",", 
+          RowBox[{"{", "}"}], ",", 
+          RowBox[{"RandomSample", "[", 
+           RowBox[{"possibleToReveal", ",", "3"}], "]"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"switchTemp", "=", 
+        RowBox[{"Complement", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+           "1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7"}], 
+           "}"}], ",", "selection", ",", "reveal"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"switch", "=", 
+        RowBox[{"Flatten", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"RandomSample", "[", 
+            RowBox[{"selection", ",", "2"}], "]"}], ",", "switchTemp"}], 
+          "}"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"noswitch", "=", "selection"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"x", "\[Equal]", "True"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"res", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"initial", "[", 
+             RowBox[{"[", 
+              RowBox[{"switch", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", "3"}], "}"}]}], "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"res", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"initial", "[", 
+             RowBox[{"[", 
+              RowBox[{"noswitch", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", "3"}], "}"}]}], "]"}]}]}], "]"}], 
+       ";", "\[IndentingNewLine]", "\[IndentingNewLine]", "res"}]}], 
+     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"iter", "=", "100000"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"swapOrNot", "=", 
+     RowBox[{"ConstantArray", "[", 
+      RowBox[{"False", ",", "iter"}], "]"}]}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"false", " ", "=", " ", 
+      RowBox[{"NO", " ", "Switch"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"runs", "=", 
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"montyhall", "[", "#", "]"}], "&"}], ",", "swapOrNot"}], 
+      "]"}]}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"output", " ", "of", " ", "montehall", " ", "problem"}], " ", 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"res", "=", 
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"MemberQ", "[", 
+         RowBox[{"#", ",", "\"\<Car\>\""}], "]"}], "&"}], ",", "runs"}], 
+      "]"}]}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+      RowBox[{"true", " ", "=", " ", "win"}], ",", " ", 
+      RowBox[{"false", " ", "=", " ", "lose"}]}], " ", "*)"}], 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"winNoSwitch", "=", 
+     RowBox[{"Count", "[", 
+      RowBox[{"res", ",", "True"}], "]"}]}], ";", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "Num", " ", "of", " ", "wins", " ", "if", " ", "NO", " ", "switch"}], 
+     " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"winPercentNoSwitch", "=", 
+     RowBox[{
+      RowBox[{"winNoSwitch", "/", "iter"}], "//", "N"}]}], " ", ";", 
+    RowBox[{"(*", 
+     RowBox[{
+     "chance", " ", "of", " ", "win", " ", "if", " ", "NO", " ", "switch"}], 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{
+     "\"\<NO SWITCH: \>\"", ",", "winNoSwitch", ",", "\"\< wins out of \>\"", 
+      ",", "iter", ",", "\"\< games = \>\"", ",", "winPercentNoSwitch", ",", 
+      " ", "\"\< chance win.\>\""}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"swapOrNot", "=", 
+     RowBox[{"ConstantArray", "[", 
+      RowBox[{"True", ",", "iter"}], "]"}]}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"true", " ", "=", " ", 
+      RowBox[{"YES", " ", "Switch"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"runs", "=", 
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"montyhall", "[", "#", "]"}], "&"}], ",", "swapOrNot"}], 
+      "]"}]}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"output", " ", "of", " ", "montehall", " ", "problem"}], " ", 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"res", "=", 
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"MemberQ", "[", 
+         RowBox[{"#", ",", "\"\<Car\>\""}], "]"}], "&"}], ",", "runs"}], 
+      "]"}]}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+      RowBox[{"true", " ", "=", " ", "win"}], ",", " ", 
+      RowBox[{"false", " ", "=", " ", "lose"}]}], " ", "*)"}], 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"winSwitch", "=", 
+     RowBox[{"Count", "[", 
+      RowBox[{"res", ",", "True"}], "]"}]}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "Num", " ", "of", " ", "wins", " ", "if", " ", "YES", " ", "switch"}], 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"winPercentSwitch", "=", 
+     RowBox[{
+      RowBox[{"winSwitch", "/", "iter"}], "//", "N"}]}], " ", ";", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "chance", " ", "of", " ", "win", " ", "if", " ", "YES", " ", "switch"}], 
+     " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{
+     "\"\<YES SWITCH: \>\"", ",", "winSwitch", ",", "\"\< wins out of \>\"", 
+      ",", "iter", ",", "\"\< games = \>\"", ",", "winPercentSwitch", ",", 
+      " ", "\"\< chance win.\>\""}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.6064131514030733`*^9, 3.6064132077956123`*^9}, {
+  3.606413246234202*^9, 3.606413302470743*^9}, {3.606413334697546*^9, 
+  3.606413371547454*^9}, {3.6064134047392483`*^9, 3.606413440462564*^9}, {
+  3.606413591265313*^9, 3.6064136201512737`*^9}, {3.606413676891974*^9, 
+  3.606413998448316*^9}, {3.606414029797159*^9, 3.606414156087962*^9}, {
+  3.6064142955751877`*^9, 3.606414296685677*^9}, {3.606414369637739*^9, 
+  3.6064143926897917`*^9}, {3.606415065825857*^9, 3.6064150850861683`*^9}, {
+  3.6064162349042673`*^9, 3.606416242925799*^9}, {3.6064165882752666`*^9, 
+  3.6064165914541473`*^9}, {3.606417779117248*^9, 3.606417779524864*^9}, {
+  3.606417829404161*^9, 3.606417833467518*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"NO SWITCH: \"\>", "\[InvisibleSpace]", "43156", 
+   "\[InvisibleSpace]", "\<\" wins out of \"\>", "\[InvisibleSpace]", 
+   "100000", "\[InvisibleSpace]", "\<\" games = \"\>", "\[InvisibleSpace]", 
+   "0.43156`", "\[InvisibleSpace]", "\<\" chance win.\"\>"}],
+  SequenceForm[
+  "NO SWITCH: ", 43156, " wins out of ", 100000, " games = ", 0.43156, 
+   " chance win."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.606414112382078*^9, {3.606414147686798*^9, 3.6064141574155617`*^9}, 
+   3.6064142977280903`*^9, 3.606415088429191*^9, 3.6064165923483267`*^9, 
+   3.606417784241542*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"YES SWITCH: \"\>", "\[InvisibleSpace]", "85791", 
+   "\[InvisibleSpace]", "\<\" wins out of \"\>", "\[InvisibleSpace]", 
+   "100000", "\[InvisibleSpace]", "\<\" games = \"\>", "\[InvisibleSpace]", 
+   "0.85791`", "\[InvisibleSpace]", "\<\" chance win.\"\>"}],
+  SequenceForm[
+  "YES SWITCH: ", 85791, " wins out of ", 100000, " games = ", 0.85791, 
+   " chance win."],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.606414112382078*^9, {3.606414147686798*^9, 3.6064141574155617`*^9}, 
+   3.6064142977280903`*^9, 3.606415088429191*^9, 3.6064165923483267`*^9, 
+   3.6064177880020227`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"PART", " ", "3"}], " ", "-", " ", "EXAMPLE", " ", "-", " ", 
+     RowBox[{
+     "Monte", " ", "hall", " ", "problem", " ", "for", " ", "2", "n"}], "+", 
+     RowBox[{"1", " ", "doors"}]}], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"2", "n", " ", "Goats"}], " ", "+", " ", 
+     RowBox[{"1", " ", "Car"}], " ", "-", " ", "EXAMPLE"}]}], " ", "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"montyhall", "[", 
+     RowBox[{"x_", ",", "size_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "initial", ",", "selection", ",", "reveal", ",", "switch", ",", 
+        "noswitch", ",", "possibleToReveal", ",", "switchTemp", ",", "n", ",",
+         "doors"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"n", "=", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"size", "-", "1"}], ")"}], "/", "2"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"doors", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{"i", ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{
+             RowBox[{"2", "*", "n"}], "+", "1"}]}], "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<Doors: \>\"", ",", "doors"}], "]"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"initial", "=", 
+        RowBox[{"ConstantArray", "[", 
+         RowBox[{"\"\<Goat\>\"", ",", 
+          RowBox[{
+           RowBox[{"2", "n"}], "+", "1"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"initial", "[", 
+         RowBox[{"[", 
+          RowBox[{"RandomInteger", "[", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", 
+             RowBox[{
+              RowBox[{"2", "*", "n"}], "+", "1"}]}], "}"}], "]"}], "]"}], 
+         "]"}], "=", "\"\<Car\>\""}], ";", " ", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+        "Place", " ", "the", " ", "car", " ", "behind", " ", "a", " ", 
+         "door"}], " ", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<Initial: \>\"", ",", "initial"}], "]"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"selection", "=", 
+        RowBox[{"RandomSample", "[", 
+         RowBox[{"doors", ",", "n"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<Selection: \>\"", ",", "selection"}], "]"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"possibleToReveal", "=", 
+        RowBox[{"Complement", "[", 
+         RowBox[{"doors", ",", "selection"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<Possible To Reveal: \>\"", ",", "possibleToReveal"}], 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"possibleToReveal", "=", 
+        RowBox[{"Select", "[", 
+         RowBox[{"possibleToReveal", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"initial", "[", 
+             RowBox[{"[", "#", "]"}], "]"}], "\[Equal]", "\"\<Goat\>\""}], 
+           "&"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{
+        "\"\<Possible To Reveal W/O Giving away answer: \>\"", ",", 
+         "possibleToReveal"}], "]"}], ";", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+        "In", " ", "case", " ", "there", " ", "is", " ", "only", " ", "1", 
+         " ", "door", " ", "to", " ", "select", " ", "and", " ", "revealing", 
+         " ", "it", " ", "would", " ", "give", " ", "away", " ", "the", " ", 
+         "car", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"when", " ", "door", " ", "size"}], "=", "3"}], ")"}]}], 
+        " ", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"reveal", "=", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Length", "[", "possibleToReveal", "]"}], "\[Equal]", 
+           "0"}], ",", 
+          RowBox[{"{", "}"}], ",", 
+          RowBox[{"RandomSample", "[", 
+           RowBox[{"possibleToReveal", ",", "n"}], "]"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<Reveal: \>\"", ",", "reveal"}], "]"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"switchTemp", "=", 
+        RowBox[{"Complement", "[", 
+         RowBox[{"doors", ",", "selection", ",", "reveal"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"switch", "=", 
+        RowBox[{"Flatten", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"RandomSample", "[", 
+            RowBox[{"selection", ",", 
+             RowBox[{"n", "-", "1"}]}], "]"}], ",", "switchTemp"}], "}"}], 
+         "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<Switch: \>\"", ",", "switch"}], "]"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"noswitch", "=", "selection"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"x", "\[Equal]", "True"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"res", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"initial", "[", 
+             RowBox[{"[", 
+              RowBox[{"switch", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"res", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"initial", "[", 
+             RowBox[{"[", 
+              RowBox[{"noswitch", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}]}], "]"}], 
+       ";", "\[IndentingNewLine]", 
+       RowBox[{"Print", "[", 
+        RowBox[{"\"\<Result: \>\"", ",", "res"}], "]"}], ";", 
+       "\[IndentingNewLine]", "\[IndentingNewLine]", "res"}]}], 
+     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"montyhall", "[", 
+    RowBox[{"False", ",", "7"}], "]"}], "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{
+  3.606161488046022*^9, {3.606161676802055*^9, 3.6061617456913023`*^9}, {
+   3.606161780959045*^9, 3.606161848533193*^9}, {3.606414314818206*^9, 
+   3.606414389155455*^9}, {3.606414441955207*^9, 3.60641447998551*^9}, {
+   3.60641478970055*^9, 3.606414842214902*^9}, {3.6064148776538763`*^9, 
+   3.606414905723406*^9}, {3.606414943725347*^9, 3.606414986186985*^9}, {
+   3.6064150348762693`*^9, 3.606415055609563*^9}, {3.606415155646226*^9, 
+   3.6064152633340607`*^9}, {3.606415425783907*^9, 3.606415428511566*^9}, {
+   3.6064154757683907`*^9, 3.606415564885509*^9}, {3.6064162499960327`*^9, 
+   3.60641625379445*^9}, {3.606416297669845*^9, 3.60641643375709*^9}, {
+   3.606416475916053*^9, 3.606416476413621*^9}, {3.6064165177305613`*^9, 
+   3.6064165692708073`*^9}, {3.6064165997334557`*^9, 3.606416653300365*^9}, {
+   3.6064166927961884`*^9, 3.606416709497019*^9}, {3.606416777856628*^9, 
+   3.606416777952799*^9}, {3.606416813795671*^9, 3.606416813916767*^9}, {
+   3.6064170084925003`*^9, 3.6064170086039667`*^9}, {3.6064170987085114`*^9, 
+   3.606417157471058*^9}, {3.6064178216381493`*^9, 3.60641782294142*^9}, {
+   3.6064178718207493`*^9, 3.606417922655377*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Doors: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3", ",", "4", ",", "5", ",", "6", ",", "7"}],
+     "}"}]}],
+  SequenceForm["Doors: ", {1, 2, 3, 4, 5, 6, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.606416372228242*^9, 3.606416434437818*^9, 3.6064164781712027`*^9, {
+   3.6064165594590673`*^9, 3.606416578049502*^9}, {3.6064166542526073`*^9, 
+   3.6064166583988447`*^9}, 3.606416710149406*^9, 3.606416778908396*^9, 
+   3.606416815191717*^9, 3.606417009274413*^9, {3.606417101496171*^9, 
+   3.6064171155389013`*^9}, {3.606417154027605*^9, 3.606417158690031*^9}, {
+   3.606417902907433*^9, 3.606417927222775*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Initial: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Car\"\>", ",", "\<\"Goat\"\>", ",", "\<\"Goat\"\>", 
+     ",", "\<\"Goat\"\>", ",", "\<\"Goat\"\>", ",", "\<\"Goat\"\>", 
+     ",", "\<\"Goat\"\>"}], "}"}]}],
+  SequenceForm[
+  "Initial: ", {"Car", "Goat", "Goat", "Goat", "Goat", "Goat", "Goat"}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.606416372228242*^9, 3.606416434437818*^9, 3.6064164781712027`*^9, {
+   3.6064165594590673`*^9, 3.606416578049502*^9}, {3.6064166542526073`*^9, 
+   3.6064166583988447`*^9}, 3.606416710149406*^9, 3.606416778908396*^9, 
+   3.606416815191717*^9, 3.606417009274413*^9, {3.606417101496171*^9, 
+   3.6064171155389013`*^9}, {3.606417154027605*^9, 3.606417158690031*^9}, {
+   3.606417902907433*^9, 3.606417927224368*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Selection: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "6", ",", "1"}], "}"}]}],
+  SequenceForm["Selection: ", {3, 6, 1}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.606416372228242*^9, 3.606416434437818*^9, 3.6064164781712027`*^9, {
+   3.6064165594590673`*^9, 3.606416578049502*^9}, {3.6064166542526073`*^9, 
+   3.6064166583988447`*^9}, 3.606416710149406*^9, 3.606416778908396*^9, 
+   3.606416815191717*^9, 3.606417009274413*^9, {3.606417101496171*^9, 
+   3.6064171155389013`*^9}, {3.606417154027605*^9, 3.606417158690031*^9}, {
+   3.606417902907433*^9, 3.606417927225754*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Possible To Reveal: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "4", ",", "5", ",", "7"}], "}"}]}],
+  SequenceForm["Possible To Reveal: ", {2, 4, 5, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.606416372228242*^9, 3.606416434437818*^9, 3.6064164781712027`*^9, {
+   3.6064165594590673`*^9, 3.606416578049502*^9}, {3.6064166542526073`*^9, 
+   3.6064166583988447`*^9}, 3.606416710149406*^9, 3.606416778908396*^9, 
+   3.606416815191717*^9, 3.606417009274413*^9, {3.606417101496171*^9, 
+   3.6064171155389013`*^9}, {3.606417154027605*^9, 3.606417158690031*^9}, {
+   3.606417902907433*^9, 3.6064179272272387`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Possible To Reveal W/O Giving away answer: \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "4", ",", "5", ",", "7"}], "}"}]}],
+  SequenceForm["Possible To Reveal W/O Giving away answer: ", {2, 4, 5, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.606416372228242*^9, 3.606416434437818*^9, 3.6064164781712027`*^9, {
+   3.6064165594590673`*^9, 3.606416578049502*^9}, {3.6064166542526073`*^9, 
+   3.6064166583988447`*^9}, 3.606416710149406*^9, 3.606416778908396*^9, 
+   3.606416815191717*^9, 3.606417009274413*^9, {3.606417101496171*^9, 
+   3.6064171155389013`*^9}, {3.606417154027605*^9, 3.606417158690031*^9}, {
+   3.606417902907433*^9, 3.60641792722866*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Reveal: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "7", ",", "2"}], "}"}]}],
+  SequenceForm["Reveal: ", {5, 7, 2}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.606416372228242*^9, 3.606416434437818*^9, 3.6064164781712027`*^9, {
+   3.6064165594590673`*^9, 3.606416578049502*^9}, {3.6064166542526073`*^9, 
+   3.6064166583988447`*^9}, 3.606416710149406*^9, 3.606416778908396*^9, 
+   3.606416815191717*^9, 3.606417009274413*^9, {3.606417101496171*^9, 
+   3.6064171155389013`*^9}, {3.606417154027605*^9, 3.606417158690031*^9}, {
+   3.606417902907433*^9, 3.606417927229896*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Switch: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "3", ",", "4"}], "}"}]}],
+  SequenceForm["Switch: ", {1, 3, 4}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.606416372228242*^9, 3.606416434437818*^9, 3.6064164781712027`*^9, {
+   3.6064165594590673`*^9, 3.606416578049502*^9}, {3.6064166542526073`*^9, 
+   3.6064166583988447`*^9}, 3.606416710149406*^9, 3.606416778908396*^9, 
+   3.606416815191717*^9, 3.606417009274413*^9, {3.606417101496171*^9, 
+   3.6064171155389013`*^9}, {3.606417154027605*^9, 3.606417158690031*^9}, {
+   3.606417902907433*^9, 3.606417927231166*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Result: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"\<\"Goat\"\>", ",", "\<\"Goat\"\>", ",", "\<\"Car\"\>"}], "}"}]}],
+  SequenceForm["Result: ", {"Goat", "Goat", "Car"}],
+  Editable->False]], "Print",
+ CellChangeTimes->{
+  3.606416372228242*^9, 3.606416434437818*^9, 3.6064164781712027`*^9, {
+   3.6064165594590673`*^9, 3.606416578049502*^9}, {3.6064166542526073`*^9, 
+   3.6064166583988447`*^9}, 3.606416710149406*^9, 3.606416778908396*^9, 
+   3.606416815191717*^9, 3.606417009274413*^9, {3.606417101496171*^9, 
+   3.6064171155389013`*^9}, {3.606417154027605*^9, 3.606417158690031*^9}, {
+   3.606417902907433*^9, 3.6064179272324533`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"Goat\"\>", ",", "\<\"Goat\"\>", ",", "\<\"Car\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.6064152448773327`*^9, 3.606415273147476*^9}, 
+   3.606415430373096*^9, {3.606415484106276*^9, 3.606415523093583*^9}, {
+   3.6064155546419497`*^9, 3.606415565815823*^9}, 3.6064162592204742`*^9, 
+   3.606416298609591*^9, 3.606416372226521*^9, 3.606416434436372*^9, 
+   3.606416478169573*^9, {3.606416559456943*^9, 3.6064165780473757`*^9}, {
+   3.606416654250867*^9, 3.606416658397295*^9}, 3.606416710147469*^9, 
+   3.606416778906901*^9, 3.606416815190239*^9, 3.606417009272891*^9, {
+   3.606417101494754*^9, 3.606417115537354*^9}, {3.606417154026091*^9, 
+   3.606417158688496*^9}, {3.606417902952569*^9, 3.606417927233712*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"PART", " ", "3"}], " ", "-", " ", 
+     RowBox[{"ANSWER", ":", " ", 
+      RowBox[{
+       RowBox[{
+       "Monte", " ", "hall", " ", "problem", " ", "for", " ", "2", "n"}], "+", 
+       RowBox[{"1", " ", "doors"}]}]}]}], " ", "=", " ", 
+    RowBox[{
+     RowBox[{"2", "n", " ", "Goats"}], " ", "+", " ", 
+     RowBox[{"1", " ", "Car"}]}]}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"montyhall", "[", 
+     RowBox[{"x_", ",", "size_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "initial", ",", "selection", ",", "reveal", ",", "switch", ",", 
+        "noswitch", ",", "possibleToReveal", ",", "switchTemp", ",", "n", ",",
+         "doors"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"n", "=", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"size", "-", "1"}], ")"}], "/", "2"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"doors", "=", 
+        RowBox[{"Table", "[", 
+         RowBox[{"i", ",", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", "1", ",", 
+            RowBox[{
+             RowBox[{"2", "*", "n"}], "+", "1"}]}], "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"initial", "=", 
+        RowBox[{"ConstantArray", "[", 
+         RowBox[{"\"\<Goat\>\"", ",", 
+          RowBox[{
+           RowBox[{"2", "n"}], "+", "1"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"initial", "[", 
+         RowBox[{"[", 
+          RowBox[{"RandomInteger", "[", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", 
+             RowBox[{
+              RowBox[{"2", "*", "n"}], "+", "1"}]}], "}"}], "]"}], "]"}], 
+         "]"}], "=", "\"\<Car\>\""}], ";", " ", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+        "Place", " ", "the", " ", "car", " ", "behind", " ", "a", " ", 
+         "door"}], " ", "*)"}], "\[IndentingNewLine]", 
+       RowBox[{"selection", "=", 
+        RowBox[{"RandomSample", "[", 
+         RowBox[{"doors", ",", "n"}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"possibleToReveal", "=", 
+        RowBox[{"Complement", "[", 
+         RowBox[{"doors", ",", "selection"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"possibleToReveal", "=", 
+        RowBox[{"Select", "[", 
+         RowBox[{"possibleToReveal", ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"initial", "[", 
+             RowBox[{"[", "#", "]"}], "]"}], "\[Equal]", "\"\<Goat\>\""}], 
+           "&"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"reveal", "=", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Length", "[", "possibleToReveal", "]"}], "\[Equal]", 
+           "0"}], ",", 
+          RowBox[{"{", "}"}], ",", 
+          RowBox[{"RandomSample", "[", 
+           RowBox[{"possibleToReveal", ",", "n"}], "]"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"switchTemp", "=", 
+        RowBox[{"Complement", "[", 
+         RowBox[{"doors", ",", "selection", ",", "reveal"}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"switch", "=", 
+        RowBox[{"Flatten", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"RandomSample", "[", 
+            RowBox[{"selection", ",", 
+             RowBox[{"n", "-", "1"}]}], "]"}], ",", "switchTemp"}], "}"}], 
+         "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{"noswitch", "=", "selection"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"x", "\[Equal]", "True"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"res", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"initial", "[", 
+             RowBox[{"[", 
+              RowBox[{"switch", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"res", "=", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"initial", "[", 
+             RowBox[{"[", 
+              RowBox[{"noswitch", "[", 
+               RowBox[{"[", "i", "]"}], "]"}], "]"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "1", ",", "n"}], "}"}]}], "]"}]}]}], "]"}], 
+       ";", "\[IndentingNewLine]", "\[IndentingNewLine]", "res"}]}], 
+     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"iter", "=", "100000"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"numDoors", "=", "7"}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"numDoors", " ", "=", " ", 
+      RowBox[{
+       RowBox[{"2", "n"}], "+", "1"}]}], "*)"}], "\[IndentingNewLine]", 
+    "\[IndentingNewLine]", 
+    RowBox[{"swapOrNot", "=", 
+     RowBox[{"ConstantArray", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"False", ",", "numDoors"}], "}"}], ",", "iter"}], "]"}]}], 
+    " ", ";", 
+    RowBox[{"(*", " ", 
+     RowBox[{"false", " ", "=", " ", 
+      RowBox[{"NO", " ", "Switch"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"runs", "=", 
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"montyhall", "[", 
+         RowBox[{
+          RowBox[{"#", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{"#", "[", 
+           RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "&"}], ",", "swapOrNot"}],
+       "]"}]}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"output", " ", "of", " ", "montehall", " ", "problem"}], " ", 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"res", "=", 
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"MemberQ", "[", 
+         RowBox[{"#", ",", "\"\<Car\>\""}], "]"}], "&"}], ",", "runs"}], 
+      "]"}]}], " ", ";", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+      RowBox[{"true", " ", "=", " ", "win"}], ",", " ", 
+      RowBox[{"false", " ", "=", " ", "lose"}]}], " ", "*)"}], 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"winNoSwitch", "=", 
+     RowBox[{"Count", "[", 
+      RowBox[{"res", ",", "True"}], "]"}]}], ";", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "Num", " ", "of", " ", "wins", " ", "if", " ", "NO", " ", "switch"}], 
+     " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"winPercentNoSwitch", "=", 
+     RowBox[{
+      RowBox[{"winNoSwitch", "/", "iter"}], "//", "N"}]}], " ", ";", 
+    RowBox[{"(*", 
+     RowBox[{
+     "chance", " ", "of", " ", "win", " ", "if", " ", "NO", " ", "switch"}], 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{
+     "\"\<NO SWITCH: \>\"", ",", "winNoSwitch", ",", "\"\< wins out of \>\"", 
+      ",", "iter", ",", "\"\< games = \>\"", ",", "winPercentNoSwitch", ",", 
+      " ", "\"\< chance win.\>\""}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"swapOrNot", "=", 
+     RowBox[{"ConstantArray", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"True", ",", "numDoors"}], "}"}], ",", "iter"}], "]"}]}], " ",
+     ";", 
+    RowBox[{"(*", " ", 
+     RowBox[{"true", " ", "=", " ", 
+      RowBox[{"YES", " ", "Switch"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"runs", "=", 
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"montyhall", "[", 
+         RowBox[{
+          RowBox[{"#", "[", 
+           RowBox[{"[", "1", "]"}], "]"}], ",", 
+          RowBox[{"#", "[", 
+           RowBox[{"[", "2", "]"}], "]"}]}], "]"}], "&"}], ",", "swapOrNot"}],
+       "]"}]}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{"output", " ", "of", " ", "montehall", " ", "problem"}], " ", 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"res", "=", 
+     RowBox[{"Map", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"MemberQ", "[", 
+         RowBox[{"#", ",", "\"\<Car\>\""}], "]"}], "&"}], ",", "runs"}], 
+      "]"}]}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+      RowBox[{"true", " ", "=", " ", "win"}], ",", " ", 
+      RowBox[{"false", " ", "=", " ", "lose"}]}], " ", "*)"}], 
+    "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{"winSwitch", "=", 
+     RowBox[{"Count", "[", 
+      RowBox[{"res", ",", "True"}], "]"}]}], ";", " ", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "Num", " ", "of", " ", "wins", " ", "if", " ", "YES", " ", "switch"}], 
+     "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"winPercentSwitch", "=", 
+     RowBox[{
+      RowBox[{"winSwitch", "/", "iter"}], "//", "N"}]}], " ", ";", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "chance", " ", "of", " ", "win", " ", "if", " ", "YES", " ", "switch"}], 
+     " ", "*)"}], "\[IndentingNewLine]", 
+    RowBox[{"Print", "[", 
+     RowBox[{
+     "\"\<YES SWITCH: \>\"", ",", "winSwitch", ",", "\"\< wins out of \>\"", 
+      ",", "iter", ",", "\"\< games = \>\"", ",", "winPercentSwitch", ",", 
+      " ", "\"\< chance win.\>\""}], "]"}]}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.606417184081853*^9, 3.606417266596098*^9}, {
+  3.60641729953443*^9, 3.6064172998756332`*^9}, {3.606417337091593*^9, 
+  3.606417384416162*^9}, {3.6064174246856747`*^9, 3.606417436020235*^9}, {
+  3.6064175635774593`*^9, 3.6064176497713633`*^9}, {3.606417683488689*^9, 
+  3.6064178170784693`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"NO SWITCH: \"\>", "\[InvisibleSpace]", "42914", 
+   "\[InvisibleSpace]", "\<\" wins out of \"\>", "\[InvisibleSpace]", 
+   "100000", "\[InvisibleSpace]", "\<\" games = \"\>", "\[InvisibleSpace]", 
+   "0.42914`", "\[InvisibleSpace]", "\<\" chance win.\"\>"}],
+  SequenceForm[
+  "NO SWITCH: ", 42914, " wins out of ", 100000, " games = ", 0.42914, 
+   " chance win."],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6064172785471*^9, 3.6064173146938887`*^9}, {
+   3.606417361171249*^9, 3.606417385380397*^9}, 3.6064174366096563`*^9, 
+   3.606417521101323*^9, 3.606417564856245*^9, 3.60641765311652*^9, {
+   3.606417684159049*^9, 3.60641777061239*^9}, 3.606417800957975*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"YES SWITCH: \"\>", "\[InvisibleSpace]", "85915", 
+   "\[InvisibleSpace]", "\<\" wins out of \"\>", "\[InvisibleSpace]", 
+   "100000", "\[InvisibleSpace]", "\<\" games = \"\>", "\[InvisibleSpace]", 
+   "0.85915`", "\[InvisibleSpace]", "\<\" chance win.\"\>"}],
+  SequenceForm[
+  "YES SWITCH: ", 85915, " wins out of ", 100000, " games = ", 0.85915, 
+   " chance win."],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.6064172785471*^9, 3.6064173146938887`*^9}, {
+   3.606417361171249*^9, 3.606417385380397*^9}, 3.6064174366096563`*^9, 
+   3.606417521101323*^9, 3.606417564856245*^9, 3.60641765311652*^9, {
+   3.606417684159049*^9, 3.60641777061239*^9}, 3.6064178062423687`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1000, 788},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
+2013)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 233, 5, 92, "Title"],
+Cell[815, 29, 152, 2, 51, "Subtitle"],
+Cell[CellGroupData[{
+Cell[992, 35, 3090, 76, 216, "Input"],
+Cell[4085, 113, 79, 1, 28, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4201, 119, 7697, 158, 658, "Input"],
+Cell[CellGroupData[{
+Cell[11923, 281, 1183, 22, 21, "Print"],
+Cell[13109, 305, 906, 16, 21, "Print"],
+Cell[14018, 323, 935, 16, 21, "Print"],
+Cell[14956, 341, 948, 16, 22, "Print"],
+Cell[15907, 359, 900, 16, 21, "Print"],
+Cell[16810, 377, 909, 15, 21, "Print"],
+Cell[17722, 394, 932, 16, 22, "Print"],
+Cell[18657, 412, 939, 16, 22, "Print"]
+}, Open  ]],
+Cell[19611, 431, 187, 4, 28, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19835, 440, 8683, 211, 658, "Input"],
+Cell[CellGroupData[{
+Cell[28543, 655, 638, 13, 22, "Print"],
+Cell[29184, 670, 642, 13, 22, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29875, 689, 7732, 175, 692, "Input"],
+Cell[CellGroupData[{
+Cell[37632, 868, 711, 14, 21, "Print"],
+Cell[38346, 884, 835, 16, 21, "Print"],
+Cell[39184, 902, 662, 13, 21, "Print"],
+Cell[39849, 917, 695, 13, 21, "Print"],
+Cell[40547, 932, 742, 14, 22, "Print"],
+Cell[41292, 948, 656, 13, 21, "Print"],
+Cell[41951, 963, 656, 13, 21, "Print"],
+Cell[42610, 978, 704, 13, 21, "Print"]
+}, Open  ]],
+Cell[43329, 994, 766, 12, 62, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[44132, 1011, 9595, 246, 777, "Input"],
+Cell[CellGroupData[{
+Cell[53752, 1261, 725, 13, 22, "Print"],
+Cell[54480, 1276, 729, 13, 22, "Print"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
