@@ -1,0 +1,28 @@
+Final Project Proposal for Cameron Embree
+
+TITLE: 
+Audio analysis and simple classifier
+
+
+OVERVIEW:
+I want to look into audio analysis tools in Mathematica and to use those tools to do a very simple word recognizing method. I want to take a recorded piece of audio and, using mathematica tools, recognize/classify my audio as being closest to a certain word. Some word options, with varying degrees of similarity, include:
+- Hello
+- World
+- Excellent
+- Bellow 
+
+LEARNING GOAL:
+My capstone senior project has to do with audio collection and recognition so I am curious what options mathematica has built-in for such things. It 'might' be simple to do some basic recognition if mathematica has enough audio feature extraction tools.
+
+PLAN:
+1. Look into audio importing
+2. Visualize audio to determine how to best extract features
+ - What features define a given word
+3. Examine available feature extraction possibilities and why each may be useful
+4. Record (or find online) audio of 4 different spoken words
+5. Run feature extraction on words and see how I might classify a word
+ - count of number of spoken peaks in a word
+6. Use classification choice to make small method that I can pass my audio file and it will tell me what word it sounds closest to.
+
+OUTCOME:
+Pass a few recorded piece of audio for single words and label each audio piece as belonging to the correct word by analayzing extracted features from each pice of audio
